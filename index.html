@@ -8,185 +8,348 @@
   :root{
     --bg:#0A0A0A; --card:#111417; --card2:#15191d; --line:#23282e;
     --ink:#EDEFF2; --dim:#8B939C; --faint:#5A626B;
-    --blue:#00A8FF; --green:#2FBF71; --amber:#E8A13C; --red:#E05252;
+    --blue:#00A8FF; --green:#2FBF71; --amber:#E8A13C; --red:#E05252; --violet:#9B8CFF;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,'Helvetica Neue',sans-serif;font-size:14px;line-height:1.5;padding:40px 24px 80px}
-  .wrap{max-width:1180px;margin:0 auto}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,'Helvetica Neue',sans-serif;font-size:14px;line-height:1.5;padding:32px 24px 90px}
+  .wrap{max-width:1220px;margin:0 auto}
   .brand{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
   .brand .logo{font-weight:700;letter-spacing:.28em;font-size:13px}
   .brand .logo span{color:var(--blue)}
   .brand .sub{color:var(--faint);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
-  h1{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:34px;letter-spacing:-.01em;margin:6px 0 4px}
-  .meta{color:var(--dim);font-size:12.5px;margin-bottom:18px}
-  .meta b{color:var(--ink);font-weight:600}
-  .rule{background:linear-gradient(0deg,rgba(0,168,255,.05),rgba(0,168,255,.05)),var(--card);border:1px solid rgba(0,168,255,.3);border-radius:12px;padding:14px 18px;margin-bottom:26px;font-size:12.5px;color:var(--dim)}
-  .rule b{color:var(--blue);text-transform:uppercase;letter-spacing:.14em;font-size:11px}
-  .pulse{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px}
-  .pulse-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
-  .pulse-pct{font-family:Georgia,serif;font-size:40px;line-height:1}
-  .pulse-pct small{font-size:15px;color:var(--dim);font-family:'Inter',sans-serif;margin-left:6px}
-  .bar{height:6px;background:var(--card2);border-radius:99px;overflow:hidden;margin-top:10px}
-  .bar i{display:block;height:100%;background:var(--blue);border-radius:99px;transition:width .5s ease}
-  .lanebars{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:18px}
-  .lanebar .nm{font-size:11.5px;color:var(--dim);margin-bottom:6px;display:flex;justify-content:space-between}
-  .lanebar .nm b{color:var(--ink);font-weight:600}
-  .needs{background:linear-gradient(0deg,rgba(232,161,60,.06),rgba(232,161,60,.06)),var(--card);border:1px solid rgba(232,161,60,.35);border-radius:14px;padding:18px 24px;margin-bottom:28px}
-  .needs h2{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
-  .needs ul{list-style:none}
-  .needs li{padding:7px 0;border-bottom:1px dashed rgba(232,161,60,.18);display:flex;gap:10px;align-items:baseline;font-size:13.5px}
-  .needs li:last-child{border-bottom:0}
-  .needs li .tag{font-size:10px;letter-spacing:.08em;color:var(--amber);border:1px solid rgba(232,161,60,.4);border-radius:99px;padding:1px 8px;white-space:nowrap}
-  .needs li.done-item{opacity:.35;text-decoration:line-through}
-  .lane{margin-bottom:26px}
-  .lane-head{display:flex;justify-content:space-between;align-items:baseline;padding:0 4px 10px;border-bottom:1px solid var(--line);margin-bottom:10px}
-  .lane-head h2{font-family:Georgia,serif;font-weight:400;font-size:20px}
-  .lane-head .own{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
-  .items{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px}
-  .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;transition:border-color .2s}
-  .item:hover{border-color:#2e353d}
-  .item .row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-  .item .t{font-weight:600;font-size:13.5px}
-  .item .n{color:var(--dim);font-size:12.5px}
-  .item.st-done{opacity:.55}
-  .item.st-done .t{text-decoration:line-through}
-  .pill{cursor:pointer;user-select:none;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px;white-space:nowrap;border:1px solid transparent}
-  .pill:hover{filter:brightness(1.25)}
-  .p-done{color:var(--green);border-color:rgba(47,191,113,.4);background:rgba(47,191,113,.08)}
-  .p-progress{color:var(--blue);border-color:rgba(0,168,255,.4);background:rgba(0,168,255,.08)}
-  .p-blocked{color:var(--red);border-color:rgba(224,82,82,.4);background:rgba(224,82,82,.08)}
-  .p-next{color:var(--ink);border-color:#3a424b;background:#1a1f24}
-  .p-backlog{color:var(--faint);border-color:var(--line)}
-  .jack{font-size:10px;color:var(--amber);letter-spacing:.06em}
-  .foot{margin-top:34px;color:var(--faint);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  .foot button{background:none;border:1px solid var(--line);color:var(--dim);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:12px}
-  .foot button:hover{border-color:var(--red);color:var(--red)}
-  .hint{color:var(--faint);font-size:11.5px;margin:-18px 0 26px}
-  @media (max-width:640px){ .items{grid-template-columns:1fr} h1{font-size:26px} .pulse-pct{font-size:30px} }
+  h1{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:30px;letter-spacing:-.01em;margin:6px 0 14px}
+  .tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:22px;flex-wrap:wrap}
+  .tab{cursor:pointer;padding:9px 16px;font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--dim);border:1px solid transparent;border-bottom:none;border-radius:9px 9px 0 0;user-select:none}
+  .tab:hover{color:var(--ink)}
+  .tab.active{color:var(--ink);background:var(--card);border-color:var(--line)}
+  .view{display:none}
+  .view.active{display:block}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--dim);margin-bottom:20px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:9px;height:9px;border-radius:99px;display:inline-block}
+  .d-built{background:var(--green)} .d-progress{background:var(--blue)} .d-spec{background:var(--amber)} .d-planned{background:var(--faint)}
+  .intro{color:var(--dim);font-size:12.5px;margin-bottom:20px;max-width:900px}
+  .intro b{color:var(--ink)}
+  .section{margin-bottom:26px}
+  .section > h2{font-family:Georgia,serif;font-weight:400;font-size:18px;padding:0 2px 8px;border-bottom:1px solid var(--line);margin-bottom:12px;display:flex;justify-content:space-between;align-items:baseline}
+  .section > h2 .cap{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-family:'Inter',sans-serif}
+  .grid{display:grid;gap:10px}
+  .g2{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  .g3{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+  .g4{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .node{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px 15px;cursor:pointer;transition:border-color .15s,transform .05s;position:relative}
+  .node:hover{border-color:#39424c}
+  .node:active{transform:translateY(1px)}
+  .node .nt{font-weight:600;font-size:13px;padding-right:16px}
+  .node .nd{color:var(--dim);font-size:11.5px;margin-top:3px}
+  .node .st{position:absolute;top:13px;right:13px;width:9px;height:9px;border-radius:99px}
+  .node.b-built{border-left:3px solid var(--green)}
+  .node.b-progress{border-left:3px solid var(--blue)}
+  .node.b-spec{border-left:3px solid var(--amber)}
+  .node.b-planned{border-left:3px solid var(--faint)}
+  .flowarrow{text-align:center;color:var(--faint);font-size:18px;margin:2px 0 10px}
+  .org-top{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:8px}
+  .org-cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:12px}
+  .org-col{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px}
+  .org-col h3{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;font-weight:700}
+  .org-col .node{background:var(--card);margin-bottom:7px;padding:9px 11px}
+  .org-col .node .nt{font-size:12px}
+  .lead{border:1px solid rgba(0,168,255,.3) !important}
+  .cc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+  .cc-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;cursor:pointer;transition:border-color .15s}
+  .cc-card:hover{border-color:#39424c}
+  .cc-card h3{font-size:14px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+  .cc-card .purpose{color:var(--dim);font-size:12px;margin:8px 0 10px}
+  .cc-card ul{list-style:none;font-size:11.5px;color:var(--faint)}
+  .cc-card li{padding:2px 0;padding-left:12px;position:relative}
+  .cc-card li:before{content:"\203A";position:absolute;left:0;color:var(--blue)}
+  .badge{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:2px 8px;white-space:nowrap}
+  .bg-built{color:var(--green);background:rgba(47,191,113,.1);border:1px solid rgba(47,191,113,.35)}
+  .bg-progress{color:var(--blue);background:rgba(0,168,255,.1);border:1px solid rgba(0,168,255,.35)}
+  .bg-spec{color:var(--amber);background:rgba(232,161,60,.1);border:1px solid rgba(232,161,60,.35)}
+  .bg-planned{color:var(--faint);background:transparent;border:1px solid var(--line)}
+  .scrim{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
+  .scrim.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:min(460px,92vw);background:#0e1216;border-left:1px solid var(--line);transform:translateX(100%);transition:transform .22s ease;z-index:50;padding:26px 26px 40px;overflow-y:auto}
+  .drawer.open{transform:translateX(0)}
+  .drawer .close{position:absolute;top:18px;right:20px;cursor:pointer;color:var(--dim);font-size:20px}
+  .drawer .close:hover{color:var(--ink)}
+  .drawer .dtitle{font-family:Georgia,serif;font-size:22px;margin:2px 0 10px;padding-right:30px}
+  .drawer .drow{margin:14px 0}
+  .drawer .dlabel{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:4px}
+  .drawer .dval{font-size:13px;color:var(--ink)}
+  .drawer .dval.dim{color:var(--dim)}
+  .foot{margin-top:36px;color:var(--faint);font-size:11.5px}
+  @media (max-width:640px){ h1{font-size:24px} .tab{padding:8px 11px} }
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="brand"><div class="logo">MATRIX <span>LONGEVITY</span></div><div class="sub">Build Command</div></div>
-  <h1>One company. Six lanes. One picture.</h1>
-  <div class="meta">State compiled by Fable · <b>July 14, 2026, 3:10 PM ET</b> · Click any status pill to cycle it. <b>Today:</b> full marketing site built &amp; merged to main &#8212; apex <b>/</b> (#14), <b>/men</b> (#17), <b>/women</b> (#15), <b>/ava</b> (#16); old v1 (#12) closed. Labs Foundation L1+L2 merged (#13). Health-signals in Codex review (#18). CEO Today turn-on plan written &amp; holding. Vercel preview project connected. <b>One blocker:</b> the live preview still crashes to a black screen because the bigg-os app loads Clerk JS at runtime on the public routes even with the missing-key guard (#20) &#8212; now being debugged in a dedicated Claude Code session.</div>
+  <h1>One company. One picture.</h1>
 
-  <div class="rule"><b>Execution boundary &#8212; enforced</b><br>Coding, previews, and deployments are <b style="color:var(--ink)">Claude Code's</b> job (it has the terminal, the repo, the deploy CLI). <b style="color:var(--ink)">Fable</b> holds program state, sequences lanes, makes decisions, writes specs/kickoffs, and merges PRs. Fable does <b style="color:var(--ink)">not</b> run build/preview/deploy itself or walk founder through devops clicks &#8212; those get routed to Claude Code in one instruction. This rule exists because the Jul 14 site-preview effort violated it and cost a founder day.</div>
-
-  <div class="pulse">
-    <div class="pulse-label">Program Pulse — Overall Completion (engine + site built; deploy/preview + product loop remain)</div>
-    <div class="pulse-pct"><span id="pct">0</span>%<small id="counts"></small></div>
-    <div class="bar"><i id="mainbar" style="width:0%"></i></div>
-    <div class="lanebars" id="lanebars"></div>
+  <div class="tabs">
+    <div class="tab active" data-tab="build">Build Command</div>
+    <div class="tab" data-tab="infra">Infrastructure Map</div>
+    <div class="tab" data-tab="org">Agent Org Chart</div>
+    <div class="tab" data-tab="cc">Command Center</div>
   </div>
 
-  <div class="needs">
-    <h2>Needs Jack — your queue</h2>
-    <ul id="needslist"></ul>
+  <div class="legend">
+    <span><i class="dot d-built"></i> Built / Merged</span>
+    <span><i class="dot d-progress"></i> In Progress</span>
+    <span><i class="dot d-spec"></i> Spec'd, not built</span>
+    <span><i class="dot d-planned"></i> Planned / Not started</span>
+    <span style="color:var(--faint)">· click any box for detail</span>
   </div>
-  <div class="hint">Items clear automatically as you mark their cards Done below.</div>
 
-  <div id="lanes"></div>
-
-  <div class="foot">
-    <div>Statuses persist locally (this browser). Source of truth for detail: the 09.xx / 11.xx documents in Drive.</div>
-    <button onclick="if(confirm('Reset all statuses to Fable\'s compiled state?')){localStorage.removeItem('mxbuild4');location.reload()}">Reset to compiled state</button>
+  <div class="view active" id="view-build">
+    <div id="buildmount"></div>
   </div>
+
+  <div class="view" id="view-infra">
+    <div class="intro">The Matrix Intelligence Engine, layer by layer. <b>Green = real and merged today.</b> The Data &amp; Infrastructure Foundation is built; the engine layers and modules light up as each build wave lands. This mirrors the Infrastructure Map — click any box for what it is, its status, and the PR/spec that governs it.</div>
+    <div id="inframount"></div>
+  </div>
+
+  <div class="view" id="view-org">
+    <div class="intro">The full agent hierarchy — Jack &#8594; Ava-CEO &#8594; domain agents &#8594; sub-agents — exactly as designed. <b>Almost none of the agents exist yet;</b> this is the target org. Where a foundation exists (labs, safety, command center), the box is marked accordingly. Everything else is Planned. Click any role for its charter and status.</div>
+    <div id="orgmount"></div>
+  </div>
+
+  <div class="view" id="view-cc">
+    <div class="intro">The planned Command Center views (BUILD-001 Phase 2). This is the <b>mock/goal gallery</b> — where we refine what each view should surface before it's built. Click a view to see its intended contents and status; we adjust these together.</div>
+    <div id="ccmount"></div>
+  </div>
+
+  <div class="foot">State compiled by Fable · July 14, 2026 · Honest states, no fake-green. Source of truth for detail: the 09.xx / 11.xx docs in Drive + the repo. Agents/dashboards are outlines only — nothing here is integrated yet.</div>
+</div>
+
+<div class="scrim" id="scrim" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="close" onclick="closeDrawer()">&times;</div>
+  <div id="drawerbody"></div>
 </div>
 
 <script>
-const DATA = [
- {lane:"Commercial — Website & Brand", owner:"Claude Code builds · Fable specs/merges · Jack drives vision", items:[
-  {id:"c1",t:"Apex homepage / — cinematic 6-section — MERGED (#14)",n:"Ava hero video, four-step journey, Her/Him split, value carousel, $199 band, footer. Fraunces serif + trackEvent shim. Assets byte-identical, no audio",s:"done"},
-  {id:"c2",t:"/men (Matrix for Him) — MERGED (#17)",n:"Editorial rebuild sharing apex design system. Supersedes #12's /men. Compliance locks honored",s:"done"},
-  {id:"c3",t:"/women (Matrix for Her) — MERGED (#15)",n:"Editorial twin, women-first, no pregnancy/cycle assumptions. Both routes wired in App.tsx",s:"done"},
-  {id:"c4",t:"/ava (The Ava Difference) — MERGED (#16)",n:"5 approved assets, clinician-boundary copy, founder-approved superintelligence phrasing. Ships as mockup; wiring /ava into the live router + nav is a small follow-up",s:"done"},
-  {id:"c5",t:"Old v1 (#12) closed",n:"Superseded by the new editorial /men + /women. Clean retirement",s:"done"},
-  {id:"c6",t:"Preview pipeline (Vercel) — BLOCKED on Clerk runtime crash",n:"matrix-longevity-site connected; per-branch previews auto-build. But the site black-screens: bigg-os loads clerk.browser.js at runtime on public routes; #20 guarded the module-load throw but not the runtime init. Dedicated Claude Code lane is diagnosing against the real Vercel build",s:"blocked",jack:"Preview fix is in Claude Code — paste the Clerk-runtime debug prompt (Fable provided it in chat)"},
-  {id:"c7",t:"/ava route wiring + value-CTA deep pages",n:"Wire /ava into live router+nav; repoint value-panel CTAs to dedicated pages when they exist. Small follow-ups",s:"next"},
-  {id:"c8",t:"Pre-launch compliance & accuracy sweep",n:"Superintelligence + cancer-screening/regenerative-medicine claims (founder-approved, logged for counsel), Bio-Age framing, marker counts, MD name gate, representative-example labels — LAUNCH GATE",s:"backlog"}
+const SLBL={built:"Built / Merged",progress:"In Progress",spec:"Spec'd, not built",planned:"Planned / Not started"};
+function openDrawer(o){
+  document.getElementById('drawerbody').innerHTML =
+    `<div class="dtitle">${o.t}</div>`+
+    `<div class="drow"><div class="dlabel">Status</div><div class="dval"><span class="badge bg-${o.s}">${SLBL[o.s]}</span></div></div>`+
+    `<div class="drow"><div class="dlabel">What it is</div><div class="dval dim">${o.what||'&#8212;'}</div></div>`+
+    (o.gov?`<div class="drow"><div class="dlabel">Governed by / evidence</div><div class="dval dim">${o.gov}</div></div>`:'')+
+    (o.deps?`<div class="drow"><div class="dlabel">Depends on</div><div class="dval dim">${o.deps}</div></div>`:'')+
+    (o.note?`<div class="drow"><div class="dlabel">Note</div><div class="dval dim">${o.note}</div></div>`:'');
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('scrim').classList.add('open');
+}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('scrim').classList.remove('open');}
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById('view-'+t.dataset.tab).classList.add('active');
+});
+function nodeEl(o){
+  const d=document.createElement('div');
+  d.className='node b-'+o.s;
+  d.innerHTML=`<span class="st d-${o.s}"></span><div class="nt">${o.t}</div>`+(o.nd?`<div class="nd">${o.nd}</div>`:'');
+  d.onclick=()=>openDrawer(o);
+  return d;
+}
+
+const LANES=[
+ {lane:"Website & Brand",items:[
+  {t:"Apex / + /men + /women + /ava — MERGED",nd:"#14/#17/#15/#16, #12 closed. Full editorial site on main.",s:"built",what:"Cinematic 6-section homepage + 3 gendered/Ava pages, one design system.",gov:"PRs #14 #15 #16 #17 merged"},
+  {t:"Preview pipeline (Vercel)",nd:"Blocked on Clerk runtime crash — in Claude Code.",s:"progress",what:"Per-branch preview URLs. Site currently black-screens: bigg-os loads Clerk JS at runtime on public routes.",gov:"#19 SPA rewrite, #20 key-guard; runtime fix in a Code lane"},
+  {t:"Pre-launch compliance sweep",nd:"Launch gate.",s:"planned",what:"Superintelligence + cancer/regen claims (founder-approved, logged for counsel), Bio-Age framing, representative-example labels."}
  ]},
- {lane:"MIE — Intelligence Engine", owner:"Claude Code · specs in docs/mie-specs", items:[
-  {id:"m1",t:"Spec estate committed to docs/mie-specs (canonical)",n:"All 21 governing specs byte-faithful in-repo (cp + sha-verified); CON-001 recovered non-empty",s:"done"},
-  {id:"m2",t:"Wave 1 — Pure Intelligence Core — MERGED (#8)",n:"mie-registry, mie-signals, mie-patterns, mie-interventions + golden harness",s:"done"},
-  {id:"m3",t:"Foundation F1–F5 — MERGED (#10)",n:"mie-core + mie-safety. 62 safety tests, 100% cov; Codex P1 fail-open fixed",s:"done"},
-  {id:"m4",t:"Bio-Age prep — MERGED (#9)",n:"Dossier, contract, validation harness, reference data (all numbers null/PENDING+cited)",s:"done"},
-  {id:"m5",t:"Labs Foundation L1+L2 — MERGED (#13)",n:"lab_reports + lab_results (per-report identity, PHI-minimized) + registry projection (40 defs / 149 aliases / 76 unit-conversions). Flag-gated OFF; migration 0022 NOT applied",s:"done"},
-  {id:"m6",t:"Health Intelligence signals (11.07) — in Codex review (#18)",n:"Typed projection over mie_events (no migration). H1 signal persistence at Checkpoint 1. Awaiting Codex, then founder merge",s:"progress"},
-  {id:"m7",t:"Apply migration 0022 to Replit Dev DB",n:"Labs tables are inert on main until applied. Watched psql-runbook pass (never drizzle-push), after confirming DB host from secret. Founder-scheduled",s:"next",jack:"Apply migration 0022 to Dev (watched, when ready)"},
-  {id:"m8",t:"Bio-Age clinical model ratification",n:"Architecture ratified (Class A Clinical Biomarker Age + fallback). Clinical model gated on RES-001..005 + PCAC Jul 23-24 — NOT a client claim yet",s:"blocked"},
-  {id:"m9",t:"Phases 5–9 — Ava orchestration, stack reconcile, refills, Bio-Age V1, recommendation loop",n:"Consume labs + signals foundations. Backlog until 11.07 lands",s:"backlog"}
+ {lane:"MIE — Intelligence Engine",items:[
+  {t:"Spec estate + Wave 1 + Foundation — MERGED",nd:"#8 #10, 21 specs in docs/mie-specs.",s:"built",what:"mie-registry/signals/patterns/interventions + mie-core + mie-safety (62 safety tests).",gov:"PRs #8 #10 merged"},
+  {t:"Labs Foundation L1+L2 — MERGED",nd:"#13. lab_reports + lab_results + registry projection.",s:"built",what:"Per-report identity, PHI-minimized. Flag-gated OFF; migration 0022 not applied.",gov:"PR #13 merged"},
+  {t:"Health signals (11.07)",nd:"In Codex review (#18).",s:"progress",what:"Typed projection over mie_events, no migration. H1 signal persistence.",gov:"PR #18 in review"},
+  {t:"Ava Orchestration (Phase 5)",nd:"Next major wave.",s:"spec",what:"When Ava decides to reach out and what she may say.",gov:"MIE-AVA-001",deps:"11.07 signals merged"}
  ]},
- {lane:"Command Center — Matrix OS (Phase A)", owner:"Claude Code · PRs #5 #7 merged", items:[
-  {id:"o1",t:"A1 + A2 — control plane + CEO Today (operator UI merged)",n:"#5 Needs-Attention panel + #7 Phase A docs on main; 8 seeded departments, honest UNKNOWN states",s:"done"},
-  {id:"o2",t:"A3 — Command Page template + Ops/Safety screens",n:"Data layer done; screens building",s:"progress"},
-  {id:"o3",t:"CEO Today turn-on PLAN written, holding",n:"docs/build/ceo-today-turn-on-plan.md: only migration 0021 (not 0020) + 2 flags, migration-then-flag order, instant rollback, verification checklist. Founder green-lights the live pass when ready",s:"next",jack:"Schedule CEO Today turn-on (plan ready)"},
-  {id:"o4",t:"A4/A5 — decision cards, drawers, protected actions",n:"Final Phase A increments",s:"next"},
-  {id:"o5",t:"Phase A acceptance report",n:"Every criterion mapped to evidence; Fable QA gate",s:"backlog"}
- ]},
- {lane:"Production Stability — Incidents & Hardening", owner:"Claude Code · PR #11 merged", items:[
-  {id:"p1",t:"Incident 1 resolved — dev-admin fallback served admin to all",n:"NODE_ENV=production set; routing verified",s:"done"},
-  {id:"p2",t:"Incident 2 resolved — Airtable 429 blanked portals",n:"CONFIRMED via logs. Upgraded + graceful-degradation shim shipped live",s:"done"},
-  {id:"p3",t:"Fail-closed admin hardening + audit trail — MERGED (#11)",n:"strictBool + double-gated dev-admin + admin_session audit log. Misconfig locks CLOSED. 9 tests",s:"done"},
-  {id:"p4",t:"Replit dependency map (§1.1) — MERGED (#11)",n:"Every Replit coupling + staging replacement. Prod DB portable. Object storage = the real lift",s:"done"},
-  {id:"p5",t:"Confirm prod DATABASE_URL host (OQ-1)",n:"Evidence points to Replit-internal; confirm from the prod secret — do not paste it",s:"next",jack:"Confirm prod DB host (don't paste secret)"},
-  {id:"p6",t:"Portal reads Airtable → Postgres on current prod (§2)",n:"Flagged PRs to Replit prod; Airtable demoted to back-office. Next hardening wave",s:"next"}
- ]},
- {lane:"Infrastructure — Deploy & Staging (Replit stays home)", owner:"Claude Code executes · Fable specs", items:[
-  {id:"i1",t:"Vercel preview project connected (matrix-longevity-site)",n:"Per-branch + per-PR preview URLs auto-build. Root artifacts/bigg-os, Vite, output dist/public, SPA rewrite (#19). This is the launch-gate preview — once the Clerk crash is fixed, it's the click-through-before-prod tool",s:"progress"},
-  {id:"i2",t:"Vendor spine DEFERRED (founder decision)",n:"Stripe/Cal/Resend/Twilio out of scope until Jack re-opens",s:"done"},
-  {id:"i3",t:"Merge ≠ deployed — nothing is live on Replit yet",n:"Everything sits on main only. Replit goes live on a deliberate, watched Republish. Do NOT republish until the Vercel preview proves the site works",s:"next",jack:"Do NOT Republish until preview verified working"},
-  {id:"i4",t:"Local dev environment (Mac + dev DB)",n:"Kills Replit dependency for verification",s:"next"},
-  {id:"i5",t:"Cutover — DORMANT until founder readiness declaration",n:"Replit stays home until every piece is 100% functional AND Jack knows how to operate it",s:"backlog"}
- ]},
- {lane:"Governance — Pricing, Finance, Legal", owner:"Fable · outside counsel · CPA", items:[
-  {id:"g1",t:"Core governance docs saved; credit ruleset ratified",n:"00.0 Root Authority, 09.02.4, pricing amendment. Compliance rules enforced across all marketing",s:"done"},
-  {id:"g2",t:"Vendor & Subscription Register (09.07, CFO domain)",n:"All tools tracked — cost, renewal, quota alerts. Now includes Vercel (Hobby). Financial fields need Jack",s:"progress",jack:"Fill 09.07 financial fields (costs/renewals)"},
-  {id:"g3",t:"Counsel review list — superintelligence + cancer-screening + regen-medicine claims",n:"Founder-approved to keep on-site now; LOGGED for the eventual legal-counsel pass (not a blocker today, is a launch gate)",s:"next",jack:"Add to counsel review list (logged)"},
-  {id:"g4",t:"Pricing anchor — confirm $99/$149 program floors",n:"Confirm public floors are settled before launch. PCAC Jul 23-24 unlocks formulary",s:"next",jack:"Confirm $99/$149 floors (pre-PCAC)"},
-  {id:"g5",t:"HSA/FSA counsel + CPA determination",n:"External sign-offs gating credit language at launch",s:"blocked",jack:"Engage counsel & CPA"},
-  {id:"g6",t:"PCAC ruling (Jul 23-24) → formulary + pricing unlock",n:"Green-lists held-out compounds; unlocks pricing-anchor + Bio-Age clinical path",s:"next"},
-  {id:"g7",t:"Entity + OBA disclosure + business banking",n:"DELIBERATELY DEFERRED (founder decision). Becomes launch gate with legal workstream",s:"backlog"}
+ {lane:"Needs Jack",items:[
+  {t:"Preview fix — in Claude Code",nd:"Paste the Clerk-runtime debug prompt.",s:"progress",what:"The one blocker between you and a clickable preview."},
+  {t:"Apply migration 0022 to Dev",nd:"Watched psql-runbook pass, when ready.",s:"planned",what:"Labs tables inert on main until applied. Confirm DB host from secret first."},
+  {t:"Schedule CEO Today turn-on",nd:"Plan written & holding.",s:"planned",what:"Only migration 0021 + 2 flags. First step that touches live Replit."},
+  {t:"Do NOT Republish yet",nd:"Not until Vercel preview proves the site works.",s:"planned",what:"Merge != deployed. Clients untouched until a deliberate watched Republish."}
  ]}
 ];
+(function(){
+ const m=document.getElementById('buildmount');
+ LANES.forEach(l=>{
+  const s=document.createElement('div');s.className='section';
+  s.innerHTML=`<h2>${l.lane}</h2>`;
+  const g=document.createElement('div');g.className='grid g2';
+  l.items.forEach(o=>g.appendChild(nodeEl(o)));
+  s.appendChild(g);m.appendChild(s);
+ });
+})();
 
-const ORDER=["backlog","next","progress","blocked","done"];
-const LBL={done:"Done",progress:"In Progress",blocked:"Blocked",next:"Next",backlog:"Backlog"};
-const CLS={done:"p-done",progress:"p-progress",blocked:"p-blocked",next:"p-next",backlog:"p-backlog"};
-const WEIGHT={done:1,progress:.5,blocked:.25,next:0,backlog:0};
+const INFRA=[
+ {h:"Who We Serve",cap:"audience",cols:"g4",items:[
+  {t:"Clients",s:"built",what:"Individuals optimizing healthspan. Client portal exists today (Replit product)."},
+  {t:"Executives",s:"planned",what:"High performers managing health as a strategic asset. Segment/positioning, not a built surface."},
+  {t:"Concierge Members",s:"spec",what:"White-glove tier with dedicated team + Ava. Matrix Private — future premium tier."},
+  {t:"Partners & Providers",s:"planned",what:"Clinics, labs, specialists, data partners. External-partner integrations not built."}
+ ]},
+ {h:"Matrix Intelligence Engine — 5 Layers",cap:"the engine",cols:"g3",items:[
+  {t:"Data Ingestion Layer",s:"progress",what:"Labs, wearables, questionnaires, lifestyle, protocol logs.",gov:"Labs ingestion L1+L2 merged (#13); wearables/questionnaires not built",deps:"registry, lab spine"},
+  {t:"Intelligence Layer",s:"progress",what:"AI scoring, pattern recognition, trend/risk, optimization.",gov:"Wave 1 engines merged (#8); signals #18 in review; scoring not wired"},
+  {t:"Decision & Automation Layer",s:"spec",what:"Protocol adjustments, smart recs, alerts/escalations, task automation, workflow triggers.",gov:"command_actions backbone exists (#1); automation not built",deps:"Intelligence Layer"},
+  {t:"Communication Layer",s:"spec",what:"Ava conversations, client/team notifications, education delivery, 2-way messaging.",gov:"MIE-AVA-001; Phase 5 not started",deps:"messaging vendor (deferred)"},
+  {t:"Experience Layer",s:"progress",what:"Client dashboard, mobile app, Ava interface, reports, resource library.",gov:"Client dashboard exists; Ava interface not built; mobile app not started"}
+ ]},
+ {h:"Core Platform Modules",cap:"modules",cols:"g3",items:[
+  {t:"Client Portal",s:"built",what:"Overview, health timeline, protocols/stack, lab results, goals. Pre-existing Replit product.",gov:"Replit product line (#2 reconciled)"},
+  {t:"Ava AI Concierge",s:"spec",what:"Daily check-ins, protocol insights, lab explanations, coaching, proactive outreach.",gov:"MIE-AVA-001; scaffolding files exist (ava-knowledge-base.tsx, ava-escalations.tsx), engine not built"},
+  {t:"Command Center",s:"progress",what:"Client oversight, health alerts, protocol mgmt, team collab, automation hub.",gov:"Operator UI #5 + CEO Today #7 merged; most views planned (see Command Center tab)"},
+  {t:"Protocol Engine",s:"spec",what:"Stack builder, dosing logic, cycle mgmt, adjustments, history.",gov:"MIE-PRO-001; protocol-builder.tsx exists as UI; governed engine not built"},
+  {t:"Labs & Biomarkers",s:"built",what:"Upload & parse, AI analysis, trend tracking, reference ranges, action items.",gov:"L1+L2 spine merged (#13); AI analysis layer next"},
+  {t:"Education Hub",s:"progress",what:"Longevity library, protocol education, video, guides/FAQs.",gov:"education.tsx / education-library-manager.tsx exist; content governance pending"}
+ ]},
+ {h:"Data & Infrastructure Foundation",cap:"the plumbing — real",cols:"g3",items:[
+  {t:"PostgreSQL Database",s:"built",what:"Clients, protocols, labs, users, logs, metrics. Replit-managed Postgres, canonical.",gov:"Merged #1/#2; schema on main"},
+  {t:"Object Storage",s:"built",what:"Secure storage for labs, docs, images, reports. GCS via Replit sidecar.",gov:"Live; R2-adapter is the migration lift (dependency map #11)"},
+  {t:"Background Workers",s:"built",what:"Data processing, lab parsing, notifications, automation tasks. Outbox + claim fencing.",gov:"MIE Phase 1 nervous system (#1)"},
+  {t:"Scheduler / Cron",s:"built",what:"Time-based jobs: reminders, check-ins, reports, cleanups.",gov:"Internal scheduler trigger (#1)"},
+  {t:"Audit & Logging",s:"built",what:"Audit trails, system logs, change history. Append-only.",gov:"audit_events (#1) + admin audit (#11)"},
+  {t:"Security & Compliance",s:"progress",what:"HIPAA-ready posture, encryption, role-based access.",gov:"Fail-closed admin hardening merged (#11); full compliance is a launch workstream"}
+ ]},
+ {h:"Integrations",cap:"external",cols:"g4",items:[
+  {t:"Clerk — Auth",s:"built",what:"Authentication. Live. (Also the current cause of the preview black-screen on public routes.)"},
+  {t:"Airtable — Operational DB",s:"built",what:"Live; being demoted to back-office as portal reads move to Postgres.",gov:"429 incident graceful-degradation shim shipped"},
+  {t:"PostgreSQL — Relational DB",s:"built",what:"Canonical relational store."},
+  {t:"Replit — Hosting",s:"built",what:"Production host. Stays home until founder readiness declaration."},
+  {t:"Vercel — Preview",s:"progress",what:"Per-branch marketing-site previews. Added today; blocked on Clerk runtime crash."},
+  {t:"SendGrid — Email",s:"planned",what:"Vendor spine deferred (founder decision)."},
+  {t:"Twilio — SMS/Voice",s:"planned",what:"Vendor spine deferred."},
+  {t:"Stripe — Payments",s:"planned",what:"Vendor spine deferred; gated on entity/OBA."},
+  {t:"Google Cloud — Infra",s:"progress",what:"Object storage via Replit GCS sidecar; broader GCP not adopted."}
+ ]}
+];
+(function(){
+ const m=document.getElementById('inframount');
+ INFRA.forEach(sec=>{
+  const s=document.createElement('div');s.className='section';
+  s.innerHTML=`<h2>${sec.h}<span class="cap">${sec.cap}</span></h2>`;
+  const g=document.createElement('div');g.className='grid '+sec.cols;
+  sec.items.forEach(o=>g.appendChild(nodeEl(o)));
+  s.appendChild(g);m.appendChild(s);
+ });
+})();
 
-let saved={}; try{saved=JSON.parse(localStorage.getItem("mxbuild4")||"{}")}catch(e){}
-DATA.forEach(l=>l.items.forEach(it=>{ if(saved[it.id]) it.s=saved[it.id]; }));
-function persist(){ const o={}; DATA.forEach(l=>l.items.forEach(it=>o[it.id]=it.s)); try{localStorage.setItem("mxbuild4",JSON.stringify(o))}catch(e){} }
-function cycle(id){
-  DATA.forEach(l=>l.items.forEach(it=>{ if(it.id===id){ it.s=ORDER[(ORDER.indexOf(it.s)+1)%ORDER.length]; }}));
-  persist(); render();
-}
-function render(){
-  let total=0,score=0,doneCt=0;
-  const laneStats=[];
-  DATA.forEach(l=>{ let t=0,s=0; l.items.forEach(it=>{t++;s+=WEIGHT[it.s]; if(it.s==="done")doneCt++;}); total+=t;score+=s; laneStats.push({n:l.lane.split(" — ")[0],pct:Math.round(100*s/t)}); });
-  const pct=Math.round(100*score/total);
-  document.getElementById("pct").textContent=pct;
-  document.getElementById("mainbar").style.width=pct+"%";
-  document.getElementById("counts").textContent=doneCt+" of "+total+" workstreams done";
-  document.getElementById("lanebars").innerHTML=laneStats.map(x=>`<div class="lanebar"><div class="nm"><span>${x.n}</span><b>${x.pct}%</b></div><div class="bar"><i style="width:${x.pct}%"></i></div></div>`).join("");
-  const needs=[];
-  DATA.forEach(l=>l.items.forEach(it=>{ if(it.jack) needs.push(it); }));
-  document.getElementById("needslist").innerHTML=needs.map(it=>`<li class="${it.s==='done'?'done-item':''}"><span class="tag">${it.s==='done'?'CLEARED':'ACTION'}</span><span>${it.jack} <span style="color:var(--faint)">· ${it.t}</span></span></li>`).join("");
-  document.getElementById("lanes").innerHTML=DATA.map(l=>`
-    <div class="lane">
-      <div class="lane-head"><h2>${l.lane}</h2><div class="own">${l.owner}</div></div>
-      <div class="items">${l.items.map(it=>`
-        <div class="item st-${it.s}">
-          <div class="row"><div class="t">${it.t}</div><div class="pill ${CLS[it.s]}" onclick="cycle('${it.id}')">${LBL[it.s]}</div></div>
-          <div class="n">${it.n}</div>
-          ${it.jack?`<div class="jack">◆ NEEDS JACK — ${it.jack}</div>`:""}
-        </div>`).join("")}
-      </div>
-    </div>`).join("");
-}
-render();
+const ORG_TOP=[
+ {t:"Jack Burke — Founder / CEO",s:"built",what:"Final decision authority. You.",lead:true},
+ {t:"Ava-CEO AI — Chief Executive Agent",s:"spec",what:"Strategic synthesis, delegation, execution oversight, cross-domain intelligence. Reports directly to Jack. Bounded authority: cannot prescribe/diagnose, move money, alter legal structure, deploy code, or modify the machine.",gov:"MIE-AVA-001 + org chart v1.0; Phase 5, not built",lead:true}
+];
+const ORG_COLS=[
+ {h:"Executive Office",items:[
+  {t:"Chief of Staff Agent",s:"progress",what:"Executive synthesis, priorities/OKRs, decision tracking, reporting.",gov:"CEO Today / Command Center is the first surface of this (#5/#7)"},
+  {t:"Exec Calendar & Scheduling",s:"planned"},{t:"Executive Communications",s:"planned"},
+  {t:"Priorities & OKR Mgmt",s:"planned"},{t:"Decision Tracking",s:"progress",what:"decisions/approvals canonical tables specced (#7)."},
+  {t:"Executive Reporting",s:"planned"},{t:"Meeting Prep",s:"planned"},{t:"Follow-Up & Commitments",s:"planned"}
+ ]},
+ {h:"Operations",items:[
+  {t:"COO Agent",s:"planned"},{t:"Onboarding Agent",s:"planned"},{t:"Client Lifecycle Agent",s:"planned"},
+  {t:"Client Success Agent",s:"planned"},{t:"Check-In Workflow Agent",s:"planned"},{t:"Ongoing Mgmt Agent",s:"planned"},{t:"Operations Quality Agent",s:"planned"}
+ ]},
+ {h:"Health Intelligence & Care",items:[
+  {t:"Chief Health Intelligence Agent",s:"progress",what:"The MIE health core. Foundation merged.",gov:"HIE-002 signals + safety engine"},
+  {t:"Safety Agent",s:"built",what:"Safety classification + escalation.",gov:"mie-safety merged (#10), 62 tests"},
+  {t:"Lab Intake Agent",s:"built",what:"Per-report lab ingestion.",gov:"Labs L1 merged (#13)"},
+  {t:"Lab Intelligence Agent",s:"progress",what:"Biomarker analysis over the lab spine.",gov:"L2 projection merged; analysis next"},
+  {t:"Longitudinal Biomarker Agent",s:"spec"},{t:"Protocol Library / Review Agents",s:"spec",gov:"MIE-PRO-001"},
+  {t:"Progress Intelligence Agent",s:"progress",gov:"signals #18"},{t:"Adherence Agent",s:"spec"},
+  {t:"Biological Age Agent",s:"spec",what:"Bio-Age scoring.",gov:"Bio-Age prep merged (#9); clinical model gated"},
+  {t:"Nutrition / Fitness Intelligence Agents",s:"planned"},{t:"AI Health Orchestrator Agent",s:"spec",gov:"Phase 5"}
+ ]},
+ {h:"Revenue",items:[
+  {t:"CRO Agent",s:"planned"},{t:"Lead Qualification Agent",s:"planned"},{t:"Pipeline Agent",s:"planned"},
+  {t:"Sales Follow-Up Agent",s:"planned"},{t:"Meeting Intelligence Agent",s:"planned"},{t:"Retention Risk Agent",s:"planned"},{t:"Expansion Agent",s:"planned"}
+ ]},
+ {h:"Growth & Brand",items:[
+  {t:"Growth Executive Agent",s:"planned"},{t:"Content Strategy Agent",s:"planned"},{t:"Trend Intelligence Agent",s:"planned"},
+  {t:"Social Publishing Agent",s:"planned"},{t:"Creative Production Agent",s:"planned"},{t:"Growth Analytics Agent",s:"planned"},{t:"Partnership Agent",s:"planned"}
+ ]},
+ {h:"Finance",items:[
+  {t:"CFO Agent",s:"progress",what:"Vendor & subscription register is the first CFO-domain artifact.",gov:"09.07 register in progress"},
+  {t:"Cash / Billing / Receivables / Payables Agents",s:"planned"},{t:"Forecast Agent",s:"planned"},
+  {t:"Unit Economics Agent",s:"planned"},{t:"Financial Reporting Agent",s:"planned"},{t:"Budgeting Agent",s:"planned"}
+ ]},
+ {h:"Supply & Fulfillment",items:[
+  {t:"Supply Chain Agent",s:"planned"},{t:"Inventory Agent",s:"planned"},{t:"Demand Forecast Agent",s:"planned"},
+  {t:"Refill Intelligence Agent",s:"spec",what:"Refill forecasting.",gov:"BUILD-001 Phase 7"},{t:"Order/Shipment/Vendor/Procurement Agents",s:"planned"}
+ ]},
+ {h:"Legal & Compliance",items:[
+  {t:"Legal & Compliance Agent",s:"planned"},{t:"Compliance Monitoring Agent",s:"planned"},{t:"Regulation Intelligence Agent",s:"planned"},
+  {t:"Policy / Contract / Legal Research Agents",s:"planned"},{t:"Risk & Audit Agent",s:"progress",gov:"admin audit trail (#11)"},{t:"Disclosure Mgmt Agent",s:"planned"}
+ ]},
+ {h:"Technology, Data & AI / ME",items:[
+  {t:"CTO / ME Executive Agent",s:"planned"},{t:"ME Orchestration Agent",s:"spec"},{t:"Data Quality Agent",s:"planned"},
+  {t:"Identity Resolution Agent",s:"built",what:"One-client-one-identity resolver.",gov:"mie-core F2 merged (#10)"},
+  {t:"Integration Agent",s:"planned"},{t:"Reliability Agent",s:"planned"},{t:"Security Agent",s:"progress",gov:"hardening #11"},
+  {t:"Agent Governance Agent",s:"planned"},{t:"Systems Auditor Agent",s:"planned"}
+ ]}
+];
+const ORG_XDOMAIN={h:"Specialized Cross-Domain Agents (report to Ava)",items:[
+  {t:"Medication Intelligence Agent",s:"spec",what:"Reviews meds, interactions, optimization across protocols.",gov:"DATA-002 + Phase 6"},
+  {t:"Safety & Risk Intelligence Agent",s:"built",what:"Monitors safety signals, patterns, escalation triggers.",gov:"mie-safety (#10)"},
+  {t:"Client Communications Agent",s:"spec",what:"Omnichannel communication hub across Matrix OS.",gov:"Comms layer / Phase 5"},
+  {t:"Knowledge & Research Agent",s:"spec",what:"Retrieves, synthesizes, indexes the verified knowledge base + enterprise intel. (This is the Ava knowledgebase engine you asked about.)",gov:"MIE-AVA-001; Fable to spec the governance next"},
+  {t:"Execution & Follow-Up Agent",s:"progress",what:"Delegated tasks, timelines, owners, closure across the loop.",gov:"command_actions backbone (#1)"},
+  {t:"Analytics & Insights Agent",s:"planned",what:"Dashboards, forecasts, strategic recommendations."}
+]};
+(function(){
+ const m=document.getElementById('orgmount');
+ const top=document.createElement('div');top.className='org-top';
+ const g=document.createElement('div');g.className='grid';g.style.maxWidth='420px';g.style.margin='0 auto';g.style.width='100%';
+ ORG_TOP.forEach(o=>{const n=nodeEl(o);n.classList.add('lead');g.appendChild(n);});
+ top.appendChild(g);m.appendChild(top);
+ m.insertAdjacentHTML('beforeend','<div class="flowarrow">&#8595; domain agents report to Ava-CEO</div>');
+ const cols=document.createElement('div');cols.className='org-cols';
+ ORG_COLS.forEach(col=>{
+  const c=document.createElement('div');c.className='org-col';
+  c.innerHTML=`<h3>${col.h}</h3>`;
+  col.items.forEach((o,i)=>{const n=nodeEl(o);if(i===0)n.classList.add('lead');c.appendChild(n);});
+  cols.appendChild(c);
+ });
+ m.appendChild(cols);
+ const sx=document.createElement('div');sx.className='section';sx.style.marginTop='22px';
+ sx.innerHTML=`<h2>${ORG_XDOMAIN.h}<span class="cap">horizontal</span></h2>`;
+ const gx=document.createElement('div');gx.className='grid g3';
+ ORG_XDOMAIN.items.forEach(o=>gx.appendChild(nodeEl(o)));
+ sx.appendChild(gx);m.appendChild(sx);
+})();
+
+const CC=[
+ {t:"TODAY",s:"progress",purpose:"Founder's daily brief — what needs attention right now.",surf:["Top priorities","Overdue actions","Unresolved labs","Refill risk","Engagement concerns","System failures"],gov:"CEO Today merged (#7) — the live seed of this view"},
+ {t:"SAFETY",s:"spec",purpose:"Safety events + human-review queue.",surf:["Open safety events","Escalations by urgency","Allergy hard-gates","Awaiting clinician review"],gov:"mie-safety engine merged (#10); view not built"},
+ {t:"HEALTH",s:"spec",purpose:"Domain health states across clients.",surf:["Domain scores","Worsening signals","Monitoring overdue"],gov:"signals #18 in review"},
+ {t:"LABS",s:"progress",purpose:"Lab pipeline + unresolved reports.",surf:["Unprocessed reports","Mapping/normalization review","Stale labs","Backlog"],gov:"Labs spine merged (#13)"},
+ {t:"PROTOCOL",s:"spec",purpose:"Protocol state + mismatches.",surf:["Active protocols","Reported vs approved","Recent changes"],gov:"MIE-PRO-001"},
+ {t:"ADHERENCE",s:"planned",purpose:"Adherence tracking + follow-ups.",surf:["Repeated misses","Follow-up needed"]},
+ {t:"REFILLS",s:"spec",purpose:"Proactive refill forecasting.",surf:["Runout forecasts","Refill windows","Order state"],gov:"BUILD-001 Phase 7"},
+ {t:"DATA GAPS",s:"planned",purpose:"Missing data blocking intelligence.",surf:["Unconfirmed stack","Missing safety-critical data"]},
+ {t:"SYSTEM",s:"progress",purpose:"System health + failures (honest, no fake-green).",surf:["Job failures","Stuck states","Retry counts"],gov:"Observability foundation (#1)"},
+ {t:"COMMERCIAL",s:"planned",purpose:"Commercial signals — walled off from health logic.",surf:["Firewalled from clinical priority by design"],gov:"Commercial firewall (BUILD-001)"}
+];
+(function(){
+ const m=document.getElementById('ccmount');
+ const g=document.createElement('div');g.className='cc-grid';
+ CC.forEach(o=>{
+  const c=document.createElement('div');c.className='cc-card';
+  c.innerHTML=`<h3>${o.t}<span class="badge bg-${o.s}">${SLBL[o.s]}</span></h3>`+
+    `<div class="purpose">${o.purpose}</div>`+
+    `<ul>${o.surf.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  c.onclick=()=>openDrawer({t:'Command Center — '+o.t,s:o.s,what:o.purpose+' Surfaces: '+o.surf.join(', ')+'.',gov:o.gov||'BUILD-001 Phase 2 — view not yet built',note:'This is a mock/goal view. We refine what it shows here before Code builds it.'});
+  g.appendChild(c);
+ });
+ m.appendChild(g);
+})();
 </script>
 </body>
 </html>
