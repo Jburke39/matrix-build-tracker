@@ -67,7 +67,7 @@
 <div class="wrap">
   <div class="brand"><div class="logo">MATRIX <span>LONGEVITY</span></div><div class="sub">Build Command</div></div>
   <h1>One company. Six lanes. One picture.</h1>
-  <div class="meta">State compiled by Fable · <b>July 13, 2026, 1:00 PM</b> · Click any status pill to cycle it. Your edits save in this browser; Fable's regeneration is the source of truth. Since last version: both production incidents resolved, MIE Wave 1 + Bio-Age prep + Foundation F1-F2 complete, Figma retired from the build chain, vendor architecture decided.</div>
+  <div class="meta">State compiled by Fable · <b>July 13, 2026, 8:30 PM</b> · Click any status pill to cycle it. Your edits save in this browser; Fable's regeneration is the source of truth. Since 1:00 PM: 11.02 v2 written per founder revisions — vendor spine REMOVED, Replit stays production home until founder readiness declaration; Airtable shim shipped; CEO Today dormant awaiting turn-on.</div>
 
   <div class="pulse">
     <div class="pulse-label">Program Pulse — Overall Completion</div>
@@ -96,7 +96,7 @@ const DATA = [
   {id:"c1",t:"Homepage v5 strategy, spec & hero assets",n:"Single-CTA architecture, hero card, orb, 4 journey photos — locked & approved",s:"done"},
   {id:"c2",t:"/women page — spec, copy & assets locked",n:"44.6 hero card approved; compliant programs copy; women-first ratified",s:"done"},
   {id:"c3",t:"Women/Men path tile photos",n:"Prompts ready in chat — generate in ChatGPT when you have 10 min",s:"next",jack:"Generate 2 path tiles"},
-  {id:"c4",t:"Marketing site built in-repo by Claude Code",n:"NEW DIRECTION: Figma retired — CC builds homepage + /women from specs, deploys via 11.02 (Vercel). Kickoff after 11.02 ships",s:"next"},
+  {id:"c4",t:"Marketing site built in-repo by Claude Code",n:"Folded into 11.02 Phase 3 — builds on Vercel staging. No separate kickoff needed",s:"next"},
   {id:"c5",t:"/men page brief + build",n:"Same skeleton as /women, register shifted — Fable writes on request",s:"next"},
   {id:"c6",t:"Pricing / bloodwork / assessment pages",n:"After homepage + gender pages",s:"backlog"},
   {id:"c7",t:"Pre-launch compliance & accuracy sweep",n:"Bio-Age claims, marker counts, MD name, HSA/FSA copy, casting flags — LAUNCH GATE",s:"backlog"}
@@ -106,14 +106,15 @@ const DATA = [
   {id:"o2",t:"A3 — Command Page template + Ops/Safety screens",n:"Data layer done; screens building on corrected header pattern",s:"progress"},
   {id:"o3",t:"A4/A5 — decision cards, drawers, protected actions",n:"Final Phase A increments",s:"next"},
   {id:"o4",t:"Merge PR #6 (blood-panel) + PR #7 (CEO Today)",n:"Your click after Codex review shows clean",s:"blocked",jack:"Merge PRs #6 & #7 after Codex review"},
+  {id:"o6",t:"CEO Today deliberate turn-on (prod migration + flags)",n:"Feature set live-but-dormant in production. Turn-on = DB migration (3 tables) + 2 flags — careful verified pass, founder-scheduled",s:"next",jack:"Schedule CEO Today turn-on pass"},
   {id:"o5",t:"Phase A acceptance report",n:"Every criterion mapped to evidence; Fable QA gate",s:"backlog"}
  ]},
  {lane:"Production Stability — Incidents & Hardening", owner:"NEW LANE · charter: July 13 incidents", items:[
   {id:"p1",t:"INCIDENT 1 resolved: dev-mode fallback served admin to all clients",n:"NODE_ENV=production set; client routing verified correct",s:"done"},
   {id:"p2",t:"INCIDENT 2 resolved: Airtable 429 quota blanked portals",n:"CONFIRMED via logs: 4,999/1,000 free-plan calls. Upgraded to Team; portals restored",s:"done"},
-  {id:"p3",t:"Airtable adapter call-pattern audit + caching",n:"Why does one portal load fire a dozen calls — CC investigating with evidence",s:"progress"},
-  {id:"p4",t:"Permission hardening: fail-closed guards + ALLOW_DEV_ADMIN flag + admin audit trail",n:"Makes the incident class impossible; folds into 11.02 phase one",s:"next"},
-  {id:"p5",t:"Portal reads move off Airtable → own Postgres",n:"Client-facing product can't run on a metered spreadsheet API — migration workstream",s:"next"}
+  {id:"p3",t:"Airtable graceful-degradation shim SHIPPED",n:"If Airtable fails again, portals degrade to name+Postgres data instead of blanking — verified live",s:"done"},
+  {id:"p4",t:"Permission hardening: fail-closed guards + ALLOW_DEV_ADMIN flag + admin audit trail",n:"Specced as 11.02 Phase 1.2 — ships as hotfix-class PR to current prod, doesn't wait for cutover",s:"next"},
+  {id:"p5",t:"Portal reads move off Airtable → Postgres ON CURRENT PROD",n:"11.02 v2 Phase 2 — ships to Replit production as flagged PRs; Airtable demoted to back-office",s:"next"}
  ]},
  {lane:"MIE — Intelligence Engine", owner:"Claude Code sessions 2–4 · PRs #8 #9 #10", items:[
   {id:"m1",t:"Wave 1 — Pure Intelligence Core COMPLETE",n:"Registry, signals, patterns, interventions, golden harness — 125 tests green, PR #8",s:"done"},
@@ -124,13 +125,14 @@ const DATA = [
   {id:"m6",t:"Wave 2 — Bio-Age engine + recommendation scoring",n:"Needs: PR #8 merged + model ratified + 11.07 kickoff (Fable writes)",s:"backlog"},
   {id:"m7",t:"Wave 3 — protocol engine + Ava orchestration",n:"Consumes Waves 1–2",s:"backlog"}
  ]},
- {lane:"Infrastructure — Replit Exit & Vendor Spine", owner:"Fable spec · Claude Code executes", items:[
-  {id:"i1",t:"Case closed: migration justified by two live incidents",n:"Env-mode opacity + metered-API fragility — both traced to platform",s:"done"},
-  {id:"i2",t:"Vendor architecture DECIDED",n:"Stripe + Cal.com + Resend + Twilio + Clerk, webhooks → control-plane events; Railway/Vercel hosting; buy commodities, build intelligence",s:"done"},
-  {id:"i3",t:"11.02+ migration spec",n:"Fable writing — phases, permission hardening, Airtable demotion, marketing-site build, vendor register",s:"progress"},
+ {lane:"Infrastructure — Staging Platform (Replit stays home)", owner:"Fable spec · Claude Code executes", items:[
+  {id:"i1",t:"Case closed: staging platform justified by two live incidents",n:"Env-mode opacity + metered-API fragility — both traced to platform",s:"done"},
+  {id:"i2",t:"Vendor spine DEFERRED (founder decision)",n:"Stripe/Cal/Resend/Twilio removed from 11.02 scope — revisit as own decision when Jack is ready. Staging stack (Railway/Vercel/R2) stands",s:"done"},
+  {id:"i3",t:"11.02 v2 spec WRITTEN (founder-revised)",n:"Hardening hotfix → Airtable→Postgres on current prod → parallel staging + marketing site. NO vendors, NO cutover until founder declares readiness",s:"done"},
+  {id:"i3b",t:"Launch 11.02 v2 lane",n:"Fresh CC session + worktree, paste 11.02 v2 — begins with dependency map, zero prod impact",s:"next",jack:"Launch 11.02 v2 lane in fresh Claude Code session"},
   {id:"i4",t:"Local dev environment (Mac + dev DB)",n:"Kills Replit dependency for verification",s:"next"},
-  {id:"i5",t:"Stripe integration in TEST MODE",n:"Full checkout/credit-ledger buildable now; LIVE mode gated behind entity/OBA (launch gate)",s:"backlog"},
-  {id:"i6",t:"Staging deploy → data rehearsal → DNS cutover",n:"Quiet-morning cutover; Replit warm as rollback 2 weeks",s:"backlog"}
+  {id:"i5",t:"Payments/scheduling/messaging vendors",n:"OUT OF SCOPE until founder re-opens — no Stripe even in test mode (July 13 decision)",s:"backlog"},
+  {id:"i6",t:"Cutover — DORMANT until founder readiness declaration",n:"Replit stays home until every piece is 100% functional AND Jack knows exactly how to operate it. Runbook written, not scheduled",s:"backlog"}
  ]},
  {lane:"Governance — Pricing, Finance, Legal", owner:"Fable · outside counsel · CPA", items:[
   {id:"g1",t:"00.0 Root Authority · 09.02.4 · 01.04 · 09.03.10 saved; credit ruleset ratified",n:"HSA/FSA + accounting remain BLOCKED, owner-assigned",s:"done"},
