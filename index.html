@@ -67,10 +67,10 @@
 <div class="wrap">
   <div class="brand"><div class="logo">MATRIX <span>LONGEVITY</span></div><div class="sub">Build Command</div></div>
   <h1>One company. Six lanes. One picture.</h1>
-  <div class="meta">State compiled by Fable · <b>July 13, 2026, 8:30 PM</b> · Click any status pill to cycle it. Your edits save in this browser; Fable's regeneration is the source of truth. Since 1:00 PM: 11.02 v2 written per founder revisions — vendor spine REMOVED, Replit stays production home until founder readiness declaration; Airtable shim shipped; CEO Today dormant awaiting turn-on.</div>
+  <div class="meta">State compiled by Fable · <b>July 14, 2026, 9:45 AM ET</b> · Click any status pill to cycle it. Your edits save in this browser; Fable's regeneration is the source of truth. <b>Overnight sprint:</b> MIE spec estate committed to <b>docs/mie-specs</b> (byte-faithful, incl. CON-001); <b>#8 Wave-1, #9 Bio-Age prep, #10 Foundation F1&#8211;F5</b> (mie-core + mie-safety, 62 safety tests, Codex P1 fail-open fixed), <b>#11 admin hardening &#8212; ALL MERGED to main.</b> /men + /women v1 shipped (#12); now being rebuilt as a cinematic-editorial DTC experience. Nothing deployed yet &#8212; Replit republish still pending.</div>
 
   <div class="pulse">
-    <div class="pulse-label">Program Pulse — Overall Completion</div>
+    <div class="pulse-label">Program Pulse — Overall Completion (engine scaffold ahead of product surface &amp; deploy)</div>
     <div class="pulse-pct"><span id="pct">0</span>%<small id="counts"></small></div>
     <div class="bar"><i id="mainbar" style="width:0%"></i></div>
     <div class="lanebars" id="lanebars"></div>
@@ -86,63 +86,61 @@
 
   <div class="foot">
     <div>Statuses persist locally (this browser). Source of truth for detail: the 09.xx / 11.xx documents in Drive.</div>
-    <button onclick="if(confirm('Reset all statuses to Fable\'s compiled state?')){localStorage.removeItem('mxbuild2');location.reload()}">Reset to compiled state</button>
+    <button onclick="if(confirm('Reset all statuses to Fable\'s compiled state?')){localStorage.removeItem('mxbuild3');location.reload()}">Reset to compiled state</button>
   </div>
 </div>
 
 <script>
 const DATA = [
- {lane:"Commercial — Website & Brand", owner:"Fable specs · Claude Code builds · Figma retired", items:[
-  {id:"c1",t:"Homepage v5 strategy, spec & hero assets",n:"Single-CTA architecture, hero card, orb, 4 journey photos — locked & approved",s:"done"},
-  {id:"c2",t:"/women page — spec, copy & assets locked",n:"44.6 hero card approved; compliant programs copy; women-first ratified",s:"done"},
-  {id:"c3",t:"Women/Men path tile photos",n:"Prompts ready in chat — generate in ChatGPT when you have 10 min",s:"next",jack:"Generate 2 path tiles"},
-  {id:"c4",t:"Marketing site built in-repo by Claude Code",n:"Folded into 11.02 Phase 3 — builds on Vercel staging. No separate kickoff needed",s:"next"},
-  {id:"c5",t:"/men page brief + build",n:"Same skeleton as /women, register shifted — Fable writes on request",s:"next"},
-  {id:"c6",t:"Pricing / bloodwork / assessment pages",n:"After homepage + gender pages",s:"backlog"},
-  {id:"c7",t:"Pre-launch compliance & accuracy sweep",n:"Bio-Age claims, marker counts, MD name, HSA/FSA copy, casting flags — LAUNCH GATE",s:"backlog"}
+ {lane:"MIE — Intelligence Engine", owner:"Claude Code · specs in docs/mie-specs · PRs #8 #9 #10 merged", items:[
+  {id:"m1",t:"Spec estate committed to docs/mie-specs (canonical)",n:"All 21 governing specs byte-faithful in-repo (cp + sha-verified); CON-001 recovered non-empty. Lanes read from repo — no more uploads",s:"done"},
+  {id:"m2",t:"Wave 1 — Pure Intelligence Core — MERGED (#8)",n:"mie-registry, mie-signals, mie-patterns, mie-interventions + golden harness. Deterministic, dependency-light",s:"done"},
+  {id:"m3",t:"Foundation F1–F5 — MERGED (#10)",n:"mie-core (canonical data spine) + mie-safety (classification, escalation, golden suite). 62 safety tests, 100% cov; Codex P1 fail-open fixed",s:"done"},
+  {id:"m4",t:"Bio-Age prep — MERGED (#9)",n:"Model-selection dossier, contract, validation harness, reference data (all numbers null/PENDING+cited). No clinical values invented",s:"done"},
+  {id:"m5",t:"Lab Intelligence Foundation (11.06, BUILD-001 Phase 3)",n:"GATE CLEARED — #10 merged, lib/mie-core on main. Lane is parked awaiting your release. Paste the go-prompt to start L1+L2",s:"next",jack:"Release 11.06 — paste go-prompt (gate cleared)"},
+  {id:"m6",t:"Health Intelligence signals (11.07, Phase 4)",n:"Gated on 11.06 merge — labs are its primary source. Kickoff written, held",s:"blocked"},
+  {id:"m7",t:"Bio-Age clinical model ratification",n:"Architecture/sequence ratified (Class A Clinical Biomarker Age + fallback). Clinical model gated on RES-001..005 + PCAC Jul 23-24 — NOT a client claim yet",s:"blocked"},
+  {id:"m8",t:"Phases 5–9 — Ava orchestration, stack reconcile, refills, Bio-Age V1, recommendation loop",n:"Consume the labs + signals foundations. Backlog until 11.06/11.07 land",s:"backlog"}
  ]},
- {lane:"Command Center — Matrix OS (Phase A)", owner:"Claude Code session 1 · PRs #6 #7", items:[
-  {id:"o1",t:"A1 + A2 — control plane, CEO Today live & verified",n:"Rendered on Replit with 8 seeded departments; honest UNKNOWN states working",s:"done"},
+ {lane:"Commercial — Website & Brand", owner:"Fable specs · Claude Code builds · Jack drives vision", items:[
+  {id:"c1",t:"/men + /women v1 shipped (#12, open)",n:"Light-first, dark bio-age header, compliant programs, Ava AI-labeled. Works — but reads like a SaaS template",s:"done"},
+  {id:"c2",t:"Cinematic-editorial redesign — DTC (Superpower model)",n:"Full-bleed hero video (desktop+mobile), minimal copy, one CTA, scroll storytelling. Main landing FIRST, then men, then women, then ava. Jack driving section-by-section",s:"progress",jack:"Drive landing redesign — send main-page assets + direction"},
+  {id:"c3",t:"Hero video + photography assets (Drive library)",n:"Jack building. Export folder as zip → Code commits to repo (Drive isn't a runtime CDN). Name files intentionally (hero-desktop.mp4 etc.)",s:"progress"},
+  {id:"c4",t:"Logo fix — soundwave wordmark",n:"Replace plain-text nav wordmark with the real pulse mark + wordmark across nav/footer",s:"next"},
+  {id:"c5",t:"/ava standalone page",n:"Infographic is strong. Needs 3 compliance fixes (AI label, clinician-approved reframe, real/representative headshots). Backlog until PRs + main landing land",s:"backlog"},
+  {id:"c6",t:"Pricing / bloodwork / assessment pages",n:"After homepage + gender pages",s:"backlog"},
+  {id:"c7",t:"Pre-launch compliance & accuracy sweep",n:"Bio-Age framing, marker counts, MD name gate, HSA/FSA copy, casting flags, representative-example labels — LAUNCH GATE",s:"backlog"}
+ ]},
+ {lane:"Command Center — Matrix OS (Phase A)", owner:"Claude Code · PRs #5 #7 merged", items:[
+  {id:"o1",t:"A1 + A2 — control plane + CEO Today (operator UI merged)",n:"#5 Needs-Attention panel + #7 Phase A docs on main; 8 seeded departments, honest UNKNOWN states",s:"done"},
   {id:"o2",t:"A3 — Command Page template + Ops/Safety screens",n:"Data layer done; screens building on corrected header pattern",s:"progress"},
   {id:"o3",t:"A4/A5 — decision cards, drawers, protected actions",n:"Final Phase A increments",s:"next"},
-  {id:"o4",t:"Merge PR #6 (blood-panel) + PR #7 (CEO Today)",n:"Your click after Codex review shows clean",s:"blocked",jack:"Merge PRs #6 & #7 after Codex review"},
-  {id:"o6",t:"CEO Today deliberate turn-on (prod migration + flags)",n:"Feature set live-but-dormant in production. Turn-on = DB migration (3 tables) + 2 flags — careful verified pass, founder-scheduled",s:"next",jack:"Schedule CEO Today turn-on pass"},
+  {id:"o4",t:"CEO Today deliberate turn-on (prod migration + flags)",n:"Live-but-dormant in prod. Turn-on = DB migration (3 tables via psql) + 2 flags — careful verified pass, founder-scheduled",s:"next",jack:"Schedule CEO Today turn-on pass"},
   {id:"o5",t:"Phase A acceptance report",n:"Every criterion mapped to evidence; Fable QA gate",s:"backlog"}
  ]},
- {lane:"Production Stability — Incidents & Hardening", owner:"NEW LANE · charter: July 13 incidents", items:[
-  {id:"p1",t:"INCIDENT 1 resolved: dev-mode fallback served admin to all clients",n:"NODE_ENV=production set; client routing verified correct",s:"done"},
-  {id:"p2",t:"INCIDENT 2 resolved: Airtable 429 quota blanked portals",n:"CONFIRMED via logs: 4,999/1,000 free-plan calls. Upgraded to Team; portals restored",s:"done"},
-  {id:"p3",t:"Airtable graceful-degradation shim SHIPPED",n:"If Airtable fails again, portals degrade to name+Postgres data instead of blanking — verified live",s:"done"},
-  {id:"p4",t:"Permission hardening: fail-closed guards + ALLOW_DEV_ADMIN flag + admin audit trail",n:"Specced as 11.02 Phase 1.2 — ships as hotfix-class PR to current prod, doesn't wait for cutover",s:"next"},
-  {id:"p5",t:"Portal reads move off Airtable → Postgres ON CURRENT PROD",n:"11.02 v2 Phase 2 — ships to Replit production as flagged PRs; Airtable demoted to back-office",s:"next"}
- ]},
- {lane:"MIE — Intelligence Engine", owner:"Claude Code sessions 2–4 · PRs #8 #9 #10", items:[
-  {id:"m1",t:"Wave 1 — Pure Intelligence Core COMPLETE",n:"Registry, signals, patterns, interventions, golden harness — 125 tests green, PR #8",s:"done"},
-  {id:"m2",t:"Merge PR #8 (Wave 1) — unblocks Wave 2",n:"Your click after Codex review",s:"blocked",jack:"Merge PR #8 after Codex review"},
-  {id:"m3",t:"Bio-Age prep COMPLETE — model awaiting ratification",n:"Dossier, contract, validation harness, reference data — PR #9. Fable's recommendation → your 30-second decision",s:"done"},
-  {id:"m4",t:"Bio-Age model ratification",n:"Founder + clinical call — Fable's one-line rec comes with tonight's status",s:"blocked",jack:"Ratify Bio-Age model (rec pending from Fable)"},
-  {id:"m5",t:"Foundation — data spine F1/F2 done; safety engine F3–F5 building",n:"Canonical model + allergy hard-gate + provenance done (24 tests, PR #10); safety classification in progress",s:"progress"},
-  {id:"m6",t:"Wave 2 — Bio-Age engine + recommendation scoring",n:"Needs: PR #8 merged + model ratified + 11.07 kickoff (Fable writes)",s:"backlog"},
-  {id:"m7",t:"Wave 3 — protocol engine + Ava orchestration",n:"Consumes Waves 1–2",s:"backlog"}
+ {lane:"Production Stability — Incidents & Hardening", owner:"Claude Code · PR #11 merged", items:[
+  {id:"p1",t:"Incident 1 resolved — dev-admin fallback served admin to all",n:"NODE_ENV=production set; routing verified",s:"done"},
+  {id:"p2",t:"Incident 2 resolved — Airtable 429 blanked portals",n:"CONFIRMED via logs (free-plan quota). Upgraded + graceful-degradation shim shipped live",s:"done"},
+  {id:"p3",t:"Fail-closed admin hardening + audit trail — MERGED (#11)",n:"strictBool + double-gated dev-admin + admin_session audit log. Misconfig now locks CLOSED. 9 tests; changes nothing at NODE_ENV=production but the audit line",s:"done"},
+  {id:"p4",t:"Replit dependency map (§1.1) — MERGED (#11)",n:"Every Replit coupling + staging replacement. Prod DB portable (node-postgres over DATABASE_URL). Object storage = the real lift",s:"done"},
+  {id:"p5",t:"Confirm prod DATABASE_URL host (OQ-1)",n:"Evidence points to Replit-internal; confirm from the prod secret — do not paste it. One-word confirm closes it",s:"next",jack:"Confirm prod DB host (don't paste secret)"},
+  {id:"p6",t:"Portal reads Airtable → Postgres on current prod (§2)",n:"Flagged PRs to Replit prod; Airtable demoted to back-office. Next hardening wave",s:"next"}
  ]},
  {lane:"Infrastructure — Staging Platform (Replit stays home)", owner:"Fable spec · Claude Code executes", items:[
-  {id:"i1",t:"Case closed: staging platform justified by two live incidents",n:"Env-mode opacity + metered-API fragility — both traced to platform",s:"done"},
-  {id:"i2",t:"Vendor spine DEFERRED (founder decision)",n:"Stripe/Cal/Resend/Twilio removed from 11.02 scope — revisit as own decision when Jack is ready. Staging stack (Railway/Vercel/R2) stands",s:"done"},
-  {id:"i3",t:"11.02 v2 spec WRITTEN (founder-revised)",n:"Hardening hotfix → Airtable→Postgres on current prod → parallel staging + marketing site. NO vendors, NO cutover until founder declares readiness",s:"done"},
-  {id:"i3b",t:"Launch 11.02 v2 lane",n:"Fresh CC session + worktree, paste 11.02 v2 — begins with dependency map, zero prod impact",s:"next",jack:"Launch 11.02 v2 lane in fresh Claude Code session"},
+  {id:"i1",t:"Staging platform justified by two live incidents",n:"Env-mode opacity + metered-API fragility — both traced to platform",s:"done"},
+  {id:"i2",t:"Vendor spine DEFERRED (founder decision)",n:"Stripe/Cal/Resend/Twilio out of scope until Jack re-opens. No Stripe even in test mode",s:"done"},
+  {id:"i3",t:"Merge ≠ deployed — nothing is live yet",n:"Everything merged sits on main only. Replit goes live on a deliberate, watched Republish — a separate step Jack controls",s:"next",jack:"Decide when to Republish (nothing deployed yet)"},
   {id:"i4",t:"Local dev environment (Mac + dev DB)",n:"Kills Replit dependency for verification",s:"next"},
-  {id:"i5",t:"Payments/scheduling/messaging vendors",n:"OUT OF SCOPE until founder re-opens — no Stripe even in test mode (July 13 decision)",s:"backlog"},
-  {id:"i6",t:"Cutover — DORMANT until founder readiness declaration",n:"Replit stays home until every piece is 100% functional AND Jack knows exactly how to operate it. Runbook written, not scheduled",s:"backlog"}
+  {id:"i5",t:"Cutover — DORMANT until founder readiness declaration",n:"Replit stays home until every piece is 100% functional AND Jack knows how to operate it. Runbook exists, not scheduled",s:"backlog"}
  ]},
  {lane:"Governance — Pricing, Finance, Legal", owner:"Fable · outside counsel · CPA", items:[
-  {id:"g1",t:"00.0 Root Authority · 09.02.4 · 01.04 · 09.03.10 saved; credit ruleset ratified",n:"HSA/FSA + accounting remain BLOCKED, owner-assigned",s:"done"},
-  {id:"g2",t:"Vendor & Subscription Register (CFO domain)",n:"NEW after Airtable outage: all tools tracked — cost, renewal, quota alerts. Fable compiling; feeds Finance domain",s:"progress"},
-  {id:"g3",t:"Archive superseded old 09.04 file in Drive",n:"One click",s:"next",jack:"Delete old 09.04 in Drive"},
-  {id:"g4",t:"Propagation edits — 09.02.3 v2.3 + 09.99 refresh",n:"Old compound names still in locked docs",s:"next"},
-  {id:"g5",t:"MIE Constitution ratification",n:"Living-doc protocol approved; formal ratification pending",s:"next",jack:"Ratify MIE Constitution"},
-  {id:"g6",t:"HSA/FSA counsel + CPA determination",n:"External sign-offs gating credit language at launch",s:"blocked",jack:"Engage counsel & CPA"},
-  {id:"g7",t:"Entity + OBA disclosure + business banking",n:"DELIBERATELY DEFERRED (founder decision) — becomes launch gate with legal workstream; Stripe live-mode depends on it",s:"backlog"},
-  {id:"g8",t:"Finance contribution-margin model",n:"Owner: Finance + founder per 09.02.4 §4.4",s:"backlog"}
+  {id:"g1",t:"Core governance docs saved; credit ruleset ratified",n:"00.0 Root Authority, 09.02.4, pricing amendment. Compliance rules enforced across all marketing",s:"done"},
+  {id:"g2",t:"Vendor & Subscription Register (09.07, CFO domain)",n:"All tools tracked — cost, renewal, quota alerts (Airtable 429 is the charter case). Financial fields need Jack",s:"progress",jack:"Fill 09.07 financial fields (costs/renewals)"},
+  {id:"g3",t:"Pricing anchor — confirm $99/$149 program floors",n:"Rescope pulled two held-out compounds; confirm the public floors are settled before they ship on the site. PCAC ruling Jul 23-24 unlocks formulary",s:"next",jack:"Confirm $99/$149 floors (pre-PCAC)"},
+  {id:"g4",t:"MIE Constitution ratification",n:"CON-001 now readable in-repo; formal ratification pending",s:"next",jack:"Ratify MIE Constitution"},
+  {id:"g5",t:"HSA/FSA counsel + CPA determination",n:"External sign-offs gating credit language at launch",s:"blocked",jack:"Engage counsel & CPA"},
+  {id:"g6",t:"PCAC ruling (Jul 23-24) → formulary + pricing unlock",n:"Green-lists held-out compounds; unlocks pricing-anchor + Bio-Age clinical path",s:"next"},
+  {id:"g7",t:"Entity + OBA disclosure + business banking",n:"DELIBERATELY DEFERRED (founder decision). Becomes launch gate with legal workstream; not a day-to-day action",s:"backlog"}
  ]}
 ];
 
@@ -151,9 +149,9 @@ const LBL={done:"Done",progress:"In Progress",blocked:"Blocked",next:"Next",back
 const CLS={done:"p-done",progress:"p-progress",blocked:"p-blocked",next:"p-next",backlog:"p-backlog"};
 const WEIGHT={done:1,progress:.5,blocked:.25,next:0,backlog:0};
 
-let saved={}; try{saved=JSON.parse(localStorage.getItem("mxbuild2")||"{}")}catch(e){}
+let saved={}; try{saved=JSON.parse(localStorage.getItem("mxbuild3")||"{}")}catch(e){}
 DATA.forEach(l=>l.items.forEach(it=>{ if(saved[it.id]) it.s=saved[it.id]; }));
-function persist(){ const o={}; DATA.forEach(l=>l.items.forEach(it=>o[it.id]=it.s)); try{localStorage.setItem("mxbuild2",JSON.stringify(o))}catch(e){} }
+function persist(){ const o={}; DATA.forEach(l=>l.items.forEach(it=>o[it.id]=it.s)); try{localStorage.setItem("mxbuild3",JSON.stringify(o))}catch(e){} }
 function cycle(id){
   DATA.forEach(l=>l.items.forEach(it=>{ if(it.id===id){ it.s=ORDER[(ORDER.indexOf(it.s)+1)%ORDER.length]; }}));
   persist(); render();
