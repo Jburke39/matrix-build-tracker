@@ -24,6 +24,49 @@
   .tab.active{color:var(--ink);background:var(--card);border-color:var(--line)}
   .view{display:none}
   .view.active{display:block}
+  /* ---- build command (original) ---- */
+  .meta{color:var(--dim);font-size:12.5px;margin-bottom:18px}
+  .meta b{color:var(--ink);font-weight:600}
+  .rule{background:linear-gradient(0deg,rgba(0,168,255,.05),rgba(0,168,255,.05)),var(--card);border:1px solid rgba(0,168,255,.3);border-radius:12px;padding:14px 18px;margin-bottom:26px;font-size:12.5px;color:var(--dim)}
+  .rule b{color:var(--blue);text-transform:uppercase;letter-spacing:.14em;font-size:11px}
+  .pulse{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+  .pulse-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+  .pulse-pct{font-family:Georgia,serif;font-size:40px;line-height:1}
+  .pulse-pct small{font-size:15px;color:var(--dim);font-family:'Inter',sans-serif;margin-left:6px}
+  .bar{height:6px;background:var(--card2);border-radius:99px;overflow:hidden;margin-top:10px}
+  .bar i{display:block;height:100%;background:var(--blue);border-radius:99px;transition:width .5s ease}
+  .lanebars{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:18px}
+  .lanebar .nm{font-size:11.5px;color:var(--dim);margin-bottom:6px;display:flex;justify-content:space-between}
+  .lanebar .nm b{color:var(--ink);font-weight:600}
+  .needs{background:linear-gradient(0deg,rgba(232,161,60,.06),rgba(232,161,60,.06)),var(--card);border:1px solid rgba(232,161,60,.35);border-radius:14px;padding:18px 24px;margin-bottom:28px}
+  .needs h2{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+  .needs ul{list-style:none}
+  .needs li{padding:7px 0;border-bottom:1px dashed rgba(232,161,60,.18);display:flex;gap:10px;align-items:baseline;font-size:13.5px}
+  .needs li:last-child{border-bottom:0}
+  .needs li .tag{font-size:10px;letter-spacing:.08em;color:var(--amber);border:1px solid rgba(232,161,60,.4);border-radius:99px;padding:1px 8px;white-space:nowrap}
+  .needs li.done-item{opacity:.35;text-decoration:line-through}
+  .lane{margin-bottom:26px}
+  .lane-head{display:flex;justify-content:space-between;align-items:baseline;padding:0 4px 10px;border-bottom:1px solid var(--line);margin-bottom:10px}
+  .lane-head h2{font-family:Georgia,serif;font-weight:400;font-size:20px}
+  .lane-head .own{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  .items{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;transition:border-color .2s}
+  .item:hover{border-color:#2e353d}
+  .item .row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+  .item .t{font-weight:600;font-size:13.5px}
+  .item .n{color:var(--dim);font-size:12.5px}
+  .item.st-done{opacity:.55}
+  .item.st-done .t{text-decoration:line-through}
+  .pill{cursor:pointer;user-select:none;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px;white-space:nowrap;border:1px solid transparent}
+  .pill:hover{filter:brightness(1.25)}
+  .p-done{color:var(--green);border-color:rgba(47,191,113,.4);background:rgba(47,191,113,.08)}
+  .p-progress{color:var(--blue);border-color:rgba(0,168,255,.4);background:rgba(0,168,255,.08)}
+  .p-blocked{color:var(--red);border-color:rgba(224,82,82,.4);background:rgba(224,82,82,.08)}
+  .p-next{color:var(--ink);border-color:#3a424b;background:#1a1f24}
+  .p-backlog{color:var(--faint);border-color:var(--line)}
+  .jack{font-size:10px;color:var(--amber);letter-spacing:.06em}
+  .hint{color:var(--faint);font-size:11.5px;margin:-18px 0 26px}
+  /* ---- map tabs (node/org/cc) ---- */
   .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--dim);margin-bottom:20px}
   .legend span{display:inline-flex;align-items:center;gap:6px}
   .dot{width:9px;height:9px;border-radius:99px;display:inline-block}
@@ -79,8 +122,10 @@
   .drawer .dlabel{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:4px}
   .drawer .dval{font-size:13px;color:var(--ink)}
   .drawer .dval.dim{color:var(--dim)}
-  .foot{margin-top:36px;color:var(--faint);font-size:11.5px}
-  @media (max-width:640px){ h1{font-size:24px} .tab{padding:8px 11px} }
+  .foot{margin-top:34px;color:var(--faint);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .foot button{background:none;border:1px solid var(--line);color:var(--dim);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:12px}
+  .foot button:hover{border-color:var(--red);color:var(--red)}
+  @media (max-width:640px){ .items{grid-template-columns:1fr} h1{font-size:24px} .pulse-pct{font-size:30px} .tab{padding:8px 11px} }
 </style>
 </head>
 <body>
@@ -95,7 +140,7 @@
     <div class="tab" data-tab="cc">Command Center</div>
   </div>
 
-  <div class="legend">
+  <div class="legend" id="maplegend" style="display:none">
     <span><i class="dot d-built"></i> Built / Merged</span>
     <span><i class="dot d-progress"></i> In Progress</span>
     <span><i class="dot d-spec"></i> Spec'd, not built</span>
@@ -104,11 +149,28 @@
   </div>
 
   <div class="view active" id="view-build">
-    <div id="buildmount"></div>
+    <div class="meta">State compiled by Fable · <b>July 14, 2026, 4:10 PM ET</b> · Click any status pill to cycle it. <b>Today:</b> full marketing site built &amp; merged to main &#8212; apex <b>/</b> (#14), <b>/men</b> (#17), <b>/women</b> (#15), <b>/ava</b> (#16); old v1 (#12) closed. Labs Foundation L1+L2 merged (#13). Health-signals in Codex review (#18). CEO Today turn-on plan written &amp; holding. Vercel preview connected. <b>One blocker:</b> the live preview black-screens &#8212; bigg-os loads Clerk JS at runtime on public routes even with the missing-key guard (#20); a dedicated Claude Code session is debugging it.</div>
+
+    <div class="rule"><b>Execution boundary &#8212; enforced</b><br>Coding, previews, and deployments are <b style="color:var(--ink)">Claude Code's</b> job. <b style="color:var(--ink)">Fable</b> holds program state, sequences lanes, makes decisions, writes specs/kickoffs, and merges PRs &#8212; and does <b style="color:var(--ink)">not</b> run build/preview/deploy itself. Added after the Jul 14 site-preview effort violated it and cost a founder day.</div>
+
+    <div class="pulse">
+      <div class="pulse-label">Program Pulse — Overall Completion</div>
+      <div class="pulse-pct"><span id="pct">0</span>%<small id="counts"></small></div>
+      <div class="bar"><i id="mainbar" style="width:0%"></i></div>
+      <div class="lanebars" id="lanebars"></div>
+    </div>
+
+    <div class="needs">
+      <h2>Needs Jack — your queue</h2>
+      <ul id="needslist"></ul>
+    </div>
+    <div class="hint">Items clear automatically as you mark their cards Done below.</div>
+
+    <div id="lanes"></div>
   </div>
 
   <div class="view" id="view-infra">
-    <div class="intro">The Matrix Intelligence Engine, layer by layer. <b>Green = real and merged today.</b> The Data &amp; Infrastructure Foundation is built; the engine layers and modules light up as each build wave lands. This mirrors the Infrastructure Map — click any box for what it is, its status, and the PR/spec that governs it.</div>
+    <div class="intro">The Matrix Intelligence Engine, layer by layer. <b>Green = real and merged today.</b> The Data &amp; Infrastructure Foundation is built; the engine layers and modules light up as each build wave lands. Click any box for what it is, its status, and the PR/spec that governs it.</div>
     <div id="inframount"></div>
   </div>
 
@@ -122,7 +184,10 @@
     <div id="ccmount"></div>
   </div>
 
-  <div class="foot">State compiled by Fable · July 14, 2026 · Honest states, no fake-green. Source of truth for detail: the 09.xx / 11.xx docs in Drive + the repo. Agents/dashboards are outlines only — nothing here is integrated yet.</div>
+  <div class="foot">
+    <div>Statuses persist locally (this browser). Fable's regeneration is the source of truth. Detail lives in the 09.xx / 11.xx docs in Drive + the repo. Map tabs are outlines — nothing there is integrated yet.</div>
+    <button onclick="if(confirm('Reset Build Command statuses to Fable\'s compiled state?')){localStorage.removeItem('mxbuild4');location.reload()}">Reset to compiled state</button>
+  </div>
 </div>
 
 <div class="scrim" id="scrim" onclick="closeDrawer()"></div>
@@ -132,6 +197,16 @@
 </div>
 
 <script>
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById('view-'+t.dataset.tab).classList.add('active');
+  document.getElementById('maplegend').style.display = (t.dataset.tab==='build') ? 'none' : 'flex';
+});
+
+/* ---------- shared drawer (map tabs) ---------- */
 const SLBL={built:"Built / Merged",progress:"In Progress",spec:"Spec'd, not built",planned:"Planned / Not started"};
 function openDrawer(o){
   document.getElementById('drawerbody').innerHTML =
@@ -145,12 +220,6 @@ function openDrawer(o){
   document.getElementById('scrim').classList.add('open');
 }
 function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('scrim').classList.remove('open');}
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
-  t.classList.add('active');
-  document.getElementById('view-'+t.dataset.tab).classList.add('active');
-});
 function nodeEl(o){
   const d=document.createElement('div');
   d.className='node b-'+o.s;
@@ -159,40 +228,102 @@ function nodeEl(o){
   return d;
 }
 
-const LANES=[
- {lane:"Website & Brand",items:[
-  {t:"Apex / + /men + /women + /ava — MERGED",nd:"#14/#17/#15/#16, #12 closed. Full editorial site on main.",s:"built",what:"Cinematic 6-section homepage + 3 gendered/Ava pages, one design system.",gov:"PRs #14 #15 #16 #17 merged"},
-  {t:"Preview pipeline (Vercel)",nd:"Blocked on Clerk runtime crash — in Claude Code.",s:"progress",what:"Per-branch preview URLs. Site currently black-screens: bigg-os loads Clerk JS at runtime on public routes.",gov:"#19 SPA rewrite, #20 key-guard; runtime fix in a Code lane"},
-  {t:"Pre-launch compliance sweep",nd:"Launch gate.",s:"planned",what:"Superintelligence + cancer/regen claims (founder-approved, logged for counsel), Bio-Age framing, representative-example labels."}
+/* ================= BUILD COMMAND (full lanes) ================= */
+const DATA = [
+ {lane:"Commercial — Website & Brand", owner:"Claude Code builds · Fable specs/merges · Jack drives vision", items:[
+  {id:"c1",t:"Apex homepage / — cinematic 6-section — MERGED (#14)",n:"Ava hero video, four-step journey, Her/Him split, value carousel, $199 band, footer. Fraunces serif + trackEvent shim. Assets byte-identical, no audio",s:"done"},
+  {id:"c2",t:"/men (Matrix for Him) — MERGED (#17)",n:"Editorial rebuild sharing apex design system. Supersedes #12's /men. Compliance locks honored",s:"done"},
+  {id:"c3",t:"/women (Matrix for Her) — MERGED (#15)",n:"Editorial twin, women-first, no pregnancy/cycle assumptions. Both routes wired in App.tsx",s:"done"},
+  {id:"c4",t:"/ava (The Ava Difference) — MERGED (#16)",n:"5 approved assets, clinician-boundary copy, founder-approved superintelligence phrasing. Ships as mockup; wiring /ava into the live router + nav is a small follow-up",s:"done"},
+  {id:"c5",t:"Old v1 (#12) closed",n:"Superseded by the new editorial /men + /women. Clean retirement",s:"done"},
+  {id:"c6",t:"Preview pipeline (Vercel) — BLOCKED on Clerk runtime crash",n:"matrix-longevity-site connected; per-branch previews auto-build. But the site black-screens: bigg-os loads clerk.browser.js at runtime on public routes; #20 guarded the module-load throw but not the runtime init. Dedicated Claude Code lane is diagnosing against the real Vercel build",s:"blocked",jack:"Preview fix is in Claude Code — paste the Clerk-runtime debug prompt (Fable provided it in chat)"},
+  {id:"c7",t:"/ava route wiring + value-CTA deep pages",n:"Wire /ava into live router+nav; repoint value-panel CTAs to dedicated pages when they exist. Small follow-ups",s:"next"},
+  {id:"c8",t:"Pre-launch compliance & accuracy sweep",n:"Superintelligence + cancer-screening/regenerative-medicine claims (founder-approved, logged for counsel), Bio-Age framing, marker counts, MD name gate, representative-example labels — LAUNCH GATE",s:"backlog"}
  ]},
- {lane:"MIE — Intelligence Engine",items:[
-  {t:"Spec estate + Wave 1 + Foundation — MERGED",nd:"#8 #10, 21 specs in docs/mie-specs.",s:"built",what:"mie-registry/signals/patterns/interventions + mie-core + mie-safety (62 safety tests).",gov:"PRs #8 #10 merged"},
-  {t:"Labs Foundation L1+L2 — MERGED",nd:"#13. lab_reports + lab_results + registry projection.",s:"built",what:"Per-report identity, PHI-minimized. Flag-gated OFF; migration 0022 not applied.",gov:"PR #13 merged"},
-  {t:"Health signals (11.07)",nd:"In Codex review (#18).",s:"progress",what:"Typed projection over mie_events, no migration. H1 signal persistence.",gov:"PR #18 in review"},
-  {t:"Ava Orchestration (Phase 5)",nd:"Next major wave.",s:"spec",what:"When Ava decides to reach out and what she may say.",gov:"MIE-AVA-001",deps:"11.07 signals merged"}
+ {lane:"MIE — Intelligence Engine", owner:"Claude Code · specs in docs/mie-specs", items:[
+  {id:"m1",t:"Spec estate committed to docs/mie-specs (canonical)",n:"All 21 governing specs byte-faithful in-repo (cp + sha-verified); CON-001 recovered non-empty",s:"done"},
+  {id:"m2",t:"Wave 1 — Pure Intelligence Core — MERGED (#8)",n:"mie-registry, mie-signals, mie-patterns, mie-interventions + golden harness",s:"done"},
+  {id:"m3",t:"Foundation F1–F5 — MERGED (#10)",n:"mie-core + mie-safety. 62 safety tests, 100% cov; Codex P1 fail-open fixed",s:"done"},
+  {id:"m4",t:"Bio-Age prep — MERGED (#9)",n:"Dossier, contract, validation harness, reference data (all numbers null/PENDING+cited)",s:"done"},
+  {id:"m5",t:"Labs Foundation L1+L2 — MERGED (#13)",n:"lab_reports + lab_results (per-report identity, PHI-minimized) + registry projection (40 defs / 149 aliases / 76 unit-conversions). Flag-gated OFF; migration 0022 NOT applied",s:"done"},
+  {id:"m6",t:"Health Intelligence signals (11.07) — in Codex review (#18)",n:"Typed projection over mie_events (no migration). H1 signal persistence at Checkpoint 1. Awaiting Codex, then founder merge",s:"progress"},
+  {id:"m7",t:"Apply migration 0022 to Replit Dev DB",n:"Labs tables are inert on main until applied. Watched psql-runbook pass (never drizzle-push), after confirming DB host from secret. Founder-scheduled",s:"next",jack:"Apply migration 0022 to Dev (watched, when ready)"},
+  {id:"m8",t:"Bio-Age clinical model ratification",n:"Architecture ratified (Class A Clinical Biomarker Age + fallback). Clinical model gated on RES-001..005 + PCAC Jul 23-24 — NOT a client claim yet",s:"blocked"},
+  {id:"m9",t:"Phases 5–9 — Ava orchestration, stack reconcile, refills, Bio-Age V1, recommendation loop",n:"Consume labs + signals foundations. Backlog until 11.07 lands",s:"backlog"}
  ]},
- {lane:"Needs Jack",items:[
-  {t:"Preview fix — in Claude Code",nd:"Paste the Clerk-runtime debug prompt.",s:"progress",what:"The one blocker between you and a clickable preview."},
-  {t:"Apply migration 0022 to Dev",nd:"Watched psql-runbook pass, when ready.",s:"planned",what:"Labs tables inert on main until applied. Confirm DB host from secret first."},
-  {t:"Schedule CEO Today turn-on",nd:"Plan written & holding.",s:"planned",what:"Only migration 0021 + 2 flags. First step that touches live Replit."},
-  {t:"Do NOT Republish yet",nd:"Not until Vercel preview proves the site works.",s:"planned",what:"Merge != deployed. Clients untouched until a deliberate watched Republish."}
+ {lane:"Command Center — Matrix OS (Phase A)", owner:"Claude Code · PRs #5 #7 merged", items:[
+  {id:"o1",t:"A1 + A2 — control plane + CEO Today (operator UI merged)",n:"#5 Needs-Attention panel + #7 Phase A docs on main; 8 seeded departments, honest UNKNOWN states",s:"done"},
+  {id:"o2",t:"A3 — Command Page template + Ops/Safety screens",n:"Data layer done; screens building",s:"progress"},
+  {id:"o3",t:"CEO Today turn-on PLAN written, holding",n:"docs/build/ceo-today-turn-on-plan.md: only migration 0021 (not 0020) + 2 flags, migration-then-flag order, instant rollback, verification checklist. Founder green-lights the live pass when ready",s:"next",jack:"Schedule CEO Today turn-on (plan ready)"},
+  {id:"o4",t:"A4/A5 — decision cards, drawers, protected actions",n:"Final Phase A increments",s:"next"},
+  {id:"o5",t:"Phase A acceptance report",n:"Every criterion mapped to evidence; Fable QA gate",s:"backlog"}
+ ]},
+ {lane:"Production Stability — Incidents & Hardening", owner:"Claude Code · PR #11 merged", items:[
+  {id:"p1",t:"Incident 1 resolved — dev-admin fallback served admin to all",n:"NODE_ENV=production set; routing verified",s:"done"},
+  {id:"p2",t:"Incident 2 resolved — Airtable 429 blanked portals",n:"CONFIRMED via logs. Upgraded + graceful-degradation shim shipped live",s:"done"},
+  {id:"p3",t:"Fail-closed admin hardening + audit trail — MERGED (#11)",n:"strictBool + double-gated dev-admin + admin_session audit log. Misconfig locks CLOSED. 9 tests",s:"done"},
+  {id:"p4",t:"Replit dependency map (§1.1) — MERGED (#11)",n:"Every Replit coupling + staging replacement. Prod DB portable. Object storage = the real lift",s:"done"},
+  {id:"p5",t:"Confirm prod DATABASE_URL host (OQ-1)",n:"Evidence points to Replit-internal; confirm from the prod secret — do not paste it",s:"next",jack:"Confirm prod DB host (don't paste secret)"},
+  {id:"p6",t:"Portal reads Airtable → Postgres on current prod (§2)",n:"Flagged PRs to Replit prod; Airtable demoted to back-office. Next hardening wave",s:"next"}
+ ]},
+ {lane:"Infrastructure — Deploy & Staging (Replit stays home)", owner:"Claude Code executes · Fable specs", items:[
+  {id:"i1",t:"Vercel preview project connected (matrix-longevity-site)",n:"Per-branch + per-PR preview URLs auto-build. Root artifacts/bigg-os, Vite, output dist/public, SPA rewrite (#19). Launch-gate preview — once the Clerk crash is fixed, it's the click-through-before-prod tool",s:"progress"},
+  {id:"i2",t:"Vendor spine DEFERRED (founder decision)",n:"Stripe/Cal/Resend/Twilio out of scope until Jack re-opens",s:"done"},
+  {id:"i3",t:"Merge ≠ deployed — nothing is live on Replit yet",n:"Everything sits on main only. Replit goes live on a deliberate, watched Republish. Do NOT republish until the Vercel preview proves the site works",s:"next",jack:"Do NOT Republish until preview verified working"},
+  {id:"i4",t:"Local dev environment (Mac + dev DB)",n:"Kills Replit dependency for verification",s:"next"},
+  {id:"i5",t:"Cutover — DORMANT until founder readiness declaration",n:"Replit stays home until every piece is 100% functional AND Jack knows how to operate it",s:"backlog"}
+ ]},
+ {lane:"Governance — Pricing, Finance, Legal", owner:"Fable · outside counsel · CPA", items:[
+  {id:"g1",t:"Core governance docs saved; credit ruleset ratified",n:"00.0 Root Authority, 09.02.4, pricing amendment. Compliance rules enforced across all marketing",s:"done"},
+  {id:"g2",t:"Vendor & Subscription Register (09.07, CFO domain)",n:"All tools tracked — cost, renewal, quota alerts. Now includes Vercel (Hobby). Financial fields need Jack",s:"progress",jack:"Fill 09.07 financial fields (costs/renewals)"},
+  {id:"g3",t:"Counsel review list — superintelligence + cancer-screening + regen-medicine claims",n:"Founder-approved to keep on-site now; LOGGED for the eventual legal-counsel pass (not a blocker today, is a launch gate)",s:"next",jack:"Add to counsel review list (logged)"},
+  {id:"g4",t:"Pricing anchor — confirm $99/$149 program floors",n:"Confirm public floors are settled before launch. PCAC Jul 23-24 unlocks formulary",s:"next",jack:"Confirm $99/$149 floors (pre-PCAC)"},
+  {id:"g5",t:"HSA/FSA counsel + CPA determination",n:"External sign-offs gating credit language at launch",s:"blocked",jack:"Engage counsel & CPA"},
+  {id:"g6",t:"PCAC ruling (Jul 23-24) → formulary + pricing unlock",n:"Green-lists held-out compounds; unlocks pricing-anchor + Bio-Age clinical path",s:"next"},
+  {id:"g7",t:"Entity + OBA disclosure + business banking",n:"DELIBERATELY DEFERRED (founder decision). Becomes launch gate with legal workstream",s:"backlog"}
  ]}
 ];
-(function(){
- const m=document.getElementById('buildmount');
- LANES.forEach(l=>{
-  const s=document.createElement('div');s.className='section';
-  s.innerHTML=`<h2>${l.lane}</h2>`;
-  const g=document.createElement('div');g.className='grid g2';
-  l.items.forEach(o=>g.appendChild(nodeEl(o)));
-  s.appendChild(g);m.appendChild(s);
- });
-})();
+const ORDER=["backlog","next","progress","blocked","done"];
+const LBL={done:"Done",progress:"In Progress",blocked:"Blocked",next:"Next",backlog:"Backlog"};
+const CLS={done:"p-done",progress:"p-progress",blocked:"p-blocked",next:"p-next",backlog:"p-backlog"};
+const WEIGHT={done:1,progress:.5,blocked:.25,next:0,backlog:0};
+let saved={}; try{saved=JSON.parse(localStorage.getItem("mxbuild4")||"{}")}catch(e){}
+DATA.forEach(l=>l.items.forEach(it=>{ if(saved[it.id]) it.s=saved[it.id]; }));
+function persist(){ const o={}; DATA.forEach(l=>l.items.forEach(it=>o[it.id]=it.s)); try{localStorage.setItem("mxbuild4",JSON.stringify(o))}catch(e){} }
+function cycle(id){
+  DATA.forEach(l=>l.items.forEach(it=>{ if(it.id===id){ it.s=ORDER[(ORDER.indexOf(it.s)+1)%ORDER.length]; }}));
+  persist(); render();
+}
+function render(){
+  let total=0,score=0,doneCt=0; const laneStats=[];
+  DATA.forEach(l=>{ let t=0,s=0; l.items.forEach(it=>{t++;s+=WEIGHT[it.s]; if(it.s==="done")doneCt++;}); total+=t;score+=s; laneStats.push({n:l.lane.split(" — ")[0],pct:Math.round(100*s/t)}); });
+  const pct=Math.round(100*score/total);
+  document.getElementById("pct").textContent=pct;
+  document.getElementById("mainbar").style.width=pct+"%";
+  document.getElementById("counts").textContent=doneCt+" of "+total+" workstreams done";
+  document.getElementById("lanebars").innerHTML=laneStats.map(x=>`<div class="lanebar"><div class="nm"><span>${x.n}</span><b>${x.pct}%</b></div><div class="bar"><i style="width:${x.pct}%"></i></div></div>`).join("");
+  const needs=[];
+  DATA.forEach(l=>l.items.forEach(it=>{ if(it.jack) needs.push(it); }));
+  document.getElementById("needslist").innerHTML=needs.map(it=>`<li class="${it.s==='done'?'done-item':''}"><span class="tag">${it.s==='done'?'CLEARED':'ACTION'}</span><span>${it.jack} <span style="color:var(--faint)">· ${it.t}</span></span></li>`).join("");
+  document.getElementById("lanes").innerHTML=DATA.map(l=>`
+    <div class="lane">
+      <div class="lane-head"><h2>${l.lane}</h2><div class="own">${l.owner}</div></div>
+      <div class="items">${l.items.map(it=>`
+        <div class="item st-${it.s}">
+          <div class="row"><div class="t">${it.t}</div><div class="pill ${CLS[it.s]}" onclick="cycle('${it.id}')">${LBL[it.s]}</div></div>
+          <div class="n">${it.n}</div>
+          ${it.jack?`<div class="jack">◆ NEEDS JACK — ${it.jack}</div>`:""}
+        </div>`).join("")}
+      </div>
+    </div>`).join("");
+}
+render();
 
+/* ================= INFRASTRUCTURE MAP ================= */
 const INFRA=[
  {h:"Who We Serve",cap:"audience",cols:"g4",items:[
   {t:"Clients",s:"built",what:"Individuals optimizing healthspan. Client portal exists today (Replit product)."},
-  {t:"Executives",s:"planned",what:"High performers managing health as a strategic asset. Segment/positioning, not a built surface."},
+  {t:"Executives",s:"planned",what:"High performers managing health as a strategic asset. Positioning, not a built surface."},
   {t:"Concierge Members",s:"spec",what:"White-glove tier with dedicated team + Ava. Matrix Private — future premium tier."},
   {t:"Partners & Providers",s:"planned",what:"Clinics, labs, specialists, data partners. External-partner integrations not built."}
  ]},
@@ -242,6 +373,7 @@ const INFRA=[
  });
 })();
 
+/* ================= AGENT ORG CHART ================= */
 const ORG_TOP=[
  {t:"Jack Burke — Founder / CEO",s:"built",what:"Final decision authority. You.",lead:true},
  {t:"Ava-CEO AI — Chief Executive Agent",s:"spec",what:"Strategic synthesis, delegation, execution oversight, cross-domain intelligence. Reports directly to Jack. Bounded authority: cannot prescribe/diagnose, move money, alter legal structure, deploy code, or modify the machine.",gov:"MIE-AVA-001 + org chart v1.0; Phase 5, not built",lead:true}
@@ -325,6 +457,7 @@ const ORG_XDOMAIN={h:"Specialized Cross-Domain Agents (report to Ava)",items:[
  sx.appendChild(gx);m.appendChild(sx);
 })();
 
+/* ================= COMMAND CENTER ================= */
 const CC=[
  {t:"TODAY",s:"progress",purpose:"Founder's daily brief — what needs attention right now.",surf:["Top priorities","Overdue actions","Unresolved labs","Refill risk","Engagement concerns","System failures"],gov:"CEO Today merged (#7) — the live seed of this view"},
  {t:"SAFETY",s:"spec",purpose:"Safety events + human-review queue.",surf:["Open safety events","Escalations by urgency","Allergy hard-gates","Awaiting clinician review"],gov:"mie-safety engine merged (#10); view not built"},
