@@ -225,7 +225,7 @@
   </div>
 
   <div class="view active" id="view-build">
-    <div class="meta">State compiled by Fable · <b>July 14, 2026, 4:10 PM ET</b> · Click any status pill to cycle it. <b>Today:</b> full marketing site built &amp; merged to main &#8212; apex <b>/</b> (#14), <b>/men</b> (#17), <b>/women</b> (#15), <b>/ava</b> (#16); old v1 (#12) closed. Labs Foundation L1+L2 merged (#13). Health-signals in Codex review (#18). CEO Today turn-on plan written &amp; holding. Vercel preview connected. <b>One blocker:</b> the live preview black-screens &#8212; bigg-os loads Clerk JS at runtime on public routes even with the missing-key guard (#20); a dedicated Claude Code session is debugging it.</div>
+    <div class="meta">State compiled by Fable · <b>July 15, 2026</b> · Click any status pill to cycle it. <b>Newest:</b> the full <b>Ava Intelligence spec suite</b> is written &#8212; 11 governance docs in Drive (voice, worked-example bank, escalation library, knowledgebase, evaluation, memory, onboarding, tone enums) &#8212; and the <b>Ava layer shipped to this tracker</b> (5th tab + corner chat, two separate Avas, profile paste-at-runtime, nothing committed). Site fully merged (apex /, /men #17, /women #15, /ava #16). Labs L1+L2 merged (#13). Signals in Codex review (#18). <b>One blocker:</b> the Vercel preview black-screens &#8212; app loads Clerk on public routes (#20); a Claude Code session owns that fix. <b>Next real unlock:</b> Phase 5 live-Ava wiring, gated on #18 merging.</div>
 
     <div class="rule"><b>Execution boundary &#8212; enforced</b><br>Coding, previews, and deployments are <b style="color:var(--ink)">Claude Code's</b> job. <b style="color:var(--ink)">Fable</b> holds program state, sequences lanes, makes decisions, writes specs/kickoffs, and merges PRs &#8212; and does <b style="color:var(--ink)">not</b> run build/preview/deploy itself. Added after the Jul 14 site-preview effort violated it and cost a founder day.</div>
 
@@ -435,6 +435,14 @@ const DATA = [
   {id:"g5",t:"HSA/FSA counsel + CPA determination",n:"External sign-offs gating credit language at launch",s:"blocked",jack:"Engage counsel & CPA"},
   {id:"g6",t:"PCAC ruling (Jul 23-24) → formulary + pricing unlock",n:"Green-lists held-out compounds; unlocks pricing-anchor + Bio-Age clinical path",s:"next"},
   {id:"g7",t:"Entity + OBA disclosure + business banking",n:"DELIBERATELY DEFERRED (founder decision). Becomes launch gate with legal workstream",s:"backlog"}
+ ]},
+ {lane:"Ava Intelligence — Voice, Specs & Interface", owner:"Fable specs · Claude Code builds live engine · Jack = sole trainer", items:[
+  {id:"a1",t:"Ava governance spec suite — 11 docs written (Drive)",n:"Voice/Method/Communication, Worked-Example Bank v0.1+v0.2, Escalation Message Library, Knowledgebase Governance, Behavioral Evaluation & Red-Team, Memory/Know-the-Person, Onboarding, tone_profile enums, Suite Index. Grounded in AVA-001 + SEC-001. The rulebook Phase 5 builds against",s:"done"},
+  {id:"a2",t:"Voice locked — coach, not chatbot (founder-directed)",n:"Question-under-the-question; longevity-is-living (never a vice); elevation protocol (intent -> emergency gate -> consent -> coach -> loop-close); numbers to educate, never diagnose. Reta case is canonical",s:"done"},
+  {id:"a3",t:"Ava layer shipped to this tracker (interface shell)",n:"5th Ava tab (stack, journal, streak, domains) + corner chat on every tab. Two separate Avas (Personal + Business), each browser-local memory. Profile paste-at-runtime, never committed. Business Ava reads this live board. Voice-true placeholder responder",s:"done"},
+  {id:"a4",t:"Wire live-AI Ava (swap placeholder for governed engine)",n:"Claude Code lane. Build the real Ava from the 11 docs; profile moves to a private secure store, never the public page. Gated on Phase 5 opening (#18 merge)",s:"next",jack:"Say the word and Fable writes the single Claude Code prompt to wire live Ava"},
+  {id:"a5",t:"Ava spec v0.3 — eval thresholds + gap examples",n:"Numeric pass-bars per eval suite; v0.3 example gaps (plateau/quit, grief, data-gaming, perimenopause, 'I feel great why labs'); delivery_channel enum; quiet-hours/emergency override",s:"next"},
+  {id:"a6",t:"Founder review of the voice",n:"Read EX-01 (Reta), the elevation protocol (Governance 5), and the living-side boundary (Governance 1). Everything calibrates to these",s:"next",jack:"Review the Reta example + elevation protocol; confirm the voice is right"}
  ]}
 ];
 const ORDER=["backlog","next","progress","blocked","done"];
