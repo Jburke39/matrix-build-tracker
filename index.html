@@ -34,7 +34,7 @@
   <main id="main">
 
   <section class="view active" id="view-build" role="tabpanel" aria-labelledby="tab-build" tabindex="-1">
-    <div class="meta">State compiled by Fable · <b>July 15, 2026</b> · Click any status pill to cycle it. Two separate measures below: <b>Active Build Completion</b> (authorized build lanes only) and <b>Matrix Company Readiness</b> (10 domains × 4 pass/fail gates). They are never merged into one number.</div>
+    <div class="meta">State compiled by Fable · <b>July 16, 2026 · SITE LIVE</b> · Click any status pill to cycle it. Two separate measures below: <b>Active Build Completion</b> (authorized build lanes only) and <b>Matrix Company Readiness</b> (10 domains × 4 pass/fail gates). They are never merged into one number.</div>
 
     <div class="rule"><b>Execution boundary &#8212; enforced</b><br>Coding, previews, and deployments are <b style="color:var(--ink)">Claude Code's</b> job. <b style="color:var(--ink)">Fable</b> holds program state, sequences lanes, makes decisions, writes specs/kickoffs, and merges PRs &#8212; and does <b style="color:var(--ink)">not</b> run build/preview/deploy itself.</div>
 
@@ -48,54 +48,42 @@
 
     <div id="lanes"></div>
 
-    <div class="foot">
-      <div class="datatools" id="datatools" aria-label="Data tools"></div>
-      <div id="datamsg" aria-live="polite"></div>
-      <div style="margin-top:10px">Statuses persist locally (this browser only, key <code>mx2_status</code>). Fable's regeneration is the source of truth. Nothing you enter here is committed to the repo. Real prospect/client/health data is never stored in this app.</div>
-      <button onclick="resetStatuses()">Reset to compiled state</button>
-      <input type="file" id="importFile" accept="application/json,.json" style="display:none">
-    </div>
+    <div class="footnote">Statuses persist locally (this browser only, key <code>mx2_status</code>). Fable's regeneration is the source of truth. Nothing you enter here is committed to the repo. Real prospect/client/health data is never stored in this app.</div>
+    <button class="reset" onclick="resetAll()">Reset to compiled state</button>
   </section>
 
   <section class="view" id="view-infra" role="tabpanel" aria-labelledby="tab-infra" tabindex="-1">
-    <div class="intro">The Matrix Intelligence Engine and the commercial spine, layer by layer. <b>Green = real and merged today.</b> Click any box for what it is, its status, and the PR/spec that governs it.</div>
-    <div id="inframount"></div>
+    <div class="meta">The Matrix Intelligence Engine and the commercial spine, layer by layer. <b>Green = real and merged today.</b> Click any box for what it is, its status, and the PR/spec that governs it.</div>
+    <div id="inframap"></div>
   </section>
 
   <section class="view" id="view-org" role="tabpanel" aria-labelledby="tab-org" tabindex="-1">
-    <div class="intro">The full agent hierarchy — Jack &#8594; Ava-CEO &#8594; domain agents &#8594; sub-agents — exactly as designed. <b>Almost none of the agents exist yet;</b> this is the target org. Toggle to see only the roles already in the active build sequence. Click any role for its charter and status.</div>
-    <div class="viewtoggle" id="orgtoggle" role="group" aria-label="Org view">
-      <button class="on" data-view="all" onclick="setOrgView('all')">Full hierarchy</button>
-      <button data-view="active" onclick="setOrgView('active')">In active sequence</button>
+    <div class="meta">The full agent hierarchy &#8212; Jack &#8594; Ava-CEO &#8594; domain agents &#8594; sub-agents &#8212; exactly as designed. <b>Almost none of the agents exist yet;</b> this is the target org. Toggle to see only the roles already in the active build sequence. Click any role for its charter and status.</div>
+    <div class="orgtoggle">
+      <button class="active" id="orgFull" onclick="setOrgMode('full')">Full hierarchy</button>
+      <button id="orgActive" onclick="setOrgMode('active')">In active sequence</button>
     </div>
-    <div id="orgmount"></div>
+    <div id="orgchart"></div>
   </section>
 
   <section class="view" id="view-ava" role="tabpanel" aria-labelledby="tab-ava" tabindex="-1">
-    <div class="intro">Ava Intelligence — the honest capability inventory. Each capability shows an <b>evidence-gated maturity level</b> (L1 Defined &#8594; L5 Proactive); a capability's shown level can never exceed the evidence behind it. Client Ava and Business Ava only. Personal Ava is not shown here. Click any capability for detail.</div>
-    <div id="avamount"></div>
+    <div class="meta">Ava Intelligence &#8212; the honest capability inventory. Each capability shows an <b>evidence-gated maturity level</b> (L1 Defined &#8594; L5 Proactive); a capability's shown level can never exceed the evidence behind it. Client Ava and Business Ava only. Personal Ava is not shown here. Click any capability for detail.</div>
+    <div id="avaboard"></div>
   </section>
 
   <section class="view" id="view-sales" role="tabpanel" aria-labelledby="tab-sales" tabindex="-1">
-    <div class="intro">The Sales picture as it honestly stands. Unresolved commercial facts render as <b>Needs-Jack</b> chips and are never fabricated. Real opportunities are never stored in this app — the pipeline below shows labeled examples only.</div>
-    <div id="salesmount"></div>
+    <div class="meta">The Sales picture as it honestly stands. Unresolved commercial facts render as <b>Needs-Jack</b> chips and are never fabricated. Real opportunities are never stored in this app &#8212; the pipeline below shows labeled examples only.</div>
+    <div id="salesboard"></div>
   </section>
 
   <section class="view" id="view-marketing" role="tabpanel" aria-labelledby="tab-marketing" tabindex="-1">
-    <div class="intro">Marketing structure and the claims taxonomy. Every public claim carries an explicit approval class; <b>"Founder approved" never implies legal, regulatory or clinical approval.</b> Narrative content is authored in WP2.</div>
-    <div id="marketingmount"></div>
+    <div class="meta">Marketing structure and the claims taxonomy. Every public claim carries an explicit approval class; <b>"Founder approved" never implies legal, regulatory or clinical approval.</b> Narrative content is authored in WP2.</div>
+    <div id="marketingboard"></div>
   </section>
 
   </main>
 </div>
 
-<div class="scrim" id="scrim" onclick="closeDrawer()"></div>
-<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawertitle" tabindex="-1">
-  <button class="close" onclick="closeDrawer()" aria-label="Close detail">&times;</button>
-  <div id="drawerbody"></div>
-</aside>
-
-<!-- Ava corner launcher + chat — FLAG-GATED (window.MX.build.flags.avaLauncher). app.js only mounts it when enabled. -->
 <div id="launcher-root"></div>
 
 <!-- Profile paste modal (used by launcher Personal mode when enabled) -->
