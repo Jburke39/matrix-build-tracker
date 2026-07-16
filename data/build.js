@@ -142,10 +142,9 @@ window.MX.build = {
         },
         {
           "id": "m6",
-          "t": "Health Intelligence signals (11.07) — in Codex review (#18)",
-          "n": "Typed projection over mie_events (no migration). H1 signal persistence at Checkpoint 1. Awaiting Codex, then founder merge",
-          "s": "progress",
-          "jack": "Merge call on #18 once Codex review lands"
+          "t": "Health Intelligence signals (11.07) — MERGED (#18)",
+          "n": "Merged 6a25ebf, Jul 16, 7/7 CI incl. integration + MIE guardrails, Codex rounds 1–3 addressed, 33 tests. Ships flag-OFF (FEATURE_MIE_HEALTH_SIGNALS=false). Open: HSIG-B5 registry swap when H2+/H3 lands",
+          "s": "done"
         },
         {
           "id": "m7",
@@ -163,7 +162,7 @@ window.MX.build = {
         {
           "id": "m9",
           "t": "Phases 5–9 — Ava orchestration, stack reconcile, refills, Bio-Age V1, recommendation loop",
-          "n": "Consume labs + signals foundations. Backlog until 11.07 lands",
+          "n": "11.07 landed — H2–H4 (routing, resolution triggers, surfacing) await founder GO; recommend queuing behind the Ava activation proof",
           "s": "backlog"
         }
       ],
