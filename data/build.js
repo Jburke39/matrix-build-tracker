@@ -74,22 +74,34 @@ window.MX.build = {
         },
         {
           "id": "c6",
-          "t": "Preview pipeline (Vercel) — BLOCKED on Clerk runtime crash",
-          "n": "matrix-longevity-site connected; per-branch previews auto-build. But the site black-screens: bigg-os loads clerk.browser.js at runtime on public routes; #20 guarded the module-load throw but not the runtime init. Dedicated Claude Code lane is diagnosing against the real Vercel build",
-          "s": "blocked",
-          "jack": "Preview fix is in Claude Code — paste the Clerk-runtime debug prompt (Fable provided it in chat)"
+          "t": "Preview pipeline (Vercel) — WORKING; used to sign off the launch",
+          "n": "Clerk graceful-degradation fixed; PR #23 preview reviewed end-to-end and became the launch sign-off tool. Vercel remains PREVIEW-ONLY — never the apex origin (its catch-all rewrite would swallow /client-portal and /api)",
+          "s": "done"
         },
         {
           "id": "c7",
-          "t": "/ava route wiring + value-CTA deep pages",
-          "n": "Wire /ava into live router+nav; repoint value-panel CTAs to dedicated pages when they exist. Small follow-ups",
-          "s": "next"
+          "t": "/ava, /men, /women routes wired and LIVE-verified",
+          "n": "All routes render on production; Become a Member → /client-portal/setup, Sign In → Clerk. Verified in the Jul 16 smoke test",
+          "s": "done"
+        },
+        {
+          "id": "c9",
+          "t": "🚀 SITE LAUNCHED — matrixlongevity.com live on the new marketing site",
+          "n": "Jul 16, 03:09 UTC. Launch surgery: approved bigg-os grafted onto the production lineage (branch replit/launch-2026-07-15 @ 53680b2), founder-watched Republish, 8/8 routes smoke-PASS with rendered-content verification. Backend byte-identical; zero rollbacks. Rollback path preserved (replit-workspace-snapshot)",
+          "s": "done"
+        },
+        {
+          "id": "c10",
+          "t": "Ask Ava live-chat + approved-logo hotfix (production defect lane)",
+          "n": "Live Ava answers real visitor questions (server-side endpoint, key never client-side, server-enforced 3-question limit → email gate, cost caps + kill switch, honest disclosure replacing the false 'nothing is stored' text, AI label) + approved logo into header/footer. Preview branch off the production lineage; STOP at checkpoint",
+          "s": "next",
+          "jack": "Paste the Ava hotfix prompt (Fable header + spec) to Claude Code; adversarial-test Ava's boundaries before any Republish"
         },
         {
           "id": "c8",
-          "t": "Pre-launch compliance & accuracy sweep",
-          "n": "Superintelligence + cancer-screening/regenerative-medicine claims (founder-approved, logged for counsel), Bio-Age framing, marker counts, MD name gate, representative-example labels — LAUNCH GATE",
-          "s": "backlog"
+          "t": "Post-launch compliance & accuracy sweep",
+          "n": "Superintelligence + cancer-screening/regenerative-medicine claims (founder-approved, logged for counsel), Bio-Age framing, marker counts, MD name gate, representative-example labels. Site is live, so this sweep is now ACTIVE priority, not pre-launch",
+          "s": "next"
         }
       ],
       "laneId": "commercial"
@@ -132,7 +144,8 @@ window.MX.build = {
           "id": "m6",
           "t": "Health Intelligence signals (11.07) — in Codex review (#18)",
           "n": "Typed projection over mie_events (no migration). H1 signal persistence at Checkpoint 1. Awaiting Codex, then founder merge",
-          "s": "progress"
+          "s": "progress",
+          "jack": "Merge call on #18 once Codex review lands"
         },
         {
           "id": "m7",
@@ -245,8 +258,8 @@ window.MX.build = {
         {
           "id": "i1",
           "t": "Vercel preview project connected (matrix-longevity-site)",
-          "n": "Per-branch + per-PR preview URLs auto-build. Root artifacts/bigg-os, Vite, output dist/public, SPA rewrite (#19). Launch-gate preview — once the Clerk crash is fixed, it's the click-through-before-prod tool",
-          "s": "progress"
+          "n": "Per-branch + per-PR preview URLs auto-build. Proved itself as the launch-gate: #23's preview was the founder sign-off surface. Vercel stays PREVIEW-ONLY — never the apex origin",
+          "s": "done"
         },
         {
           "id": "i2",
@@ -256,10 +269,28 @@ window.MX.build = {
         },
         {
           "id": "i3",
-          "t": "Merge ≠ deployed — nothing is live on Replit yet",
-          "n": "Everything sits on main only. Replit goes live on a deliberate, watched Republish. Do NOT republish until the Vercel preview proves the site works",
+          "t": "Watched Republish executed — new site LIVE (Jul 16)",
+          "n": "First attempt shipped the old tree (workspace HEAD never moved — caught by smoke test, nothing broke). Second attempt: HEAD verified at 53680b2 pre-click, deploy verified by bundle hash + rendered content. Merge ≠ deployed discipline held throughout",
+          "s": "done"
+        },
+        {
+          "id": "i6",
+          "t": "CRITICAL FINDING — GitHub main has NEVER been deployed; repo ↔ production reconciliation",
+          "n": "The Replit workspace was never git-connected to GitHub. Production lineage = replit-workspace-snapshot (ff6914b, pushed to GitHub, nothing lost). GitHub main (54a4580) is ~157k lines diverged incl. the entire MIE estate. Launch shipped via graft branch replit/launch-2026-07-15. Reconciling the two histories is now the central infrastructure question — feeds the Phase A forensic audit",
+          "s": "progress"
+        },
+        {
+          "id": "i7",
+          "t": "Onboarding V2 + Replit-exit lane (Phases A–D) — RUNNING",
+          "n": "Branch preview/onboarding-v2-replit-exit: assignment doc + scope directive rev 2 committed. Authorized: forensic audit, dashboard contract, V2 shadow build, bridge design on paper. NOT authorized: Phases E–H, staging domains, DNS, any prod contact. Bridge kickoff parked as NOT-AUTHORIZED draft",
+          "s": "progress"
+        },
+        {
+          "id": "i8",
+          "t": "Bridge architecture + staging-writes rulings (founder decisions)",
+          "n": "(1) Reopen Replit standing decision + approve apex→Vercel bridge w/ legacy proxies then app./api. subdomains — parked kickoff fires on approval. (2) Bridge testing writes synthetic submissions into prod DB via live API — accept tagged writes w/ cleanup, or require scrubbed staging DB",
           "s": "next",
-          "jack": "Do NOT Republish until preview verified working"
+          "jack": "Rule on bridge architecture + staging-writes-to-prod (Jul 15 night queue)"
         },
         {
           "id": "i4",

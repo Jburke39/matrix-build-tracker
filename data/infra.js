@@ -166,7 +166,7 @@ window.MX.infra = {
         {
           "t": "Clerk — Auth",
           "s": "built",
-          "what": "Authentication. Live. (Also the current cause of the preview black-screen on public routes.)"
+          "what": "Authentication. Live. Graceful-degradation on public routes shipped; sign-in verified working on the launched site."
         },
         {
           "t": "Airtable — Operational DB",
@@ -182,12 +182,12 @@ window.MX.infra = {
         {
           "t": "Replit — Hosting",
           "s": "built",
-          "what": "Production host. Stays home until founder readiness declaration."
+          "what": "Production host — new marketing site LIVE Jul 16 from launch branch 53680b2. Discovery: workspace was never git-connected; GitHub main never deployed (~157k-line divergence). Stays home until founder readiness declaration; bridge exit design parked pending founder ruling."
         },
         {
           "t": "Vercel — Preview",
-          "s": "progress",
-          "what": "Per-branch marketing-site previews. Added today; blocked on Clerk runtime crash."
+          "s": "built",
+          "what": "Per-branch marketing-site previews, working; served as the launch sign-off surface. Preview-only — never the apex origin."
         },
         {
           "t": "SendGrid — Email",
@@ -219,11 +219,11 @@ window.MX.infra = {
         {
           "id": "ci-brand-web",
           "t": "Brand & Website",
-          "s": "progress",
-          "what": "Brand system + editorial site (apex, /men, /women, /ava) merged; runtime preview blocked so it is not yet verifiably production-ready.",
-          "gov": "Site merged (#14/#15/#16/#17)",
-          "limitation": "Vercel preview black-screens on Clerk runtime (#20); no verified production render yet",
-          "milestone": "Un-block preview → production sweep",
+          "s": "built",
+          "what": "New marketing site LIVE on matrixlongevity.com (Jul 16) — apex, /men, /women, /ava all rendered-content verified; CTAs route to intake and Clerk sign-in.",
+          "gov": "Launched via founder-watched Republish from 53680b2 (#23 tree grafted onto production lineage)",
+          "limitation": "Ask Ava still demo-only and header uses text logo — hotfix lane queued; compliance sweep now post-launch priority",
+          "milestone": "Ava live-chat + logo hotfix → compliance sweep",
           "related": "commercial"
         },
         {
