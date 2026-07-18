@@ -28,7 +28,7 @@ global.document = {
 };
 
 /* load Fable content namespaces, then the code layer */
-['build','shared','sales','marketing','readiness','infra','org','ava','archive-command-center']
+['build','shared','sales','marketing','readiness','infra','org','ava','archive-command-center','v2']
   .forEach(function(f){ require(path.join(ROOT,'data',f+'.js')); });
 var app = require(path.join(ROOT,'app.js'));
 var MX = global.window.MX;
@@ -127,7 +127,26 @@ eq('all 10 Command Center views preserved', (MX.archive.views||[]).length, 10);
   ok('archived view "'+v.t+'" keeps purpose + surfaces', !!v.purpose && Array.isArray(v.surf) && v.surf.length>0);
 });
 ok('Command Center removed from primary nav', htmlSrc.indexOf('data-tab="cc"')===-1);
-ok('exactly six primary tabs in nav', (htmlSrc.match(/role="tab"/g)||[]).length===6);
+ok('exactly seven primary tabs in nav (6 shell + additive V2)', (htmlSrc.match(/role="tab"/g)||[]).length===7);
+
+/* ============================ 7. V2 MIGRATION TAB (additive per e540f85 shell rule) ============================ */
+group('V2 Migration tab: additive wiring, shell intact, fallback preserved');
+['build','infra','org','ava','sales','marketing'].forEach(function(t){
+  ok('original shell tab "'+t+'" still in nav', htmlSrc.indexOf('data-tab="'+t+'"')!==-1);
+});
+ok('V2 tab added to nav', htmlSrc.indexOf('data-tab="v2"')!==-1);
+ok('V2 view section mounted', htmlSrc.indexOf('id="view-v2"')!==-1);
+ok('V2 content loads from data/v2.js', /src="data\/v2\.js"/.test(htmlSrc));
+ok('standalone v2.html fallback still in repo', fs.existsSync(path.join(ROOT,'v2.html')));
+ok('MX.v2 namespace exists', !!MX.v2);
+eq('V2 gates all present', (MX.v2.gates||[]).length, 7);
+eq('V2 Needs-Jack queue present', (MX.v2.needsJack||[]).length, 3);
+eq('V2 settled decisions present', (MX.v2.settled||[]).length, 9);
+ok('V2 migration tiers present', (MX.v2.migration||[]).length===4);
+/* content stays Fable-owned: canonical V2 tokens must not live in code files */
+['953d793f','INV-14','Supabase','SOT Inversion'].forEach(function(tok){
+  ok('app.js free of V2 content token "'+tok+'"', appSrc.indexOf(tok)===-1);
+});
 
 /* ============================ summary ============================ */
 console.log('\n──────────────────────────────');

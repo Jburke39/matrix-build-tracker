@@ -103,7 +103,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ window.c
 
 /* ============================ tabs ============================ */
 var currentTab = 'build';
-var tabIds = ['build','infra','org','ava','sales','marketing'];
+var tabIds = ['build','infra','org','ava','sales','marketing','v2'];
 function activateTab(name){
   currentTab = name;
   document.querySelectorAll('.tab').forEach(function(t){
@@ -481,6 +481,41 @@ function renderDecisions(ids, title){
   return h+'</div>';
 }
 
+/* ============================ V2 MIGRATION (additive 7th tab) ============================
+   Renders window.MX.v2 (Fable-owned mirror of the standalone v2.html fallback).
+   Static command board — no persistence, no status cycling. */
+var V2CHIP = { done:'confirmed', run:'provisional', wait:'jack', hold:'' };
+function v2Pill(p){ return p ? '<span class="chip '+(V2CHIP[p.s]||'')+'">'+esc(p.label)+'</span>' : ''; }
+function v2Cards(items){
+  return '<div class="grid g2">'+(items||[]).map(function(c){
+    return '<div class="card"><h3><span>'+esc(c.t)+'</span>'+v2Pill(c.pill)+'</h3><div style="color:var(--dim);font-size:12.5px">'+esc(c.d)+'</div></div>';
+  }).join('')+'</div>';
+}
+function renderV2(){
+  var V=MX.v2||{}; var m=el('v2mount'); if(!m) return;
+  var meta=el('v2meta'); if(meta) meta.innerHTML='<b>'+esc(V.headline||'')+'</b> · '+esc(V.meta||'');
+  var h='';
+  if(V.arch){ h+='<div class="v2arch"><h3>'+esc(V.arch.title)+'</h3><p>'+esc(V.arch.body)+'</p></div>'; }
+  h+='<div class="needs"><h2>Needs Jack — queue</h2><ul>'+(V.needsJack||[]).map(function(n,i){
+    return '<li><span class="tag">'+(i+1)+'</span><span><b>'+esc(n.t)+'</b> <span style="color:var(--dim)">'+esc(n.d)+'</span></span></li>';
+  }).join('')+'</ul></div>';
+  h+='<div class="section"><h2>Governance chain</h2>'+v2Cards(V.governance)+'</div>';
+  h+='<div class="section"><h2>Build lanes</h2>'+v2Cards(V.lanes)+'</div>';
+  h+='<div class="section"><h2>Gates</h2><div class="card">'+(V.gates||[]).map(function(g){
+    var st = g.state==='done' ? '<span class="chip confirmed">DONE</span> '
+           : g.state==='blocker' ? '<span class="chip jack">THE BLOCKER</span> ' : '';
+    return '<div class="v2gate"><span class="g">'+esc(g.g)+'</span><span class="d">'+st+esc(g.d)+'</span></div>';
+  }).join('')+'</div></div>';
+  h+='<div class="section"><h2>Migration &amp; import<span class="cap">'+esc(V.migrationNote||'')+'</span></h2>'+
+    (V.migration||[]).map(function(t){
+      return '<div class="v2tier '+esc(t.tier)+'"><b>'+esc(t.t)+'</b><p>'+esc(t.d)+'</p></div>';
+    }).join('')+'</div>';
+  h+='<div class="section"><h2>Settled decisions<span class="cap">'+esc(V.settledNote||'')+'</span></h2><div class="card"><ul class="deco-list">'+
+    (V.settled||[]).map(function(s){ return '<li><b>'+esc(s.b)+'</b> — '+esc(s.d)+'</li>'; }).join('')+'</ul></div></div>';
+  if(V.evidence){ h+='<div class="stub" style="border-top:1px solid var(--line);padding-top:12px;margin-top:8px">'+esc(V.evidence)+'</div>'; }
+  m.innerHTML=h;
+}
+
 /* ============================ DATA TOOLS — export / import ============================ */
 function renderDataTools(){
   el('datatools').innerHTML =
@@ -613,7 +648,7 @@ function avaBizRespond(q){
     var b=computeBuild(); return "Active build completion is about "+b.pct+"% across "+b.total+" workstreams ("+b.done+" done). Company readiness is a separate, lower number — "+computeReadiness().pct+"%. Want the lane-by-lane?";
   }
   if(/tab|screen|looking at|where am i/.test(q)){
-    var names={build:'Build Command',infra:'Infrastructure Map',org:'Agent Org Chart',ava:'Ava Intelligence',sales:'Sales',marketing:'Marketing'};
+    var names={build:'Build Command',infra:'Infrastructure Map',org:'Agent Org Chart',ava:'Ava Intelligence',sales:'Sales',marketing:'Marketing',v2:'V2 Migration'};
     return "You're on the "+(names[currentTab]||currentTab)+" tab right now.";
   }
   return "I'm your chief of staff over this build and I read the board live. Try: \"what needs my attention?\", \"what's blocked?\", \"how far along are we?\", or \"what tab am I on?\". (Preview responder — the governed engine gets wired in Claude Code.)";
@@ -637,7 +672,7 @@ window.saveProfile=function(){
 };
 
 /* ============================ boot ============================ */
-function renderAll(){ renderBuild(); renderInfra(); renderOrg(); renderAva(); renderSales(); renderMarketing(); }
+function renderAll(){ renderBuild(); renderInfra(); renderOrg(); renderAva(); renderSales(); renderMarketing(); renderV2(); }
 function boot(){
   initTabs();
   renderDataTools();
