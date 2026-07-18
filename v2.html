@@ -33,12 +33,6 @@ h2 .n{color:var(--faint);font-weight:500;letter-spacing:0;text-transform:none;fo
 .needs h2{margin:0 0 10px;color:var(--blue)}
 .needs li{font-size:13.5px;margin:7px 0 7px 18px;color:var(--ink)}
 .needs li span{color:var(--dim)}
-.tier{border-left:3px solid var(--line);padding-left:12px;margin-bottom:12px}
-.tier.mig{border-color:var(--green)}
-.tier.seed{border-color:var(--blue)}
-.tier.arc{border-color:var(--faint)}
-.tier b{font-size:13.5px}
-.tier p{font-size:12.5px;color:var(--dim);margin-top:2px}
 .gate{display:flex;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
 .gate:last-child{border-bottom:none}
 .gate .g{min-width:130px;font-weight:700;color:var(--ink);font-size:12.5px}
@@ -49,6 +43,11 @@ h2 .n{color:var(--faint);font-weight:500;letter-spacing:0;text-transform:none;fo
 .arch h3{font-size:14px;color:var(--green);margin-bottom:6px;letter-spacing:.08em;text-transform:uppercase}
 .arch p{font-size:13px;color:var(--dim)}
 .arch p b{color:var(--ink)}
+.sess td,.sess th{font-size:12.5px;padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.sess th{color:var(--faint);text-transform:uppercase;letter-spacing:.08em;font-size:10.5px}
+.sess{width:100%;border-collapse:collapse}
+.sess td b{color:var(--ink)}
+.sess td{color:var(--dim)}
 .foot{margin-top:40px;color:var(--faint);font-size:11.5px;border-top:1px solid var(--line);padding-top:14px}
 .tag{color:var(--faint);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
 </style>
@@ -57,72 +56,64 @@ h2 .n{color:var(--faint);font-weight:500;letter-spacing:0;text-transform:none;fo
 <div class="wrap">
 <div class="logo">MATRIX <span>LONGEVITY</span></div>
 <div class="sub">V2 Migration Command</div>
-<div class="back"><a href="index.html">&larr; Full build tracker</a> · standalone V2 page (additive; shell untouched — to be wired as a tab by Claude Code)</div>
-<h1>Foundation merged. Postgres is law.</h1>
-<div class="meta">State compiled by Fable · <b>July 18, 2026 · 06:05 UTC</b> · <b>PR #26 MERGED to main @ 953d793f</b> (founder-released; Codex APPROVE + Fable verified; LC-5/8/10/11 all VERIFIED). All V2 surfaces remain flag-gated OFF — the code shipped, the exposure did not. No deploy performed; Replit untouched.</div>
+<div class="back"><a href="index.html">&larr; Full build tracker</a> · standalone V2 page (S7 wires it into the shell as a tab)</div>
+<h1>Overnight board: 8 lanes running.</h1>
+<div class="meta">State compiled by Fable · <b>July 18, 2026 · pre-dawn</b> · Foundation MERGED to main @ <b>953d793f</b> (LC-1–11 built, LC-5/8/10/11 VERIFIED, all dark, no deploy). Phase 2 refactored into <b>8 isolated overnight sessions</b> — separate branches, exclusive file ownership, zero shared schema, each running an autonomous Claude Code ↔ Codex review loop to APPROVE. Nothing merges, deploys, or flips a flag without the founder.</div>
 
 <div class="arch">
 <h3>Ratified architecture — INV-14 (do not reopen)</h3>
-<p><b>Postgres = single authoritative store</b> for all client, health, audit, Ava, catalog, and application state. <b>Airtable = controlled operational interface</b> — reads projected from Postgres; write-back limited to the founder-approved set (task status · owner · follow-up date · fulfillment stage · refill stage · ops notes · non-clinical workflow status) via Matrix API only: validate → Postgres-first → audit → re-sync. Prohibited Airtable-write domains: clinical, labs, meds/doses, protocol approvals, doctor attribution, safety states, consent, identity, billing, Ava memory, audit history. Founder-owned auth tenant · direct GCS/S3 · direct Resend · external-tick scheduler retained. DB vendor pending Supabase eval; hosting deferred.</p>
+<p><b>Postgres = single authoritative store</b> for all client, health, audit, Ava, catalog, and application state. <b>Airtable = controlled operational interface</b> — reads projected from Postgres; write-back limited to the 7 founder-approved fields via Matrix API only (validate → Postgres-first → audit → re-sync); prohibited domains: clinical, labs, meds/doses, protocol approvals, doctor attribution, safety states, consent, identity, billing, Ava memory, audit history. Founder-owned auth tenant · direct GCS/S3 · direct Resend · external-tick scheduler retained. DB vendor pending S5 verdict (timebox: defaults to Neon + Clerk + direct GCS); hosting deferred.</p>
 </div>
 
 <div class="needs">
-<h2>Needs Jack — queue</h2>
+<h2>Needs Jack — morning protocol</h2>
 <ul>
-<li><b>1 · P0 production-access session (~1 hr) — NOW THE HARD BLOCKER</b> <span>Replit dashboard walk: secret values, live Postgres topology, storage buckets, scheduled tick, DNS records, Clerk tenant ownership, connector auth. Everything migration-shaped waits on this.</span></li>
-<li><b>2 · Release Phase 2 build</b> <span>SOT Inversion Core (V2-002 spec + protocols domain + client-core schema). Command ready — vendor-independent, dark, additive.</span></li>
-<li><b>3 · Supabase eval verdict</b> <span>still out → unlocks D4 vendor picks (DB / auth / storage, one decision).</span></li>
+<li><b>1 · Say "morning" to Fable</b> <span>Full readout: all 8 PRs read, Codex cycles verified, heads checked against the constitution, merge queue prepared.</span></li>
+<li><b>2 · Execute the G5 runbook (~15 min, self-serve)</b> <span>S6 built it overnight: docs/audit/G5-PRODUCTION-TRUTH-RUNBOOK.md + row-counts.sql. THE hard blocker for all migration work. Includes the $199 CTA live-check (D-4 trigger).</span></li>
+<li><b>3 · D4 vendor verdict</b> <span>Read S5's yes/no recommendation. Timebox stands: no decision by tonight → default Neon + Clerk + direct GCS.</span></li>
+<li><b>4 · Merge releases, in Fable's order</b> <span>S1 → S4 → S2 → S3, then S5–S8 as reviewed. Each comes as a single yes/no with evidence.</span></li>
+<li><b>5 · S8 taste pass</b> <span>Dashboard + command-center design drafts — Codex checks code, you check taste. Iteration expected and cheap.</span></li>
 </ul>
 </div>
 
-<h2>Governance chain</h2>
-<div class="grid">
-<div class="card"><h3>V2-000 Product Constitution<span class="pill p-done">v0.3.4 · on main</span></h3><p>All invariants INV-1–14 in force. <b>LC-1 through LC-11 built; LC-5/8/10/11 VERIFIED</b> (Codex + Fable, 7c07af2). Launch-critical set complete in code, dark.</p></div>
-<div class="card"><h3>V2-001 Architecture Disposition<span class="pill p-done">v1.0.0 · on main</span></h3><p>C-sharpened adopted (9.5). 16-row disposition (D1–D16). SOT inversion: client profile + protocols move Airtable → Postgres.</p></div>
-<div class="card"><h3>PR #26<span class="pill p-done">MERGED @ 953d793f</span></h3><p>Phases A–D + Phase 1 (WB-1..6): 55+ files, 9k+ lines, migrations 0023–0025, double-reviewed, founder-released 06:05 UTC. Merge ≠ deploy — nothing live changed.</p></div>
-<div class="card"><h3>V2-002 Engineering Architecture<span class="pill p-wait">Phase 2 · next</span></h3><p>Postgres-first schema for the 7 workflows + Airtable interface contract + auth-provider-agnostic identity layer. Grounded in V2-000/V2-001.</p></div>
-</div>
-
-<h2>Build lanes</h2>
-<div class="grid">
-<div class="card"><h3>Phase 2 — SOT Inversion Core<span class="pill p-wait">Awaiting release</span></h3><p><b>WB-7</b> V2-002 spec (schema for 7 workflows, INV-14 interface contract, identity abstraction) · <b>WB-8</b> protocols domain Postgres-authoritative (catalog + assignments, wired to protocol_approvals) · <b>WB-9</b> client-core schema + Airtable import mapping spec. Dark, additive, vendor-independent.</p></div>
-<div class="card"><h3>Claude Code — Supabase eval<span class="pill p-run">Running</span></h3><p>Adversarial read-only eval. Verdict feeds D4 (DB/auth/storage in one decision).</p></div>
-<div class="card"><h3>Row-count query (55 tables)<span class="pill p-hold">Queued — rides G5</span></h3><p>Read-only; sets final migrate/archive/manual lines by real volume.</p></div>
-<div class="card"><h3>Airtable rebuild + write-back worker<span class="pill p-hold">Gated on V2-002 + D4</span></h3><p>Interface contract already law (V2-001 §4).</p></div>
-</div>
+<h2>Overnight sessions <span class="n">all branched off main @ 953d793f · exclusive ownership · autonomous review loops · no merges</span></h2>
+<div class="card"><table class="sess">
+<tr><th>Lane</th><th>Branch</th><th>Delivers</th><th>Owns exclusively</th></tr>
+<tr><td><b>S1 · Core architecture</b></td><td>feature/v2-core-architecture</td><td>V2-002 engineering spec · protocols domain Postgres-authoritative (dark) · client-core schema · identity abstraction</td><td>docs/product/v2/V2-002*, lib/db/src/schema, new domain code</td></tr>
+<tr><td><b>S2 · Migration audit</b></td><td>feature/v2-migration-audit</td><td>55-table + Airtable inventory · field mapping (staged on S1) · idempotent dry-run-default import scripts · reconciliation + rollback plan</td><td>docs/migration/v2, scripts/migration</td></tr>
+<tr><td><b>S3 · Airtable redesign</b></td><td>feature/v2-airtable-redesign</td><td>New base structure · operator views · 7-field write-back contract · API contract. Docs only, no production connection</td><td>docs/airtable-v2</td></tr>
+<tr><td><b>S4 · Integration replacement</b></td><td>feature/v2-integration-replacement</td><td>Direct Resend adapter · provider-agnostic storage adapter (GCS + S3) · scheduler replacement spec · Replit dependency removal runbook. Live Replit paths untouched</td><td>integrations/, storage successor, scheduler docs</td></tr>
+<tr><td><b>S5 · Vendor eval closeout</b></td><td>feature/v2-vendor-eval</td><td>V2-003 adversarial Supabase vs Neon+Clerk+GCS — scored table + one yes/no for founder (feeds D4)</td><td>docs/product/v2/V2-003*</td></tr>
+<tr><td><b>S6 · G5 runbook</b></td><td>feature/v2-g5-runbook</td><td>15-min self-serve production-truth checklist (9 Replit items + CTA check) + read-only 55-table row-count SQL</td><td>docs/audit, scripts/audit</td></tr>
+<tr><td><b>S7 · Tracker V2 tab</b></td><td>tracker repo</td><td>v2.html wired additively into the 6-tab shell as tab 7 (shell rule honored); self-verification loop</td><td>matrix-build-tracker only</td></tr>
+<tr><td><b>S8 · Design mockups</b></td><td>feature/v2-design-mockups</td><td>Reference teardown first (Superpower primary + Function Health) → v2-design-dna.md → client dashboard V2 + command center V2 drafts (fictional data, INV-4/5/7/8 honored, D-3 fitness-first)</td><td>artifacts/mockup-sandbox</td></tr>
+</table></div>
 
 <h2>Gates</h2>
 <div class="card">
-<div class="gate"><span class="g">G1 · Identity</span><span class="d">Founder-owned auth tenant → per-client re-bind + one-time re-activation login. Gates all scripted loads. Vendor pick pending G4.</span></div>
-<div class="gate"><span class="g">G2 · Constitution</span><span class="d"><b style="color:var(--green)">DONE</b> — V2-000 v0.3.4 + V2-001 on main.</span></div>
-<div class="gate"><span class="g">G3 · Row counts</span><span class="d">55-table read-only query — rides the G5 session.</span></div>
-<div class="gate"><span class="g">G4 · Vendor picks</span><span class="d">Supabase eval verdict → D4.</span></div>
-<div class="gate"><span class="g">G5 · P0 prod access</span><span class="d"><b style="color:var(--amber)">THE blocker.</b> 9-item Replit-dashboard inventory. Founder hour required.</span></div>
-<div class="gate"><span class="g">G6 · Release blockers</span><span class="d"><b style="color:var(--green)">DONE</b> — LC-5/8/10/11 built + VERIFIED + merged.</span></div>
+<div class="gate"><span class="g">G1 · Identity</span><span class="d">Founder-owned auth tenant → per-client re-bind + one-time re-activation login. Vendor pick = D4.</span></div>
+<div class="gate"><span class="g">G2 · Constitution</span><span class="d"><b style="color:var(--green)">DONE</b> — V2-000 (v0.3.3 on main = canonical text) + V2-001 v1.0.0 @ 953d793f.</span></div>
+<div class="gate"><span class="g">G3 · Row counts</span><span class="d">Rides the G5 runbook — S6's SQL is ready for the Replit database pane.</span></div>
+<div class="gate"><span class="g">G4 · Vendor picks</span><span class="d">S5 verdict → D4. Timeboxed: defaults to Neon + Clerk + direct GCS tonight.</span></div>
+<div class="gate"><span class="g">G5 · P0 prod truth</span><span class="d"><b style="color:var(--amber)">THE blocker.</b> Now a 15-min self-serve runbook (S6). Founder executes solo.</span></div>
+<div class="gate"><span class="g">G6 · Release blockers</span><span class="d"><b style="color:var(--green)">DONE</b> — LC-5/8/10/11 built + verified + merged.</span></div>
 <div class="gate"><span class="g">G7 · Cutover</span><span class="d">Shadow parity → cohort → all → watched DNS move, founder-released. Replit retired only after.</span></div>
 </div>
 
-<h2>Migration &amp; import <span class="n">one-time load into authoritative V2 Postgres</span></h2>
-<div class="tier mig"><b>MIGRATE — ~18 tables (scripted)</b><p>clients, prospects, setup-submissions, lab-*, goals, weight-logs, ava-summaries/memory/escalations, payments, vault-documents, progress-photos, nutrition, protocol-adherence, welcome-calls, mie-safety, audit-log, <b style="color:var(--ink)">email-suppression = compliance-migrate, never archive</b>. Gated on G1.</p></div>
-<div class="tier mig"><b>AIRTABLE EXPORT — one-time authoritative load</b><p>Client core profiles, protocols, compounds → transform → V2 Postgres (SOT inversion, V2-001 D1/D2). Live base contents UNPROVEN until G5.</p></div>
-<div class="tier seed"><b>RE-SEED — ~15 tables</b><p>Catalogs, pricing from Jack's price book, biomarker defs, education.</p></div>
-<div class="tier arc"><b>ARCHIVE — ~20 tables + files manual</b><p>Events/telemetry/MIE plumbing pending G3. Files: manual re-upload (few, confirmed).</p></div>
-
 <h2>Settled decisions <span class="n">do not reopen without Jack</span></h2>
 <div class="card"><ul class="settled">
-<li><b>INV-14 architecture</b> — Postgres single SOT; Airtable controlled interface with governed write-back (ratified 2026-07-18).</li>
-<li><b>D2/D-3/D-4/D-5 resolved</b> — Ava material-conversation definition; fitness &amp; nutrition launch-critical (LC-11); $199 CTA hide approved (execution rides G5 finding); V2 launch = onboarding-only go-live.</li>
+<li><b>INV-14 architecture</b> — Postgres single SOT; Airtable controlled interface, 7-field governed write-back (ratified Jul 18).</li>
+<li><b>D2/D-3/D-4/D-5 resolved</b> — Ava material-conversation rule; fitness &amp; nutrition launch-critical (LC-11); $199 CTA hide approved (rides G5 finding); V2 launch = onboarding-only go-live.</li>
+<li><b>Session isolation</b> — 8 lanes, exclusive file ownership, no shared schema; merge order S1 → S4 → S2 → S3, then S5–S8; Fable sequences, founder releases.</li>
+<li><b>Autonomous loop guardrails</b> — fix P1/P2, re-review, max 3 cycles; never merge/deploy/flip flags/cross ownership.</li>
 <li><b>Greenfield V2</b>; legacy schema + live Airtable = import sources, not design inputs.</li>
-<li><b>§3.4 founder protocol approval</b> — Doctor Prescribed / Founder Reviewed, full audit; never represented as licensure.</li>
-<li><b>Hybrid migration</b> — scripted / re-seed / Ava selective / manual files.</li>
-<li><b>Stack</b> — shadcn/ui + Tremor + TanStack Table; Drizzle stays; Supabase evaluate-only until verdict.</li>
-<li><b>Hosting deferred</b>; <b>Replit live + untouched</b> until validated cutover; no DNS moves before then.</li>
-<li><b>Payments</b> — Venmo manual, entity/OBA-gated; not pushed.</li>
-<li><b>Tracker rule</b> — V2 content lives additively; the 6-tab shell is never replaced.</li>
+<li><b>§3.4 founder protocol approval</b> — Doctor Prescribed / Founder Reviewed distinct, full audit, never represented as licensure.</li>
+<li><b>Stack</b> — shadcn/ui + Tremor + TanStack Table; Drizzle stays. <b>Hosting deferred</b>; <b>Replit live + untouched</b> until validated cutover.</li>
+<li><b>Payments</b> — Venmo manual, entity/OBA-gated; not pushed. <b>Tracker rule</b> — additive only, shell never replaced.</li>
 </ul></div>
 
 <div class="foot">
-<span class="tag">Evidence basis</span> — main tip 953d793f verified by Fable Jul 18 06:05+ · Codex APPROVE + Fable verification @ 7c07af2 · V2-000 v0.3.4 / V2-001 v1.0.0 on main · live SOT UNPROVEN pending G5. Fable's regeneration is the source of truth for this page.
+<span class="tag">Evidence basis</span> — main tip 953d793f re-verified by Fable pre-dawn Jul 18 · Codex APPROVE + Fable verification @ 7c07af2 · overnight sessions launched by founder ~02:45–03:00 · live SOT UNPROVEN pending G5 · session results pending morning readout. Fable's regeneration is the source of truth for this page.
 </div>
 </div>
 </body>
