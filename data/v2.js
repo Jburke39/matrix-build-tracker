@@ -77,6 +77,26 @@ window.MX.v2 = {
       d:'Events/telemetry/MIE plumbing pending G3. Files: manual re-upload (few, confirmed).' }
   ],
 
+  /* Sessions board — seeded from live GitHub state (gh pr list) of
+     Jburke39/matrix-longevity-platform PRs #26–#36 + Jburke39/matrix-ios PR #1,
+     verified 2026-07-18. Status vocab: running · PR up · review-clean · merged · failed. */
+  sessionsNote:'live GitHub state · verified 2026-07-18',
+  sessions:[
+    { id:'OB',  lane:'Onboarding V2 + Replit exit (Phases A–D checkpoint)', branch:'preview/onboarding-v2-replit-exit', pr:'#26', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/26', status:'merged',       detail:'merged to main @ 953d793f, founder-released' },
+    { id:'S1',  lane:'Core architecture — V2-002 + protocols domain',       branch:'feature/v2-core-architecture',      pr:'#32', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/32', status:'PR up',        detail:'draft · 3 Codex cycles done, dark' },
+    { id:'S2',  lane:'Migration audit — data inventory + reconciliation',   branch:'feature/v2-migration-audit',        pr:'#30', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/30', status:'PR up',        detail:'draft · field-mapping staged on S1' },
+    { id:'S3',  lane:'Airtable redesign (docs-only)',                       branch:'feature/v2-airtable-redesign',      pr:'#27', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/27', status:'PR up',        detail:'draft · 24 P2 fixed, cycle cap reached' },
+    { id:'S4',  lane:'Integration replacement — Resend + storage adapters', branch:'feature/v2-integration-replacement',pr:'#31', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/31', status:'PR up',        detail:'draft · 14 findings fixed, cap reached' },
+    { id:'S5',  lane:'Vendor eval — V2-003 Supabase verdict',               branch:'feature/v2-vendor-eval',            pr:'#29', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/29', status:'review-clean', detail:'Codex-clean draft' },
+    { id:'S6',  lane:'G5 founder self-serve audit runbook',                 branch:'feature/v2-g5-runbook',             pr:'#28', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/28', status:'review-clean', detail:'Codex-clean draft' },
+    { id:'S7',  lane:'Tracker V2 tab + sessions board (this repo)',         branch:'main',                              pr:'—',   prUrl:'',                                                              status:'merged',       detail:'direct-to-main, additive per e540f85' },
+    { id:'S8',  lane:'V2 design mockups',                                   branch:'feature/v2-design-mockups',         pr:'#33', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/33', status:'review-clean', detail:'round 2 clean @ a3c4266' },
+    { id:'W1',  lane:'Staged operating model — governance amendment',       branch:'feature/v2-staged-model',           pr:'#34', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/34', status:'PR up',        detail:'draft · 3 cycles, 15 P2 fixed' },
+    { id:'W2',  lane:'Supabase foundation — auth + storage adapters',       branch:'feature/v2-supabase-foundation',    pr:'#35', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/35', status:'review-clean', detail:'cycle 2 clean @ b2b53b1' },
+    { id:'W3',  lane:'Stage-0 client experience — flag-gated dashboard',    branch:'feature/v2-stage0-experience',      pr:'#36', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/36', status:'PR up',        detail:'draft · no P1s, C3 fix at cap' },
+    { id:'S10', lane:'iOS harvest + API-swap plan (matrix-ios)',            branch:'audit/harvest-api-swap-plan',       pr:'ios #1', prUrl:'https://github.com/Jburke39/matrix-ios/pull/1',              status:'PR up',        detail:'docs-only draft, awaiting founder' }
+  ],
+
   settledNote:'do not reopen without Jack',
   settled:[
     { b:'INV-14 architecture', d:'Postgres single SOT; Airtable controlled interface with governed write-back (ratified 2026-07-18).' },

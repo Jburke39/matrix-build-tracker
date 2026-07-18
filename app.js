@@ -485,6 +485,7 @@ function renderDecisions(ids, title){
    Renders window.MX.v2 (Fable-owned mirror of the standalone v2.html fallback).
    Static command board — no persistence, no status cycling. */
 var V2CHIP = { done:'confirmed', run:'provisional', wait:'jack', hold:'' };
+var V2SESSIONCHIP = { 'merged':'confirmed', 'review-clean':'provisional', 'PR up':'internal', 'running':'jack', 'failed':'dnp' };
 function v2Pill(p){ return p ? '<span class="chip '+(V2CHIP[p.s]||'')+'">'+esc(p.label)+'</span>' : ''; }
 function v2Cards(items){
   return '<div class="grid g2">'+(items||[]).map(function(c){
@@ -501,6 +502,19 @@ function renderV2(){
   }).join('')+'</ul></div>';
   h+='<div class="section"><h2>Governance chain</h2>'+v2Cards(V.governance)+'</div>';
   h+='<div class="section"><h2>Build lanes</h2>'+v2Cards(V.lanes)+'</div>';
+  if(V.sessions && V.sessions.length){
+    h+='<div class="section"><h2>Sessions<span class="cap">'+esc(V.sessionsNote||'')+'</span></h2>'+
+      '<div class="tablewrap"><table class="pipe"><thead><tr><th>ID</th><th>Lane</th><th>Branch</th><th>PR#</th><th>Status</th></tr></thead><tbody>'+
+      V.sessions.map(function(s){
+        var pr = s.prUrl ? '<a class="v2link" href="'+esc(s.prUrl)+'" target="_blank" rel="noopener">'+esc(s.pr)+'</a>' : esc(s.pr);
+        var cls = V2SESSIONCHIP[s.status]||'';
+        return '<tr><td><b>'+esc(s.id)+'</b></td>'+
+          '<td style="white-space:normal">'+esc(s.lane)+(s.detail?' <span style="color:var(--faint)">· '+esc(s.detail)+'</span>':'')+'</td>'+
+          '<td><code>'+esc(s.branch)+'</code></td>'+
+          '<td>'+pr+'</td>'+
+          '<td><span class="chip '+cls+'">'+esc(s.status)+'</span></td></tr>';
+      }).join('')+'</tbody></table></div></div>';
+  }
   h+='<div class="section"><h2>Gates</h2><div class="card">'+(V.gates||[]).map(function(g){
     var st = g.state==='done' ? '<span class="chip confirmed">DONE</span> '
            : g.state==='blocker' ? '<span class="chip jack">THE BLOCKER</span> ' : '';
