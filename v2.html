@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrix — V2 Migration Command</title>
+<style>
+:root{--bg:#060a12;--panel:#0b1220;--panel2:#0e1729;--line:#1b2a44;--ink:#e8f0fb;--dim:#9db1cc;--faint:#5f7495;--blue:#00A8FF;--green:#2ecc8f;--amber:#f5b942;--red:#ff5d6c;--purple:#b48cff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.45;padding:28px 18px 80px}
+.wrap{max-width:1080px;margin:0 auto}
+.logo{font-weight:800;letter-spacing:.14em;font-size:15px}
+.logo span{color:var(--blue)}
+.sub{color:var(--faint);font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-top:2px}
+.back{font-size:12px;margin-top:6px}
+.back a{color:var(--blue);text-decoration:none}
+h1{font-size:26px;margin:18px 0 4px;font-weight:750}
+.meta{color:var(--dim);font-size:13px;margin-bottom:22px}
+.meta b{color:var(--ink)}
+h2{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin:34px 0 12px;font-weight:700}
+h2 .n{color:var(--faint);font-weight:500;letter-spacing:0;text-transform:none;font-size:12px;margin-left:8px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.card h3{font-size:14px;font-weight:700;margin-bottom:4px}
+.card p{font-size:13px;color:var(--dim)}
+.card p b{color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 9px;border-radius:99px;margin-left:8px;vertical-align:2px}
+.p-done{background:rgba(46,204,143,.14);color:var(--green);border:1px solid rgba(46,204,143,.4)}
+.p-run{background:rgba(0,168,255,.12);color:var(--blue);border:1px solid rgba(0,168,255,.4)}
+.p-wait{background:rgba(245,185,66,.12);color:var(--amber);border:1px solid rgba(245,185,66,.4)}
+.p-hold{background:rgba(159,180,208,.1);color:var(--faint);border:1px solid var(--line)}
+.needs{background:linear-gradient(180deg,rgba(0,168,255,.08),rgba(0,168,255,.02));border:1px solid rgba(0,168,255,.45);border-radius:14px;padding:16px 18px;margin:8px 0 6px}
+.needs h2{margin:0 0 10px;color:var(--blue)}
+.needs li{font-size:13.5px;margin:7px 0 7px 18px;color:var(--ink)}
+.needs li span{color:var(--dim)}
+.tier{border-left:3px solid var(--line);padding-left:12px;margin-bottom:12px}
+.tier.mig{border-color:var(--green)}
+.tier.seed{border-color:var(--blue)}
+.tier.arc{border-color:var(--faint)}
+.tier b{font-size:13.5px}
+.tier p{font-size:12.5px;color:var(--dim);margin-top:2px}
+.gate{display:flex;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+.gate:last-child{border-bottom:none}
+.gate .g{min-width:130px;font-weight:700;color:var(--ink);font-size:12.5px}
+.gate .d{color:var(--dim)}
+.settled li{font-size:13px;color:var(--dim);margin:6px 0 6px 18px}
+.settled li b{color:var(--ink)}
+.arch{background:linear-gradient(180deg,rgba(46,204,143,.07),rgba(46,204,143,.01));border:1px solid rgba(46,204,143,.4);border-radius:14px;padding:16px 18px;margin-bottom:10px}
+.arch h3{font-size:14px;color:var(--green);margin-bottom:6px;letter-spacing:.08em;text-transform:uppercase}
+.arch p{font-size:13px;color:var(--dim)}
+.arch p b{color:var(--ink)}
+.foot{margin-top:40px;color:var(--faint);font-size:11.5px;border-top:1px solid var(--line);padding-top:14px}
+.tag{color:var(--faint);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="logo">MATRIX <span>LONGEVITY</span></div>
+<div class="sub">V2 Migration Command</div>
+<div class="back"><a href="index.html">&larr; Full build tracker</a> · standalone V2 page (additive; shell untouched — to be wired as a tab by Claude Code)</div>
+<h1>Architecture ratified. Postgres is law.</h1>
+<div class="meta">State compiled by Fable · <b>July 18, 2026</b> · V2-000 v0.3.0 + V2-001 v1.0.0 founder-ratified @ <b>9b0c77c</b>. Greenfield V2; Replit = import source + temporary bridge, stays live untouched until validated cutover.</div>
+
+<div class="arch">
+<h3>Ratified architecture — INV-14 (do not reopen)</h3>
+<p><b>Postgres = single authoritative store</b> for all client, health, audit, Ava, catalog, and application state. <b>Airtable = controlled operational interface</b> — reads projected from Postgres; write-back limited to the founder-approved set (task status · owner · follow-up date · fulfillment stage · refill stage · ops notes · non-clinical workflow status) via Matrix API only: validate → Postgres-first → audit → re-sync. Prohibited Airtable-write domains: clinical, labs, meds/doses, protocol approvals, doctor attribution, safety states, consent, identity, billing, Ava memory, audit history. Founder-owned auth tenant · direct GCS/S3 · direct Resend · external-tick scheduler retained. DB vendor pending Supabase eval; hosting deferred.</p>
+</div>
+
+<div class="needs">
+<h2>Needs Jack — queue</h2>
+<ul>
+<li><b>1 · P0 production-access session (~1 hr, highest leverage)</b> <span>Replit dashboard walk: secret values, live Postgres topology, storage buckets, scheduled tick, DNS records, Clerk tenant ownership, connector auth. Unblocks all of Phases E+.</span></li>
+<li><b>2 · Release Phase 1 build</b> <span>WB-1 protocol approval (LC-10) · WB-2 server-side SAFETY_REVIEW (LC-5) · WB-3 provenance enum (LC-8). Command ready — vendor-independent, dark, additive.</span></li>
+<li><b>3 · Supabase eval verdict</b> <span>still out → unlocks D4 vendor picks (DB / auth / storage).</span></li>
+<li><b>4 · Codex review of PR #26</b> <span>status unconfirmed — verify prompted; ingest findings.</span></li>
+<li><b>5 · Decisions batch</b> <span>D2 "material conversation" · D-3 fitness-vs-medical dashboard · D-4 $199 CTA · D-5 launch definition confirm.</span></li>
+</ul>
+</div>
+
+<h2>Governance chain</h2>
+<div class="grid">
+<div class="card"><h3>V2-000 Product Constitution<span class="pill p-done">v0.3.0 ratified</span></h3><p>§3.4 founder protocol approval ratified · INV-1–14 in force · LC-5 corrected to Partial · launch-critical vs backlog fixed. @ 9b0c77c on preview/onboarding-v2-replit-exit.</p></div>
+<div class="card"><h3>V2-001 Architecture Disposition<span class="pill p-done">v1.0.0 ratified</span></h3><p>Plans scored A:5 / B:4 / C:7.5 / <b>adopted C-sharpened: 9.5</b>. 16-row disposition table (D1–D16). SOT inversion: client profile + protocols move Airtable → Postgres.</p></div>
+<div class="card"><h3>V2-002 Architecture Spec<span class="pill p-wait">Next — ChatGPT lane</span></h3><p>Authored against V2-000 workflows + V2-001 dispositions. Must implement §3.4 approval record, INV-14 interface contract, SAFETY_REVIEW states.</p></div>
+<div class="card"><h3>PR #26 — dark checkpoint<span class="pill p-done">Approved as-is</span></h3><p>Phases A–D @ ca3066c. 464/0 suite, 21/21 adapter, flags OFF. Merge withheld: founder release + Codex review + conflict rebase pending. All work survives the architecture change — adapter/shadow become migration + parity tooling.</p></div>
+</div>
+
+<h2>Build lanes</h2>
+<div class="grid">
+<div class="card"><h3>Phase 1 — Constitution-complete core<span class="pill p-wait">Awaiting release</span></h3><p><b>WB-1</b> protocol approval record (§3.4 fields + audit, lifecycle states) · <b>WB-2</b> server-side SAFETY_REVIEW (symptom persistence, human-only clearance, INV-6 suppression hook) · <b>WB-3</b> provenance enum on medication entries. All additive, dark, vendor-independent.</p></div>
+<div class="card"><h3>Claude Code — Supabase eval<span class="pill p-run">Running</span></h3><p>Adversarial read-only eval (would replace Clerk+Neon+GCS). Verdict feeds D4.</p></div>
+<div class="card"><h3>Row-count query (55 tables)<span class="pill p-hold">Queued</span></h3><p>Read-only; sets final migrate/archive/manual lines. Can ride the P0 session.</p></div>
+<div class="card"><h3>Airtable rebuild + write-back worker<span class="pill p-hold">Gated</span></h3><p>Blocked on V2-002 + vendor picks. Interface contract already law (V2-001 §4).</p></div>
+</div>
+
+<h2>Gates</h2>
+<div class="card">
+<div class="gate"><span class="g">G1 · Identity</span><span class="d">Founder-owned auth tenant → per-client re-bind + one-time re-activation login. Gates all scripted loads.</span></div>
+<div class="gate"><span class="g">G2 · Constitution</span><span class="d"><b style="color:var(--green)">DONE</b> — V2-000 v0.3.0 + V2-001 v1.0.0 @ 9b0c77c.</span></div>
+<div class="gate"><span class="g">G3 · Row counts</span><span class="d">55-table read-only query — not yet run.</span></div>
+<div class="gate"><span class="g">G4 · Vendor picks</span><span class="d">Supabase eval verdict → D4 (DB / auth / storage, one decision).</span></div>
+<div class="gate"><span class="g">G5 · P0 prod access</span><span class="d">9-item Replit-dashboard inventory. Founder session required.</span></div>
+<div class="gate"><span class="g">G6 · Release blockers</span><span class="d">LC-5 · LC-8 · LC-10 — Phase 1 scope; built + verified before flags flip.</span></div>
+<div class="gate"><span class="g">G7 · Cutover</span><span class="d">Shadow parity → cohort → all → watched DNS move, founder-released. Replit retired only after.</span></div>
+</div>
+
+<h2>Migration &amp; import <span class="n">one-time load into authoritative V2 Postgres</span></h2>
+<div class="tier mig"><b>MIGRATE — ~18 tables (scripted)</b><p>clients, prospects, setup-submissions, lab-*, goals, weight-logs, ava-summaries/memory/escalations, payments, vault-documents, progress-photos, nutrition, protocol-adherence, welcome-calls, mie-safety, audit-log, <b style="color:var(--ink)">email-suppression = compliance-migrate, never archive</b>. Gated on G1.</p></div>
+<div class="tier mig"><b>AIRTABLE EXPORT — one-time authoritative load</b><p>Client core profiles, protocols, compounds → transform → V2 Postgres (SOT inversion, V2-001 D1/D2). Live base contents UNPROVEN until G5.</p></div>
+<div class="tier seed"><b>RE-SEED — ~15 tables</b><p>Catalogs, pricing from Jack's price book, biomarker defs, education.</p></div>
+<div class="tier arc"><b>ARCHIVE — ~20 tables + files manual</b><p>Events/telemetry/MIE plumbing pending G3. Files: manual re-upload (few, confirmed).</p></div>
+
+<h2>Settled decisions <span class="n">do not reopen without Jack</span></h2>
+<div class="card"><ul class="settled">
+<li><b>INV-14 architecture</b> — Postgres single SOT; Airtable controlled interface with governed write-back (ratified 2026-07-18).</li>
+<li><b>Greenfield V2</b>; legacy schema + live Airtable = import sources, not design inputs.</li>
+<li><b>§3.4 founder protocol approval</b> — Doctor Prescribed / Founder Reviewed, full audit; never represented as licensure.</li>
+<li><b>Hybrid migration</b> — scripted / re-seed / Ava selective / manual files.</li>
+<li><b>Stack</b> — shadcn/ui + Tremor + TanStack Table; Drizzle stays; Supabase evaluate-only until verdict.</li>
+<li><b>Hosting deferred</b>; <b>Replit live + untouched</b> until validated cutover; no DNS moves before then.</li>
+<li><b>Payments</b> — Venmo manual, entity/OBA-gated; not pushed.</li>
+<li><b>Tracker rule</b> — V2 content lives additively (this page / future tab); the 6-tab shell is never replaced.</li>
+</ul></div>
+
+<div class="foot">
+<span class="tag">Evidence basis</span> — V2-000 v0.3.0 + V2-001 v1.0.0 @ 9b0c77c (verified by Fable, Jul 18) · Phase-A audit @ ca3066c · PR #26 approved dark checkpoint (464/0) · live SOT UNPROVEN pending G5. Fable's regeneration is the source of truth for this page.
+</div>
+</div>
+</body>
+</html>
