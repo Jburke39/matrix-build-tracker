@@ -3,126 +3,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Matrix — Founder Build Command</title>
-<!-- WP1 shell. Design language unchanged; content lives in /data/*.js (Fable-owned),
-     rendering/persistence in app.js (code-owned). Data files load first, then app.js. -->
-<link rel="stylesheet" href="app.css">
+<title>Matrix — V2 Migration Command</title>
+<style>
+:root{--bg:#060a12;--panel:#0b1220;--panel2:#0e1729;--line:#1b2a44;--ink:#e8f0fb;--dim:#9db1cc;--faint:#5f7495;--blue:#00A8FF;--green:#2ecc8f;--amber:#f5b942;--red:#ff5d6c;--purple:#b48cff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.45;padding:28px 18px 80px}
+.wrap{max-width:1080px;margin:0 auto}
+.logo{font-weight:800;letter-spacing:.14em;font-size:15px}
+.logo span{color:var(--blue)}
+.sub{color:var(--faint);font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-top:2px}
+h1{font-size:26px;margin:18px 0 4px;font-weight:750}
+.meta{color:var(--dim);font-size:13px;margin-bottom:22px}
+.meta b{color:var(--ink)}
+h2{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin:34px 0 12px;font-weight:700}
+h2 .n{color:var(--faint);font-weight:500;letter-spacing:0;text-transform:none;font-size:12px;margin-left:8px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.card h3{font-size:14px;font-weight:700;margin-bottom:4px}
+.card p{font-size:13px;color:var(--dim)}
+.card p b{color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 9px;border-radius:99px;margin-left:8px;vertical-align:2px}
+.p-done{background:rgba(46,204,143,.14);color:var(--green);border:1px solid rgba(46,204,143,.4)}
+.p-run{background:rgba(0,168,255,.12);color:var(--blue);border:1px solid rgba(0,168,255,.4)}
+.p-block{background:rgba(255,93,108,.12);color:var(--red);border:1px solid rgba(255,93,108,.4)}
+.p-wait{background:rgba(245,185,66,.12);color:var(--amber);border:1px solid rgba(245,185,66,.4)}
+.p-hold{background:rgba(159,180,208,.1);color:var(--faint);border:1px solid var(--line)}
+.p-dec{background:rgba(180,140,255,.12);color:var(--purple);border:1px solid rgba(180,140,255,.4)}
+.needs{background:linear-gradient(180deg,rgba(0,168,255,.08),rgba(0,168,255,.02));border:1px solid rgba(0,168,255,.45);border-radius:14px;padding:16px 18px;margin:8px 0 6px}
+.needs h2{margin:0 0 10px;color:var(--blue)}
+.needs li{font-size:13.5px;margin:7px 0 7px 18px;color:var(--ink)}
+.needs li span{color:var(--dim)}
+.chain{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin-bottom:8px}
+.role{flex:1 1 180px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.role b{display:block;font-size:13px}
+.role i{display:block;font-style:normal;color:var(--faint);font-size:11.5px;margin-top:2px}
+.role.jack{border-color:var(--blue)}
+.arrow{align-self:center;color:var(--faint);font-size:16px}
+.tier{border-left:3px solid var(--line);padding-left:12px;margin-bottom:12px}
+.tier.mig{border-color:var(--green)}
+.tier.seed{border-color:var(--blue)}
+.tier.arc{border-color:var(--faint)}
+.tier b{font-size:13.5px}
+.tier p{font-size:12.5px;color:var(--dim);margin-top:2px}
+.gate{display:flex;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+.gate:last-child{border-bottom:none}
+.gate .g{min-width:118px;font-weight:700;color:var(--ink);font-size:12.5px}
+.gate .d{color:var(--dim)}
+.settled li{font-size:13px;color:var(--dim);margin:6px 0 6px 18px}
+.settled li b{color:var(--ink)}
+.foot{margin-top:40px;color:var(--faint);font-size:11.5px;border-top:1px solid var(--line);padding-top:14px}
+.tag{color:var(--faint);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+</style>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
 <div class="wrap">
-  <header class="brand"><div class="logo">MATRIX <span>LONGEVITY</span></div><div class="sub">Founder Build Command</div></header>
-  <h1>One company. One picture.</h1>
+<div class="logo">MATRIX <span>LONGEVITY</span></div>
+<div class="sub">V2 Migration Command</div>
+<h1>Greenfield Matrix V2 — one migration, one picture.</h1>
+<div class="meta">State compiled by Fable (Analyst) · <b>July 17, 2026</b> · Greenfield V2 approved; supersedes reconciled-merge. Replit stays live and untouched as production fallback until validated cutover. Legacy schema is reference inventory only — V2-000 defines the target model first.</div>
 
-  <nav class="tabs" id="tabs" role="tablist" aria-label="Build Command sections">
-    <button class="tab active" role="tab" id="tab-build"     aria-controls="view-build"     aria-selected="true"  data-tab="build">Build Command</button>
-    <button class="tab"        role="tab" id="tab-infra"     aria-controls="view-infra"     aria-selected="false" data-tab="infra">Infrastructure Map</button>
-    <button class="tab"        role="tab" id="tab-org"       aria-controls="view-org"       aria-selected="false" data-tab="org">Agent Org Chart</button>
-    <button class="tab"        role="tab" id="tab-ava"       aria-controls="view-ava"       aria-selected="false" data-tab="ava">Ava Intelligence</button>
-    <button class="tab"        role="tab" id="tab-sales"     aria-controls="view-sales"     aria-selected="false" data-tab="sales">Sales</button>
-    <button class="tab"        role="tab" id="tab-marketing" aria-controls="view-marketing" aria-selected="false" data-tab="marketing">Marketing</button>
-  </nav>
-
-  <div class="legend" id="maplegend" style="display:none" aria-hidden="true">
-    <span><i class="dot d-built"></i> Built / Merged</span>
-    <span><i class="dot d-progress"></i> In Progress</span>
-    <span><i class="dot d-spec"></i> Spec'd, not built</span>
-    <span><i class="dot d-planned"></i> Planned / Not started</span>
-    <span style="color:var(--faint)">· click any box for detail</span>
-  </div>
-
-  <main id="main">
-
-  <section class="view active" id="view-build" role="tabpanel" aria-labelledby="tab-build" tabindex="-1">
-    <div class="meta">State compiled by Fable · <b>July 16, 2026 · SITE LIVE</b> · Click any status pill to cycle it. Two separate measures below: <b>Active Build Completion</b> (authorized build lanes only) and <b>Matrix Company Readiness</b> (10 domains × 4 pass/fail gates). They are never merged into one number.</div>
-
-    <div class="rule"><b>Execution boundary &#8212; enforced</b><br>Coding, previews, and deployments are <b style="color:var(--ink)">Claude Code's</b> job. <b style="color:var(--ink)">Fable</b> holds program state, sequences lanes, makes decisions, writes specs/kickoffs, and merges PRs &#8212; and does <b style="color:var(--ink)">not</b> run build/preview/deploy itself.</div>
-
-    <div class="metrics" id="metrics"></div>
-
-    <div class="needs">
-      <h2>Needs Jack — your queue</h2>
-      <ul id="needslist"></ul>
-    </div>
-    <div class="hint">Items clear automatically as you mark their cards Done below.</div>
-
-    <div id="lanes"></div>
-
-    <div class="foot">
-      <div class="datatools" id="datatools" aria-label="Data tools"></div>
-      <div id="datamsg" aria-live="polite"></div>
-      <div style="margin-top:10px">Statuses persist locally (this browser only, key <code>mx2_status</code>). Fable's regeneration is the source of truth. Nothing you enter here is committed to the repo. Real prospect/client/health data is never stored in this app.</div>
-      <button onclick="resetStatuses()">Reset to compiled state</button>
-      <input type="file" id="importFile" accept="application/json,.json" style="display:none">
-    </div>
-  </section>
-
-  <section class="view" id="view-infra" role="tabpanel" aria-labelledby="tab-infra" tabindex="-1">
-    <div class="intro">The Matrix Intelligence Engine and the commercial spine, layer by layer. <b>Green = real and merged today.</b> Click any box for what it is, its status, and the PR/spec that governs it.</div>
-    <div id="inframount"></div>
-  </section>
-
-  <section class="view" id="view-org" role="tabpanel" aria-labelledby="tab-org" tabindex="-1">
-    <div class="intro">The full agent hierarchy — Jack &#8594; Ava-CEO &#8594; domain agents &#8594; sub-agents — exactly as designed. <b>Almost none of the agents exist yet;</b> this is the target org. Toggle to see only the roles already in the active build sequence. Click any role for its charter and status.</div>
-    <div class="viewtoggle" id="orgtoggle" role="group" aria-label="Org view">
-      <button class="on" data-view="all" onclick="setOrgView('all')">Full hierarchy</button>
-      <button data-view="active" onclick="setOrgView('active')">In active sequence</button>
-    </div>
-    <div id="orgmount"></div>
-  </section>
-
-  <section class="view" id="view-ava" role="tabpanel" aria-labelledby="tab-ava" tabindex="-1">
-    <div class="intro">Ava Intelligence — the honest capability inventory. Each capability shows an <b>evidence-gated maturity level</b> (L1 Defined &#8594; L5 Proactive); a capability's shown level can never exceed the evidence behind it. Client Ava and Business Ava only. Personal Ava is not shown here. Click any capability for detail.</div>
-    <div id="avamount"></div>
-  </section>
-
-  <section class="view" id="view-sales" role="tabpanel" aria-labelledby="tab-sales" tabindex="-1">
-    <div class="intro">The Sales picture as it honestly stands. Unresolved commercial facts render as <b>Needs-Jack</b> chips and are never fabricated. Real opportunities are never stored in this app — the pipeline below shows labeled examples only.</div>
-    <div id="salesmount"></div>
-  </section>
-
-  <section class="view" id="view-marketing" role="tabpanel" aria-labelledby="tab-marketing" tabindex="-1">
-    <div class="intro">Marketing structure and the claims taxonomy. Every public claim carries an explicit approval class; <b>"Founder approved" never implies legal, regulatory or clinical approval.</b> Narrative content is authored in WP2.</div>
-    <div id="marketingmount"></div>
-  </section>
-
-  </main>
+<div class="needs">
+<h2>Needs Jack — decision queue</h2>
+<ul>
+<li><b>D1 · Clinician role in V2?</b> <span>No clinician role exists today (admin / operator / concierge_client / free_user). Analyst rec: yes — product is clinician-governed. Awaiting your call.</span></li>
+<li><b>D2 · "Material conversation" definition</b> <span>for Ava selective migration (e.g., escalation-linked, clinically relevant). Sets the migrate/archive line for Ava history.</span></li>
+<li><b>D3 · Launch-critical workflows</b> <span>Which of the 7 workflows are launch-critical vs backlog. Feeds V2-000 scope.</span></li>
+<li><b>D4 · Supabase yes/no</b> <span>— decide ONLY after Claude Code's adversarial eval returns. Would replace Clerk + Neon + GCS at once.</span></li>
+<li><b>D5 · Payments (Venmo manual vs processor)</b> <span>— legal/entity-gated; parked until you open the launch-planning phase.</span></li>
+<li><b>D6 · Hosting</b> <span>— deferred by decision. No host recommendation stands.</span></li>
+<li><b>ACTION · Route V2-000 commit through Claude Code</b> <span>— verified missing from platform repo docs/v2/ as of Jul 17 (Fable read-only check). ChatGPT authored it; Claude Code is sole writer.</span></li>
+</ul>
 </div>
 
-<div class="scrim" id="scrim" onclick="closeDrawer()"></div>
-<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawertitle" tabindex="-1">
-  <button class="close" onclick="closeDrawer()" aria-label="Close detail">&times;</button>
-  <div id="drawerbody"></div>
-</aside>
-
-<!-- Ava corner launcher + chat — FLAG-GATED (window.MX.build.flags.avaLauncher). app.js only mounts it when enabled. -->
-<div id="launcher-root"></div>
-
-<!-- Profile paste modal (used by launcher Personal mode when enabled) -->
-<div class="pmodal" id="pmodal" role="dialog" aria-modal="true" aria-labelledby="pmodaltitle">
-  <div class="box">
-    <h3 id="pmodaltitle">Tell Ava about you</h3>
-    <p>Paste anything — your current stack (peptides, meds, supplements with doses), your goals in your own words, your life, how you're feeling. Free text is fine; she'll read it.</p>
-    <textarea id="profileText" placeholder="e.g. 41, goals in your own words, current stack with doses, how you're sleeping…"></textarea>
-    <div class="privacy">This stays in your browser only (localStorage, key <code>mxava_profile</code>). It is never sent anywhere or committed to GitHub. When live-AI Ava is wired in Claude Code, your profile moves to a private, secure store — never this public page.</div>
-    <div class="prow">
-      <button onclick="closeProfile()">Cancel</button>
-      <button class="save" onclick="saveProfile()">Save to this browser</button>
-    </div>
-  </div>
+<h2>Command structure <span class="n">GitHub is the shared bus (issues / PRs / governance files)</span></h2>
+<div class="chain">
+<div class="role jack"><b>Jack</b><i>Decides · releases</i></div><div class="arrow">→</div>
+<div class="role"><b>ChatGPT</b><i>Architect / command layer</i></div><div class="arrow">→</div>
+<div class="role"><b>Claude (Fable)</b><i>Analyst — read-only on platform. Investigates, cites evidence, produces manifests. No code, no platform commits, no deploys. Tracker repo is Fable's lane.</i></div><div class="arrow">→</div>
+<div class="role"><b>Claude Code</b><i>Sole builder / sole repo writer</i></div><div class="arrow">→</div>
+<div class="role"><b>Codex</b><i>PR reviewer</i></div>
 </div>
 
-<!-- Data files (Fable-owned content) load first, in deterministic order -->
-<script src="data/build.js"></script>
-<script src="data/shared.js"></script>
-<script src="data/sales.js"></script>
-<script src="data/marketing.js"></script>
-<script src="data/readiness.js"></script>
-<script src="data/infra.js"></script>
-<script src="data/org.js"></script>
-<script src="data/ava.js"></script>
-<script src="data/archive-command-center.js"></script>
-<!-- Application (code-owned rendering/persistence) loads last -->
-<script src="app.js"></script>
+<h2>Work packages</h2>
+<div class="grid">
+<div class="card"><h3>V2-000 · Product Constitution<span class="pill p-block">Authored — commit missing</span></h3><p>Workflows + permissions define the target model first; legacy maps to it. Authored by ChatGPT (Jul 17). <b>CONFIRMED not yet in platform repo</b> — docs/v2/ does not exist on main. Route commit through Claude Code.</p></div>
+<div class="card"><h3>V2-001 · Migration inventory &amp; plan<span class="pill p-run">In progress</span></h3><p>55-table tiering done (below). Pending: read-only <b>row-count query across all 55 tables</b> (Claude Code task, not yet run) to set migrate/archive/manual lines by real volume.</p></div>
+<div class="card"><h3>V2-002 · Architecture &amp; stack<span class="pill p-run">Eval running</span></h3><p>Adopted: shadcn/ui + Tremor + TanStack Table (Tailwind-4 / React-19 native). Supabase = <b>evaluate only</b> — Claude Code running adversarial read-only eval now. Hosting deferred.</p></div>
+</div>
+
+<h2>The 7 workflows <span class="n">launch-critical vs backlog = open decision D3</span></h2>
+<div class="grid">
+<div class="card"><h3>Prospect → client conversion<span class="pill p-dec">Awaiting D3</span></h3><p>Identity-gated: new Clerk tenant → per-client re-bind + one-time re-activation login.</p></div>
+<div class="card"><h3>Client portal<span class="pill p-dec">Awaiting D3</span></h3><p>Core client surface. React 19 / Vite 7 app in monorepo.</p></div>
+<div class="card"><h3>Command center<span class="pill p-dec">Awaiting D3</span></h3><p>Feature-flagged OFF today (CEO-Today too). "In repo" ≠ "live".</p></div>
+<div class="card"><h3>Ava<span class="pill p-dec">Awaiting D3</span></h3><p>Migrate summaries, memory profiles, safety context, goals, selected material conversations (per D2). Archive full raw history. Routes are JSON, not SSE.</p></div>
+<div class="card"><h3>Clinical review loop<span class="pill p-dec">Awaiting D3</span></h3><p>Depends on D1 (clinician role gap flagged in V2-000).</p></div>
+<div class="card"><h3>Catalog + pricing<span class="pill p-dec">Awaiting D3</span></h3><p>Clean re-seed from Jack's price book — not migrated.</p></div>
+<div class="card"><h3>Escalation / safety<span class="pill p-dec">Awaiting D3</span></h3><p>mie-safety + escalations in MIGRATE tier; safety context preserved in Ava migration policy.</p></div>
+</div>
+
+<h2>Migration tiers <span class="n">55 tables · hybrid: scripted records + clean re-seed + manual file backfill</span></h2>
+<div class="tier mig"><b>MIGRATE — ~18 tables (scripted)</b><p>clients, prospects, setup-submissions, lab-*, goals, weight-logs, ava-summaries / memory / escalations, payments, vault-documents, progress-photos, nutrition, protocol-adherence, welcome-calls, mie-safety, audit-log, <b style="color:var(--ink)">email-suppression = compliance-migrate, never archive</b>. All scripted loads gated on identity re-bind.</p></div>
+<div class="tier seed"><b>RE-SEED — ~15 tables (clean)</b><p>Catalogs, pricing (from Jack's price book), biomarker definitions, education content.</p></div>
+<div class="tier arc"><b>ARCHIVE — ~20 tables (pending verify)</b><p>Events, telemetry, MIE plumbing. Final line set after row-count query. Files/photos: manual re-upload where inventory proves safe/faster (few files confirmed — downgraded from blocker to manual backfill).</p></div>
+
+<h2>Gates</h2>
+<div class="card">
+<div class="gate"><span class="g">G1 · Identity</span><span class="d">Founder-owned Clerk tenant (today: Replit-managed tenant, no external dashboard). New tenant = new IDs → per-client re-bind + one-time re-activation login. <b style="color:var(--ink)">Gates all scripted loads.</b></span></div>
+<div class="gate"><span class="g">G2 · V2-000 landed</span><span class="d">Constitution committed to docs/v2/ by Claude Code. Currently missing (verified Jul 17).</span></div>
+<div class="gate"><span class="g">G3 · Row counts</span><span class="d">Read-only 55-table row-count query sets final migrate/archive/manual lines. Not yet run.</span></div>
+<div class="gate"><span class="g">G4 · Stack eval</span><span class="d">Claude Code's adversarial Supabase eval returns → D4 decision unlocks.</span></div>
+<div class="gate"><span class="g">G5 · Storage</span><span class="d">objectStorage.ts is a hard Replit binding (sidecar 127.0.0.1:1106 brokers GCS + signs URLs). V2 needs founder-owned storage path.</span></div>
+<div class="gate"><span class="g">G6 · Cutover</span><span class="d">Replit stays live/untouched as fallback until validated cutover. No DNS moves. Cutover is a watched, deliberate step released by Jack.</span></div>
+</div>
+
+<h2>In-flight lanes</h2>
+<div class="grid">
+<div class="card"><h3>ChatGPT<span class="pill p-wait">Handoff pending</span></h3><p>V2-000 Product Constitution authored. Commit must route through Claude Code (sole writer) — not yet landed.</p></div>
+<div class="card"><h3>Claude Code · Lane 1<span class="pill p-run">Running</span></h3><p>Part B read-only stack evaluation (shadcn / Tremor / TanStack Table / Supabase vs repo; adversarial on Supabase; report-only).</p></div>
+<div class="card"><h3>Claude Code · Lane 2<span class="pill p-hold">Queued</span></h3><p>Read-only row-count query across all 55 tables. Not yet run.</p></div>
+<div class="card"><h3>Fable (Analyst)<span class="pill p-done">Tracker rebuilt</span></h3><p>V2 tracker live. Next: ingest stack-eval report when it returns; regenerate any session deliverables Jack needs re-saved to Drive.</p></div>
+</div>
+
+<h2>Settled decisions <span class="n">do not reopen without Jack</span></h2>
+<div class="card"><ul class="settled">
+<li><b>Greenfield V2</b> approved — supersedes reconciled-merge (trees diverged ~148k lines; neither a superset).</li>
+<li><b>Legacy schema = reference inventory only</b> — V2-000 defines the target model first.</li>
+<li><b>Hybrid migration</b> — scripted client records, clean catalog re-seed, Ava selective policy, manual file backfill.</li>
+<li><b>Hosting deferred</b> — prior "persistent host" rec withdrawn on live evidence (Autoscale + HTTP-triggered scheduler + JSON Ava routes). No host recommendation stands.</li>
+<li><b>Stack</b> — shadcn/ui + Tremor + TanStack Table adopted. Supabase evaluate-only.</li>
+<li><b>Replit stays live</b> as production fallback until validated cutover. No DNS moves.</li>
+</ul></div>
+
+<div class="foot">
+<span class="tag">Evidence basis</span> — Repo Jburke39/matrix-longevity-platform @ 6a25ebff (pnpm monorepo; 4 apps; Express 5 hub; React 19.1 / Vite 7 / Tailwind 4 / Drizzle). Auth = Clerk on Replit-managed tenant (doc comments say Auth0 in 3 places — code wins). docs/v2/ absence verified by Fable read-only check Jul 17, 2026. Fable's regeneration is the source of truth for this page; prior WP1 multi-file shell preserved in git history.
+</div>
+</div>
 </body>
 </html>
