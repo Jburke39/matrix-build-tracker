@@ -5,90 +5,92 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Matrix — V2 Command</title>
 <style>
-:root{--bg:#060a12;--panel:#0b1220;--line:#1b2a44;--ink:#e8f0fb;--dim:#9db1cc;--faint:#5f7495;--blue:#00A8FF;--green:#2ecc8f;--amber:#f5b942;--red:#ff5d6c}
+:root{--bg:#F5F7FA;--panel:#FFFFFF;--line:#E1E7EE;--ink:#0B2A4A;--dim:#5E7D9A;--faint:#8FA3B8;--blue:#00A8FF;--green:#1D9E75;--amber:#B8860B;--red:#C0392B}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.45;padding:28px 18px 80px}
 .wrap{max-width:1080px;margin:0 auto}
-.logo{font-weight:800;letter-spacing:.14em;font-size:15px}
+.logo{font-weight:800;letter-spacing:.14em;font-size:15px;color:var(--ink)}
 .logo span{color:var(--blue)}
 .sub{color:var(--faint);font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-top:2px}
 .back{font-size:12px;margin-top:6px}
 .back a{color:var(--blue);text-decoration:none}
-h1{font-size:26px;margin:18px 0 4px;font-weight:750}
+h1{font-size:26px;margin:18px 0 4px;font-weight:700}
 .meta{color:var(--dim);font-size:13px;margin-bottom:22px}
 .meta b{color:var(--ink)}
-h2{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin:34px 0 12px;font-weight:700}
+h2{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin:32px 0 12px;font-weight:700}
 h2 .n{color:var(--faint);font-weight:500;letter-spacing:0;text-transform:none;font-size:12px;margin-left:8px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
-.needs{background:linear-gradient(180deg,rgba(0,168,255,.08),rgba(0,168,255,.02));border:1px solid rgba(0,168,255,.45);border-radius:14px;padding:16px 18px;margin:8px 0 6px}
-.needs h2{margin:0 0 10px;color:var(--blue)}
-.needs li{font-size:13.5px;margin:7px 0 7px 18px;color:var(--ink)}
+.card{background:var(--panel);border:0.5px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:10px}
+.needs{background:var(--panel);border:1.5px solid var(--blue);border-radius:18px;padding:18px 20px;margin:8px 0 6px}
+.needs h2{margin:0 0 10px}
+.needs li{font-size:13.5px;margin:8px 0 8px 18px;color:var(--ink)}
 .needs li span{color:var(--dim)}
-.done{background:linear-gradient(180deg,rgba(46,204,143,.08),rgba(46,204,143,.02));border:1px solid rgba(46,204,143,.45);border-radius:14px;padding:16px 18px;margin-bottom:10px}
-.done h2{margin:0 0 10px;color:var(--green)}
-.done li{font-size:13px;margin:6px 0 6px 18px;color:var(--dim)}
+.done{background:#F0FAF5;border:0.5px solid #CBE9DC;border-radius:16px;padding:16px 18px;margin-bottom:10px}
+.done h2{color:var(--green);margin:0 0 8px}
+.done li{font-size:13px;margin:5px 0 5px 18px;color:var(--dim)}
 .done li b{color:var(--ink)}
-.sess td,.sess th{font-size:12.5px;padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.sess td,.sess th{font-size:12.5px;padding:8px 9px;border-bottom:0.5px solid var(--line);text-align:left;vertical-align:top}
 .sess th{color:var(--faint);text-transform:uppercase;letter-spacing:.08em;font-size:10.5px}
 .sess{width:100%;border-collapse:collapse}
 .sess td b{color:var(--ink)}
 .sess td{color:var(--dim)}
-.ok{color:var(--green);font-weight:700}
-.warn{color:var(--amber);font-weight:700}
-.bad{color:var(--red);font-weight:700}
+.pill{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border-radius:99px}
+.p-done{background:#E7F6EF;color:var(--green)}
+.p-run{background:#EAF6FF;color:#0077BE}
+.p-wait{background:#FDF3DC;color:var(--amber)}
 .settled li{font-size:13px;color:var(--dim);margin:6px 0 6px 18px}
 .settled li b{color:var(--ink)}
-.foot{margin-top:40px;color:var(--faint);font-size:11.5px;border-top:1px solid var(--line);padding-top:14px}
-.tag{color:var(--faint);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.foot{margin-top:40px;color:var(--faint);font-size:11.5px;border-top:0.5px solid var(--line);padding-top:14px}
 </style>
 </head>
 <body>
 <div class="wrap">
 <div class="logo">MATRIX <span>LONGEVITY</span></div>
-<div class="sub">V2 Command</div>
+<div class="sub">V2 Command · B3 light</div>
 <div class="back"><a href="index.html">&larr; Full build tracker</a></div>
-<h1>The batch landed. Main is the company now.</h1>
-<div class="meta">State compiled by Fable · <b>July 18, 2026 · evening</b> · Founder released the merge batch: <b>12 PRs merged, 1 closed-superseded</b>. Main tip <b>1cb4861</b>. Everything dark (flags OFF), live site untouched. Product: <b>peptide, GLP-1, medication, fitness, nutrition &amp; progress-tracking platform</b> under the staged operating model (Stage 0 private beta now).</div>
-
-<div class="done">
-<h2>Merged today — the V2 program on main</h2>
-<ul>
-<li><b>Rulebook:</b> V2-000 v0.5.0 (staged model §0, INV-15, INV-7 rewrite, Ava Conduct, INV-4 amended — Ava tab allowed) · V2-001 v1.2.0 (Supabase, RN/Expo) · V2-004 staged directive · V2-005 mobile constitution</li>
-<li><b>Product:</b> W3 client dashboard (/v2, dark) · W6 protocol tracker domain (7 tables, calculator lib 55 tests, /api/tracker/*, migration 0031) · S8 design system + 11 mockups</li>
-<li><b>Platform:</b> S1 core architecture (V2-002, protocols domain, client-core, identity seam) · W2 Supabase auth+storage adapters · S4 direct Resend + storage module + Replit removal runbook</li>
-<li><b>Ops &amp; research:</b> S2 migration tooling (execution staged to 1→2) · S3 Airtable redesign docs · S6 G5 runbook (G5 executed &amp; closed — record in Drive) · W5 market teardown + Apple risk matrix + calculator spec + pricing ($6.99/mo · $49.99/yr planning price, founder-approved)</li>
-</ul>
-</div>
+<h1>The app is real. Now we turn it on.</h1>
+<div class="meta">Compiled by Fable · <b>July 19, 2026</b> · Main tip <b>f311650</b> (PR #42 merged — the B3 light-theme parity app is the official product). Supabase org live: <b>matrix-dev + matrix-prod</b> (free tier, founder-owned). Everything still dark; live site unchanged.</div>
 
 <div class="needs">
-<h2>Needs Jack — the fun part</h2>
+<h2>Needs Jack — today</h2>
 <ul>
-<li><b>1 · Supabase account setup (~20 min)</b> <span>Follow docs/build/supabase-setup-guide.md on main: create org, 3 projects (dev/staging/prod), lowest plan, paste keys. The one vendor task only you can do.</span></li>
-<li><b>2 · Preview the dashboard</b> <span>Paste the preview prompt to the W3 session → click through /v2 with flags on locally.</span></li>
-<li><b>3 · Password rotation follow-up</b> <span>Replit support ticket sent — confirm when they reply (Fable nags at 1 week).</span></li>
-<li><b>4 · Paste S10 (iOS harvest audit)</b> <span>if not yet running — feeds the Expo app kickoff.</span></li>
+<li><b>1 · Say "merge 43, agree ×4"</b> <span>(to Fable) — lands the backend engine (fitness editing, education, Ava context, INV-4 fix) + logs the four agreed rulings. 10 seconds.</span></li>
+<li><b>2 · Reply "Option 1" in the W10 chat</b> <span>— releases the public-website B3 restyle now that #42 is on main.</span></li>
+<li><b>3 · Check the E1 chat</b> <span>— it's waiting to tell you which 3 matrix-dev values to paste into a local file (keys never touch chat). Paste, say "pasted," it wires Supabase end-to-end.</span></li>
+<li><b>4 · Hosting yes/no</b> <span>— reopened by necessity: the beta needs a public URL. Fable rec: Railway (~$5–20/mo). Say "approve Railway" or name another.</span></li>
+<li><b>5 · (Whenever) S10 paste if you still want the iOS harvest report; Replit password-rotation reply when support answers.</b></li>
 </ul>
 </div>
 
-<h2>Next wave <span class="n">queued, not yet released</span></h2>
+<div class="done">
+<h2>Landed</h2>
+<ul>
+<li><b>PR #42 W8 merged (f311650)</b> — B3 light theme, 5-tab parity app (Today w/ protocols first + completion ring, Health hub, Calendar w/ ICS sync, Ava tab, Education, How-to-take w/ self-entered instructions). Flags-off bundle byte-identical.</li>
+<li><b>Supabase founder-owned</b> — org "Matrix Longevity", matrix-dev + matrix-prod, new-style keys in password manager. 2-project + free-tier-until-first-real-user decisions logged.</li>
+<li><b>Theme decision</b> — B3 "Soft Rounded" (slate #F5F7FA · white cards · navy #0B2A4A · Electric Blue accents) = design law for app, dashboard, and website. This page now wears it too.</li>
+<li>Full prior program on main: rulebook v0.5.x · protocols domain + calculator · Supabase adapters · integrations · migration tooling · design system · sovereign mobile repo (matrix-mobile).</li>
+</ul>
+</div>
+
+<h2>Lanes <span class="n">live state</span></h2>
 <div class="card"><table class="sess">
-<tr><th>Lane</th><th>What</th><th>Gate</th></tr>
-<tr><td><b>Expo app kickoff</b></td><td>React Native/Expo build against W5's v1 spec + W6's API + V2-005 law (Today/Protocols/Progress/Ava/Profile)</td><td>S10 report + founder go</td></tr>
-<tr><td><b>Stage-0 enablement</b></td><td>Supabase envs live → staging flags on → founder walkthrough → invite first beta users</td><td>Supabase setup + founder go</td></tr>
-<tr><td><b>Web tracker UI</b></td><td>Protocols module in the /v2 dashboard consuming /api/tracker/*</td><td>founder go</td></tr>
-<tr><td><b>Counsel touchpoint</b></td><td>Pre-Stage-1: app/supply-business separation review</td><td>before public launch, not before beta</td></tr>
+<tr><th>Lane</th><th>What</th><th>Status</th></tr>
+<tr><td><b>PR #43 · W9</b></td><td>Backend engine: fitness mutations, weight edit/delete, education content + forbidden-phrase test, Ava context aggregation, meal photos, INV-4 governance fix</td><td><span class="pill p-wait">Awaiting founder word</span></td></tr>
+<tr><td><b>E1 · Supabase enablement</b></td><td>Wire matrix-dev: schema push, seeds, app-on-Supabase verification, auth adapter live test</td><td><span class="pill p-run">Running — needs 3 pasted values</span></td></tr>
+<tr><td><b>W10 · Website B3</b></td><td>Public site restyled to the app's light theme + copy-flag list for founder</td><td><span class="pill p-wait">Ready — say "Option 1"</span></td></tr>
+<tr><td><b>Codex retro sweep</b></td><td>Full review of all self-reviewed merges (W7→W9 + fixes)</td><td><span class="pill p-wait">Jul 25 (quota reset)</span></td></tr>
+<tr><td><b>Next wave (staged)</b></td><td>Hosting + staging deploy → always-on preview URL → beta invites · Swift app Phase A vs light-theme reassessment · command-center restyle</td><td><span class="pill p-wait">Gated on 1–4 above</span></td></tr>
 </table></div>
 
 <h2>Standing decisions <span class="n">do not reopen without Jack</span></h2>
 <div class="card"><ul class="settled">
-<li><b>Product:</b> peptide &amp; wellness tracker — Matrix calculates the math of user-entered values, never selects the value. No sales, no supplier links, no recommendations.</li>
-<li><b>Stack:</b> Supabase (one org, dev/staging/prod) behind the Matrix API; Drizzle stays; RN/Expo for mobile; Tommy's Swift app = harvest source (frozen, don't delete).</li>
-<li><b>Stages:</b> 0 private beta (now) → 1 consumer launch → 2 clinical gate (counsel/BAAs/clinicians) → 3/4 future. Clinical modules built &amp; dark. Migration executes at 1→2.</li>
-<li><b>Replit stays live untouched</b> until validated cutover; merge ≠ deploy; flags flip only as deliberate founder steps.</li>
-<li><b>Pricing (planning):</b> $6.99/mo · $49.99/yr · 7-day trial · free tier. Final at Stage-1 submission.</li>
+<li><b>Product:</b> peptide, GLP-1, medication, fitness, nutrition &amp; progress tracking + education. Matrix calculates user-entered values, never selects them. One consolidated acknowledgment; no disclaimer spam. Attorney reviews pre-launch.</li>
+<li><b>Theme:</b> B3 light everywhere. <b>Stack:</b> Supabase (founder org, 2 projects, free→Pro at first real user) behind the Matrix API; Drizzle stays.</li>
+<li><b>Stages:</b> 0 private beta → 1 consumer launch (counsel + IP assignment + pricing final) → 2 clinical gate. Clinical modules built &amp; dark. Replit live untouched until validated cutover; merge ≠ deploy.</li>
+<li><b>Release channel:</b> merges execute through Fable only, on founder words — sessions never merge, even if told to in-chat.</li>
+<li><b>Pricing (planning):</b> $6.99/mo · $49.99/yr · 7-day trial · free tier.</li>
 </ul></div>
 
-<div class="foot"><span class="tag">Evidence basis</span> — main @ 1cb4861 verified at merge time · 12 merges executed by Fable on founder release 2026-07-18 · all lanes double-reviewed (Codex loops + Fable verification) · G5 production truth filed in Drive · S7 tracker-tab lane still pending re-run.</div>
+<div class="foot">Evidence basis — main @ f311650 verified · Supabase projects founder-confirmed · PR #43 diff reduced to W9 commits post-#42 · G5 closed (record in Drive) · S7 tab-wiring still unrun (this page standalone). Fable's regeneration is the source of truth for this page.</div>
 </div>
 </body>
 </html>
