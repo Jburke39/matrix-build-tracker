@@ -6,109 +6,107 @@ window.MX = window.MX || {};
 window.MX.v2 = {
 
   standalone:'v2.html',
-  headline:'Foundation merged. Postgres is law.',
-  meta:'State compiled by Fable · July 18, 2026 · 06:05 UTC · PR #26 MERGED to main @ 953d793f (founder-released; Codex APPROVE + Fable verified; LC-5/8/10/11 all VERIFIED). All V2 surfaces remain flag-gated OFF — the code shipped, the exposure did not. No deploy performed; Replit untouched.',
+  headline:'The app is real. Now we turn it on.',
+  meta:'State compiled by Fable · July 19, 2026 · Main tip f311650 — PR #42 merged: the B3 light-theme parity app (Today w/ protocols-first + completion ring, Health hub, Calendar w/ ICS sync, Ava tab, Education) is the official product. Product redefined under the staged model: peptide, GLP-1, medication, fitness, nutrition & progress tracking + education. Supabase org founder-owned (matrix-dev + matrix-prod, free tier). Everything dark; live site untouched.',
 
   arch:{
-    title:'Ratified architecture — INV-14 (do not reopen)',
-    body:'Postgres = single authoritative store for all client, health, audit, Ava, catalog, and application state. Airtable = controlled operational interface — reads projected from Postgres; write-back limited to the founder-approved set (task status · owner · follow-up date · fulfillment stage · refill stage · ops notes · non-clinical workflow status) via Matrix API only: validate → Postgres-first → audit → re-sync. Prohibited Airtable-write domains: clinical, labs, meds/doses, protocol approvals, doctor attribution, safety states, consent, identity, billing, Ava memory, audit history. Founder-owned auth tenant · direct GCS/S3 · direct Resend · external-tick scheduler retained. DB vendor pending Supabase eval; hosting deferred.'
+    title:'Ratified architecture & product law (do not reopen)',
+    body:'Postgres (Supabase, founder org, 2 projects, free→Pro at first real user) = single authoritative store behind the Matrix API; Drizzle stays. Core boundary: Matrix calculates the mathematical result of user-entered values — it never selects the medical value. No sales, no supplier links, no recommendations; one consolidated acknowledgment, no disclaimer spam; attorney review pre-launch. Theme law: B3 light (slate #F5F7FA · white cards · navy #0B2A4A · Electric Blue accents) across app, dashboard, and website. Mobile: Swift harvest in sovereign repo matrix-mobile (D-13 rev.2); RN/Expo revisit = Android at Stage 1. Stages: 0 private beta (now) → 1 consumer launch → 2 clinical gate; clinical modules built & dark; migration executes at the 1→2 boundary. Merges execute through Fable only, on founder words.'
   },
 
   needsJack:[
-    { t:'P0 production-access session (~1 hr) — NOW THE HARD BLOCKER',
-      d:'Replit dashboard walk: secret values, live Postgres topology, storage buckets, scheduled tick, DNS records, Clerk tenant ownership, connector auth. Everything migration-shaped waits on this.' },
-    { t:'Release Phase 2 build',
-      d:'SOT Inversion Core (V2-002 spec + protocols domain + client-core schema). Command ready — vendor-independent, dark, additive.' },
-    { t:'Supabase eval verdict',
-      d:'still out → unlocks D4 vendor picks (DB / auth / storage, one decision).' }
+    { t:'Say "merge 43, agree ×4" (to Fable)',
+      d:'Lands the W9 backend engine (fitness editing, weight edit/delete, education content + forbidden-phrase test, Ava context aggregation, INV-4 governance fix) and logs the four agreed rulings. 10 seconds.' },
+    { t:'Reply "Option 1" in the W10 chat',
+      d:'Releases the public-website B3 restyle now that #42 is on main.' },
+    { t:'E1 chat: paste the 3 matrix-dev values',
+      d:'It names exactly which fields; keys never pass through chat. Then say "pasted" — it wires Supabase end-to-end (schema, seeds, live auth test).' },
+    { t:'Hosting yes/no',
+      d:'Reopened by necessity — the beta needs a public URL. Fable rec: Railway (~$5–20/mo). Say "approve Railway" or name another.' }
   ],
 
   /* pill status vocab: done | run | wait | hold (renderer maps to chip classes) */
   governance:[
-    { t:'V2-000 Product Constitution', pill:{ s:'done', label:'v0.3.4 · on main' },
-      d:'All invariants INV-1–14 in force. LC-1 through LC-11 built; LC-5/8/10/11 VERIFIED (Codex + Fable, 7c07af2). Launch-critical set complete in code, dark.' },
-    { t:'V2-001 Architecture Disposition', pill:{ s:'done', label:'v1.0.0 · on main' },
-      d:'C-sharpened adopted (9.5). 16-row disposition (D1–D16). SOT inversion: client profile + protocols move Airtable → Postgres.' },
-    { t:'PR #26', pill:{ s:'done', label:'MERGED @ 953d793f' },
-      d:'Phases A–D + Phase 1 (WB-1..6): 55+ files, 9k+ lines, migrations 0023–0025, double-reviewed, founder-released 06:05 UTC. Merge ≠ deploy — nothing live changed.' },
-    { t:'V2-002 Engineering Architecture', pill:{ s:'wait', label:'Phase 2 · next' },
-      d:'Postgres-first schema for the 7 workflows + Airtable interface contract + auth-provider-agnostic identity layer. Grounded in V2-000/V2-001.' }
+    { t:'V2-000 Product Constitution', pill:{ s:'done', label:'v0.5.x · on main' },
+      d:'Staged operating model §0 · product definition = protocol tracking + education · INV-7 rewritten (compounds are tracking/education entities; no sales/suppliers/recommendations) · Ava Conduct rules · INV-4 amended (Ava nav tab allowed, label + conduct unchanged; text fix rides PR #43).' },
+    { t:'V2-005 Mobile Product Constitution', pill:{ s:'done', label:'on main' },
+      d:'V1 feature set, 5-tab navigation, calculator spec law, Apple red lines, disclaimer-consolidation policy (one acknowledgment), How-to-take = self-entered instructions (founder ruling).' },
+    { t:'PR #42 · W8 parity app', pill:{ s:'done', label:'MERGED @ f311650' },
+      d:'B3 light theme via swappable tokens + 14 primitives · Today with protocols first + completion ring · Calendar w/ appointments + ICS subscribe/download · triple self-review, flags-off bundle byte-identical.' },
+    { t:'PR #43 · W9 backend engine', pill:{ s:'wait', label:'Awaiting founder word' },
+      d:'Fitness plan mutations, weight edit/delete + audit, education backend (12 categories seeded, forbidden-phrase test), Ava v2 context aggregation + persistence, meal photos, /me enrichment, INV-4 text fix. Diff reduced to W9 commits post-#42.' }
   ],
 
   lanes:[
-    { t:'Phase 2 — SOT Inversion Core', pill:{ s:'wait', label:'Awaiting release' },
-      d:'WB-7 V2-002 spec (schema for 7 workflows, INV-14 interface contract, identity abstraction) · WB-8 protocols domain Postgres-authoritative (catalog + assignments, wired to protocol_approvals) · WB-9 client-core schema + Airtable import mapping spec. Dark, additive, vendor-independent.' },
-    { t:'Claude Code — Supabase eval', pill:{ s:'run', label:'Running' },
-      d:'Adversarial read-only eval. Verdict feeds D4 (DB/auth/storage in one decision).' },
-    { t:'Row-count query (55 tables)', pill:{ s:'hold', label:'Queued — rides G5' },
-      d:'Read-only; sets final migrate/archive/manual lines by real volume.' },
-    { t:'Airtable rebuild + write-back worker', pill:{ s:'hold', label:'Gated on V2-002 + D4' },
-      d:'Interface contract already law (V2-001 §4).' }
+    { t:'E1 — Supabase dev enablement', pill:{ s:'run', label:'Running — needs 3 pasted values' },
+      d:'matrix-dev wiring: new-style key support check, Drizzle schema push, full seeds, app-on-Supabase end-to-end verification, live auth adapter test. Prod off-limits this lane.' },
+    { t:'W10 — Public website B3 restyle', pill:{ s:'wait', label:'Ready — say "Option 1"' },
+      d:'Marketing pages re-skinned to the app theme; copy still selling clinical services gets FLAGGED (not rewritten) into a founder decision list.' },
+    { t:'Codex retroactive sweep', pill:{ s:'wait', label:'Jul 25 (quota reset)' },
+      d:'Full review of all self-reviewed merges (W7 → W9 + fix passes); findings logged in each PR body.' },
+    { t:'Next wave (gated)', pill:{ s:'hold', label:'On today\'s queue' },
+      d:'Hosting + staging deploy → always-on preview URL → beta invites · Swift app Phase A (light-theme reassessment vs matrix-mobile harvest) · command-center B3 restyle · S10 iOS report if still wanted.' }
   ],
 
   /* state vocab: done | blocker | open */
   gates:[
-    { g:'G1 · Identity',        state:'open',
-      d:'Founder-owned auth tenant → per-client re-bind + one-time re-activation login. Gates all scripted loads. Vendor pick pending G4.' },
-    { g:'G2 · Constitution',    state:'done',
-      d:'V2-000 v0.3.4 + V2-001 on main.' },
-    { g:'G3 · Row counts',      state:'open',
-      d:'55-table read-only query — rides the G5 session.' },
-    { g:'G4 · Vendor picks',    state:'open',
-      d:'Supabase eval verdict → D4.' },
-    { g:'G5 · P0 prod access',  state:'blocker',
-      d:'9-item Replit-dashboard inventory. Founder hour required.' },
-    { g:'G6 · Release blockers',state:'done',
-      d:'LC-5/8/10/11 built + VERIFIED + merged.' },
-    { g:'G7 · Cutover',         state:'open',
-      d:'Shadow parity → cohort → all → watched DNS move, founder-released. Replit retired only after.' }
+    { g:'G-A · Backend engine merged', state:'blocker',
+      d:'PR #43 — one founder word. Carries the INV-4 text fix that unblocks the eventual flag flip.' },
+    { g:'G-B · Supabase wired',        state:'open',
+      d:'E1 running; needs the 3 pasted matrix-dev values. Prod project untouched until enablement verified on dev.' },
+    { g:'G-C · Hosting decision',      state:'blocker',
+      d:'Last blocker between the build and a public URL. Founder call today.' },
+    { g:'G-D · Codex retro sweep',     state:'open',
+      d:'Jul 25. Merges this week were triple-self-reviewed; retro pass certifies them.' },
+    { g:'G-E · Stage-0 go-live',       state:'open',
+      d:'Staging deploy → founder walkthrough on a real URL → flag flip (founder-released) → first invited users → prod project to Pro tier.' },
+    { g:'G-F · Stage 1 gate',          state:'open',
+      d:'Counsel review (app/supply separation + Tommy IP assignment) · pricing final ($6.99/$49.99 planning) · App Store submission per W5 risk matrix.' },
+    { g:'G-G · Legacy migration',      state:'open',
+      d:'Executes at the Stage 1→2 boundary by design (25 clients, ~2k rows — an afternoon). Replit live + untouched until validated cutover.' }
   ],
 
-  migrationNote:'one-time load into authoritative V2 Postgres',
+  migrationNote:'re-staged by founder directive — executes at the Stage 1→2 boundary',
   /* tier vocab: mig (scripted migrate) | seed (re-seed) | arc (archive/manual) */
   migration:[
-    { tier:'mig',  t:'MIGRATE — ~18 tables (scripted)',
-      d:'clients, prospects, setup-submissions, lab-*, goals, weight-logs, ava-summaries/memory/escalations, payments, vault-documents, progress-photos, nutrition, protocol-adherence, welcome-calls, mie-safety, audit-log, email-suppression = compliance-migrate, never archive. Gated on G1.' },
-    { tier:'mig',  t:'AIRTABLE EXPORT — one-time authoritative load',
-      d:'Client core profiles, protocols, compounds → transform → V2 Postgres (SOT inversion, V2-001 D1/D2). Live base contents UNPROVEN until G5.' },
-    { tier:'seed', t:'RE-SEED — ~15 tables',
-      d:'Catalogs, pricing from Jack\'s price book, biomarker defs, education.' },
-    { tier:'arc',  t:'ARCHIVE — ~20 tables + files manual',
-      d:'Events/telemetry/MIE plumbing pending G3. Files: manual re-upload (few, confirmed).' }
+    { tier:'mig',  t:'MIGRATE — scripted set (tooling merged, shelved)',
+      d:'S2 inventory + field mapping + idempotent dry-run-default import scripts + reconciliation/rollback plan all on main. Production truth: 25 clients / ~2k rows (G5 record in Drive) — execution is an afternoon when the stage calls for it.' },
+    { tier:'mig',  t:'AIRTABLE + SYSTEM 3 (Tommy\'s Supabase) — one-time loads',
+      d:'Airtable export per V2-001; System 3 frozen (don\'t delete), harvested then wound down — holds real client PHI, security follow-ups logged in the S10 audit.' },
+    { tier:'seed', t:'RE-SEED — live now on dev',
+      d:'Catalogs, education (12 categories, terminology-only), tracker compound library, demo data — all seeded by merged code; E1 pushes them to matrix-dev.' },
+    { tier:'arc',  t:'ARCHIVE — events/telemetry/MIE plumbing',
+      d:'Unchanged; rides the migration execution window.' }
   ],
 
-  /* Sessions board — seeded from live GitHub state (gh pr list) of
-     Jburke39/matrix-longevity-platform PRs #26–#36 + Jburke39/matrix-ios PR #1,
-     verified 2026-07-18. Status vocab: running · PR up · review-clean · merged · failed. */
-  sessionsNote:'live GitHub state · verified 2026-07-18',
+  /* Sessions board — verified against live GitHub state 2026-07-19.
+     Status vocab: running · PR up · review-clean · merged · failed. */
+  sessionsNote:'live GitHub state · verified 2026-07-19',
   sessions:[
-    { id:'OB',  lane:'Onboarding V2 + Replit exit (Phases A–D checkpoint)', branch:'preview/onboarding-v2-replit-exit', pr:'#26', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/26', status:'merged',       detail:'merged to main @ 953d793f, founder-released' },
-    { id:'S1',  lane:'Core architecture — V2-002 + protocols domain',       branch:'feature/v2-core-architecture',      pr:'#32', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/32', status:'PR up',        detail:'draft · 3 Codex cycles done, dark' },
-    { id:'S2',  lane:'Migration audit — data inventory + reconciliation',   branch:'feature/v2-migration-audit',        pr:'#30', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/30', status:'PR up',        detail:'draft · field-mapping staged on S1' },
-    { id:'S3',  lane:'Airtable redesign (docs-only)',                       branch:'feature/v2-airtable-redesign',      pr:'#27', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/27', status:'PR up',        detail:'draft · 24 P2 fixed, cycle cap reached' },
-    { id:'S4',  lane:'Integration replacement — Resend + storage adapters', branch:'feature/v2-integration-replacement',pr:'#31', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/31', status:'PR up',        detail:'draft · 14 findings fixed, cap reached' },
-    { id:'S5',  lane:'Vendor eval — V2-003 Supabase verdict',               branch:'feature/v2-vendor-eval',            pr:'#29', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/29', status:'review-clean', detail:'Codex-clean draft' },
-    { id:'S6',  lane:'G5 founder self-serve audit runbook',                 branch:'feature/v2-g5-runbook',             pr:'#28', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/28', status:'review-clean', detail:'Codex-clean draft' },
-    { id:'S7',  lane:'Tracker V2 tab + sessions board (this repo)',         branch:'main',                              pr:'—',   prUrl:'',                                                              status:'merged',       detail:'direct-to-main, additive per e540f85' },
-    { id:'S8',  lane:'V2 design mockups',                                   branch:'feature/v2-design-mockups',         pr:'#33', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/33', status:'review-clean', detail:'round 2 clean @ a3c4266' },
-    { id:'W1',  lane:'Staged operating model — governance amendment',       branch:'feature/v2-staged-model',           pr:'#34', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/34', status:'PR up',        detail:'draft · 3 cycles, 15 P2 fixed' },
-    { id:'W2',  lane:'Supabase foundation — auth + storage adapters',       branch:'feature/v2-supabase-foundation',    pr:'#35', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/35', status:'review-clean', detail:'cycle 2 clean @ b2b53b1' },
-    { id:'W3',  lane:'Stage-0 client experience — flag-gated dashboard',    branch:'feature/v2-stage0-experience',      pr:'#36', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/36', status:'PR up',        detail:'draft · no P1s, C3 fix at cap' },
-    { id:'S10', lane:'iOS harvest + API-swap plan (matrix-ios)',            branch:'audit/harvest-api-swap-plan',       pr:'ios #1', prUrl:'https://github.com/Jburke39/matrix-ios/pull/1',              status:'PR up',        detail:'docs-only draft, awaiting founder' }
+    { id:'OB',  lane:'Onboarding V2 Phases A–D + Constitution core',        branch:'preview/onboarding-v2-replit-exit', pr:'#26', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/26', status:'merged', detail:'@ 953d793f' },
+    { id:'S1–S8 / W1–W6', lane:'Founder batch of 2026-07-18 (12 PRs + 1 closed-superseded)', branch:'—', pr:'#27–#39', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pulls?q=is%3Apr', status:'merged', detail:'rulebook, dashboard, tracker domain, Supabase adapters, integrations, migration tooling, Airtable docs, mockups; #29 closed as superseded' },
+    { id:'M1',  lane:'D-13 flip — sovereign Swift repo + governance',        branch:'feature/v2-d13-swift-harvest',      pr:'#40', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/40', status:'merged', detail:'matrix-mobile created, storefront deleted, System 3 purged' },
+    { id:'W7',  lane:'Protocols module + calculator web UI',                 branch:'feature/v2-protocols-ui',           pr:'#41', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/41', status:'merged', detail:'@ 5a474bd · triple self-review' },
+    { id:'W8',  lane:'Mobile parity reset — B3 light theme',                 branch:'feat/v2-mobile-parity-reset',       pr:'#42', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/42', status:'merged', detail:'@ f311650 · founder-released Jul 19' },
+    { id:'W9',  lane:'Backend gap-fill engine',                              branch:'feature/v2-backend-gaps',           pr:'#43', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/43', status:'PR up',  detail:'awaiting founder word: "merge 43, agree ×4"' },
+    { id:'E1',  lane:'Supabase dev enablement',                              branch:'local worktree',                    pr:'—',   prUrl:'', status:'running', detail:'waiting on 3 founder-pasted values' },
+    { id:'W10', lane:'Public website B3 restyle',                            branch:'feature/v2-site-b3-theme',          pr:'—',   prUrl:'', status:'running', detail:'correctly stopped pre-#42; say "Option 1" to release' },
+    { id:'S10', lane:'iOS harvest + API-swap audit (matrix-ios)',            branch:'audit/harvest-api-swap-plan',       pr:'ios #1', prUrl:'https://github.com/Jburke39/matrix-ios/pull/1', status:'PR up', detail:'informed D-13; System 3 + storefront findings absorbed' },
+    { id:'—',   lane:'Replit DB password rotation',                          branch:'—',                                 pr:'—',   prUrl:'', status:'running', detail:'support ticket sent Jul 18; Fable nags at 1 week' }
   ],
 
   settledNote:'do not reopen without Jack',
   settled:[
-    { b:'INV-14 architecture', d:'Postgres single SOT; Airtable controlled interface with governed write-back (ratified 2026-07-18).' },
-    { b:'D2/D-3/D-4/D-5 resolved', d:'Ava material-conversation definition; fitness & nutrition launch-critical (LC-11); $199 CTA hide approved (execution rides G5 finding); V2 launch = onboarding-only go-live.' },
-    { b:'Greenfield V2', d:'legacy schema + live Airtable = import sources, not design inputs.' },
-    { b:'§3.4 founder protocol approval', d:'Doctor Prescribed / Founder Reviewed, full audit; never represented as licensure.' },
-    { b:'Hybrid migration', d:'scripted / re-seed / Ava selective / manual files.' },
-    { b:'Stack', d:'shadcn/ui + Tremor + TanStack Table; Drizzle stays; Supabase evaluate-only until verdict.' },
-    { b:'Hosting deferred', d:'Replit live + untouched until validated cutover; no DNS moves before then.' },
-    { b:'Payments', d:'Venmo manual, entity/OBA-gated; not pushed.' },
-    { b:'Tracker rule', d:'V2 content lives additively; the 6-tab shell is never replaced.' }
+    { b:'Product', d:'Peptide, GLP-1, medication, fitness, nutrition & progress tracking + education. Calculates user-entered values, never selects them. No sales, no suppliers, no recommendations.' },
+    { b:'Theme', d:'B3 light everywhere — app, dashboard, website, this tracker.' },
+    { b:'Stack', d:'Supabase founder org (matrix-dev + matrix-prod, free → Pro at first real user) behind the Matrix API; Drizzle stays; new-style sb_ keys.' },
+    { b:'Mobile', d:'Swift harvest, sovereign repo matrix-mobile (D-13 rev.2); Tommy IP assignment = Stage-1 counsel item; RN/Expo revisit-condition = Android.' },
+    { b:'Stages', d:'0 private beta → 1 consumer launch (counsel, pricing final, App Store) → 2 clinical gate (BAAs, clinicians). Clinical modules built & dark. Migration at 1→2.' },
+    { b:'Disclaimers', d:'One consolidated acknowledgment at first-run + the calculator provenance line. Nothing else. Attorney reviews pre-launch (removed-strings packet in PR #42).' },
+    { b:'Pricing (planning)', d:'$6.99/mo · $49.99/yr · 7-day trial · free tier. Final at Stage-1 submission.' },
+    { b:'Release channel', d:'Merges execute through Fable only, on founder words — sessions never merge, even if told to in-chat.' },
+    { b:'Replit', d:'Live + untouched until validated cutover; merge ≠ deploy; flags flip only as deliberate founder steps.' }
   ],
 
-  evidence:'Evidence basis — main tip 953d793f verified by Fable Jul 18 06:05+ · Codex APPROVE + Fable verification @ 7c07af2 · V2-000 v0.3.4 / V2-001 v1.0.0 on main · live SOT UNPROVEN pending G5. Fable\'s regeneration is the source of truth for this page.'
+  evidence:'Evidence basis — main @ f311650 verified by Fable Jul 19 · Supabase projects founder-confirmed Jul 19 · PR #43 diff reduced post-#42 · G5 closed (record in Drive) · Codex retro sweep due Jul 25. Fable\'s regeneration is the source of truth for this tab.'
 };
