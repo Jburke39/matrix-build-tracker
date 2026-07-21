@@ -1,113 +1,93 @@
-/* window.MX.v2 — V2 Migration Command tab (7th tab, wired additively per the
-   shell rule ratified at e540f85). CONTENT OWNER: Fable. Standalone fallback:
-   v2.html (may lag this tab). */
+/* window.MX.v2 — V2 Migration Command tab. CONTENT OWNER: Fable. */
 window.MX = window.MX || {};
 window.MX.v2 = {
 
   standalone:'v2.html',
-  headline:'85% to Stage-0 launch. The rest is measured in hours.',
-  meta:'Compiled by Fable · July 19, 2026 · Main @ 28d6d65 — the COMPLETE product is merged (B3 site + dashboard + parity app + backend engine + Supabase wiring). App verified live on founder-owned Supabase (matrix-dev, 86 tables, real auth 9/9). Two lanes running now: H1 Railway staging deploy (the phone URL) and W11 /ava rebuild. Completion to STAGE-0 BETA LAUNCH: ~85% — remaining work ≈ 10–16 machine-hours + ≈ 1 founder-hour across the checklist below. Stage-1 (public App Store) ≈ 60% overall.',
+  headline:'Both environments are live. 93% to Stage-0 go-live.',
+  meta:'Compiled by Fable · July 21, 2026 · Main @ 30e0604 — ZERO open PRs; everything built this week is merged and certified. PRODUCTION EXISTS: app-production-6f517.up.railway.app (96 tables, catalogs + supplements + education seeded, real Supabase auth, invite-gated, client-free, founder as sole operator). STAGING: app-production-5419.up.railway.app (client portal + /command-v2 cockpit + 18-member demo roster). Remaining to go-live ≈ 6–9 machine-hours + ~35 founder-minutes. Overnight program running: E2E test suite + production hardening.',
 
   arch:{
     title:'Ratified architecture & product law (do not reopen)',
-    body:'Supabase founder org (matrix-dev live + verified · matrix-prod untouched, free→Pro at first real user) = single store behind the Matrix API; Drizzle stays. Hosting = Railway (founder-approved Jul 19). Boundary: Matrix calculates user-entered values, never selects them; no sales/suppliers/recommendations; one consolidated acknowledgment. Theme = B3 light everywhere. Mobile = Swift harvest (matrix-mobile). Stages: 0 private beta → 1 consumer/App Store → 2 clinical gate (clinical modules built & dark). Merges via Fable only, on founder words.'
+    body:'Supabase founder org (matrix-dev + matrix-prod) behind the Matrix API; Drizzle; Railway hosting (2 services). Boundary: Matrix calculates user-entered values, never selects them; no sales, suppliers, or compound recommendations; one consolidated acknowledgment. B3 light theme everywhere. Mobile = Swift harvest (matrix-mobile). Stages: 0 private beta (imminent) → 1 consumer launch → 2 clinical gate. Clinical modules built + dark. Legacy Replit product untouched and still serving current clients until a deliberate cutover; legacy client migration executes at the Stage 1→2 boundary, NOT before go-live. Merges execute through Fable only, on founder words.'
   },
 
   needsJack:[
-    { t:'When H1 reports: open the staging URL on your phone (~30 min)',
-      d:'Sign up, log a dose, run the calculator, click every tab. Dump reactions to Fable — they become the punch-list lane. This is the founder gate before anything real.' },
-    { t:'W11 review when it reports (~15 min)',
-      d:'/ava rebuild with your photos + $199 funnel removal + Ask Ava rescope. Screenshot review → merge word.' },
-    { t:'Deferred, tripwired: matrix-dev password rotation (5 min)',
-      d:'Founder-deferred Jul 19. HARD GATE before any real person\'s data or credential reuse — Fable raises it exactly once more, at beta-invite time.' },
-    { t:'At invite time: Supabase prod → Pro (2 min) + Railway card if prompted (1 min)',
-      d:'$25/mo when the first real user exists — per the ratified free-until-real-user rule.' }
+    { t:'GO-LIVE STEP 1 — Rotate credentials (~10 min)',
+      d:'Both Supabase projects (dev + prod): DB password + keys. Runbook being written tonight by the overnight program; execute it in the morning. HARD GATE — real client emails already exist in matrix-dev and prod credentials passed through a session harness.' },
+    { t:'GO-LIVE STEP 2 — Founder acceptance walkthrough on PROD (~20 min)',
+      d:'Sign up on the prod URL with your invite code, walk every surface: Today, Protocol + syringe + compound sheet, Fitness, Ava, Health (Blood Results, bio-age, education A-Z), then /command-v2 as operator. Anything that bothers you becomes the final punch list.' },
+    { t:'GO-LIVE STEP 3 — Wire prod OpenAI credentials (~5 min)',
+      d:'Ava + education drafting run on stubs in prod today. Paste real keys locally when the session asks; Ava is a headline feature — beta should not launch with her degraded.' },
+    { t:'GO-LIVE STEP 4 — Send the first invite (LAUNCH)',
+      d:'Prod URL + invite code to your first friends-and-family testers. This is Stage-0 launch. Upgrade matrix-prod to Supabase Pro ($25/mo) the same day the first real user joins.' }
   ],
 
-  /* pill status vocab: done | run | wait | hold */
   governance:[
-    { t:'Everything through #45 is MERGED', pill:{ s:'done', label:'main @ 28d6d65' },
-      d:'#42 parity app (B3) · #43 backend engine + four rulings logged · #44 public site B3 · #45 new-style Supabase keys. Rulebook v0.5.x + V2-005 current; INV-4 text fixed. Zero open PRs except W11 (building).' },
-    { t:'Supabase enablement (E1)', pill:{ s:'done', label:'Verified live Jul 19' },
-      d:'matrix-dev: 86 tables + all seeds, app reads/writes for real, full auth lifecycle 9/9, new keys everywhere. Lane retired with honors.' },
-    { t:'Hosting decision', pill:{ s:'done', label:'Railway — founder-approved' },
-      d:'H1 deploying staging now on trial tier; card only when Railway asks.' },
-    { t:'Codex retroactive certification', pill:{ s:'wait', label:'Jul 25 · ~2–4 hrs machine' },
-      d:'Full review of every self-reviewed merge (W7→W11 + E1). Recommended complete BEFORE first real invites — it is the second-reviewer certification of the beta build.' }
+    { t:'Everything merged + certified', pill:{ s:'done', label:'main @ 30e0604 · 0 open PRs' },
+      d:'#52 Codex certification (60 findings, 51 fixed + 19 more over 3 re-verify rounds) · #53 Phase A · #54 education · #55 lockfile · #56 W14 health core · #57 CC2 operator identity · #58 E2 prod. Independent Codex review passed on every lane except CC2 (transcript owed, findings closed).' },
+    { t:'Production environment', pill:{ s:'done', label:'LIVE · invite-gated' },
+      d:'app-production-6f517.up.railway.app — 96 tables, 18 compounds + 18 supplements + 28 treatment topics + protocol library, invite flow verified (403/403/201), client-free, destructive seeds hard-blocked.' },
+    { t:'Staging + demo roster', pill:{ s:'done', label:'LIVE · 18 members' },
+      d:'app-production-5419.up.railway.app — client portal + /command-v2 operator cockpit; 8 seeded clients w/ varied protocols, 103 dose logs, mid-depletion vials, weight/meal/appointment/education history, one bio-age-ready panel.' },
+    { t:'Overnight program (Jul 20→21)', pill:{ s:'run', label:'Running now' },
+      d:'Phase 1 credential-rotation runbook + prod readiness gap list + prod E2E verify · Phase 2 full E2E suite (member + operator journeys) · Phase 3 fix everything found, Codex loop to APPROVE.' }
   ],
 
   lanes:[
-    { t:'H1 — Railway staging deploy', pill:{ s:'run', label:'Running · ~1–2 hrs' },
-      d:'Always-on public URL: portal + API, flags ON, against matrix-dev demo data. Ends with the URL + 3 things to tap on your phone.' },
-    { t:'W11 — /ava rebuild + copy rulings', pill:{ s:'run', label:'Running · ~2–4 hrs' },
-      d:'$199 funnel removed via PUBLIC_CLAIM_KEYS kill-switch · Ask Ava rescoped to tracking/education + upload-your-own-bloodwork · /ava rebuilt from original photography with live text/buttons.' },
-    { t:'Punch-list lane (after your phone walkthrough)', pill:{ s:'hold', label:'Queued · ~2–6 hrs' },
-      d:'Your reactions from the staging URL become one fix lane. Size depends entirely on your taste pass.' },
-    { t:'E2 — Production enablement', pill:{ s:'hold', label:'Queued · ~1–2 hrs + 10 min founder' },
-      d:'matrix-prod schema + env wiring, Railway production service, real signup flow, invite gating, consolidated acknowledgment verified live. Gated on: H1 verified + password rotation + Pro upgrade.' }
+    { t:'Nutrition, Supplements & Partner Commerce (Codex-run)', pill:{ s:'run', label:'Founder-directed · outside Claude Code' },
+      d:'Affiliate-commerce build issued to Codex Jul 21: vendor-agnostic partner architecture, AFFILIATE_REDIRECT only, 1st Phorm (premium) + Nutricost (value) as placeholders, meal plans + grocery lists + substitutions + dining-out, supplement protocols/adherence/reorder, admin partner+product management, analytics, private-label readiness. FABLE FLAGS TWO ITEMS: (1) merge conflicts near-certain with the overnight hardening work — a rebase pass will be required; (2) it introduces product RECOMMENDATION, which needs a deliberate INV-7 amendment covering nutrition/supplement commerce rather than silently contradicting the constitution. Founder ruling required before merge.' },
+    { t:'Punch list from prod walkthrough', pill:{ s:'wait', label:'Queued · sized after your walkthrough' },
+      d:'Your Step-2 reactions become one fix lane. Historically 2–6 hrs.' },
+    { t:'MIE Intelligence Loop (post-beta)', pill:{ s:'hold', label:'After go-live' },
+      d:'Bloodwork ingest → insight engine (the Matrix Report engine) → communications log (in-app/email/push) → Ava proactive follow-ups → command-center client timeline. Specs already written (MIE doc set); builds against real beta behavior.' },
+    { t:'Mobile app — Swift Phase A', pill:{ s:'hold', label:'Stage 1 track · 2–4 wks' },
+      d:'matrix-mobile repository swap onto the Matrix API per the S10 plan, then TestFlight. Gated on beta feedback + Tommy IP assignment (counsel item).' }
   ],
 
-  /* THE LAUNCH CHECKLIST — state vocab: done | blocker | open */
   gates:[
-    { g:'L1 · Product code complete', state:'done',
-      d:'DONE — site, dashboard, app parity, protocols + calculator, backend engine, education, Ava context: all merged @ 28d6d65.' },
-    { g:'L2 · Own backend live', state:'done',
-      d:'DONE — Supabase matrix-dev verified end-to-end (E1).' },
-    { g:'L3 · Staging URL', state:'blocker',
-      d:'H1 running · ~1–2 hrs machine. Output: the phone link.' },
-    { g:'L4 · Founder walkthrough + punch list', state:'open',
-      d:'~30 min founder + ~2–6 hrs machine fixes. Taste gate.' },
-    { g:'L5 · W11 merge (/ava + copy)', state:'open',
-      d:'~2–4 hrs machine + 15 min founder review + merge word.' },
-    { g:'L6 · Codex certification sweep', state:'open',
-      d:'Jul 25 · ~2–4 hrs machine · fix pass if findings. Before invites.' },
-    { g:'L7 · Password rotation + prod hygiene', state:'open',
-      d:'5 min founder (deferred, tripwired) + Supabase Pro upgrade 2 min.' },
-    { g:'L8 · E2 production enablement', state:'open',
-      d:'~1–2 hrs machine + 10 min founder (prod keys paste, local only).' },
-    { g:'L9 · STAGE-0 LAUNCH: flag flip + first invites', state:'open',
-      d:'5 min founder-released flip on prod · then invite friends & family. THIS IS LAUNCH.' },
-    { g:'L10 · Stage-1 track (post-beta, weeks not hours)', state:'open',
-      d:'Beta feedback cycles (~2–4 wks) · Swift app Phase A on matrix-mobile (~2–4 wks with Claude Code; S10 plan) · counsel review + Tommy IP assignment (external, ~1–2 wks calendar) · pricing final · App Store submission per W5 risk matrix (~1 wk incl. review).' }
+    { g:'L1 · Product code complete',        state:'done',    d:'DONE — site, portal, protocols+calculator, education library, fitness, labs, bio-age, cockpit, Airtable interface. All merged.' },
+    { g:'L2 · Own backend live',             state:'done',    d:'DONE — Supabase dev + prod, both verified end-to-end.' },
+    { g:'L3 · Hosting + staging URL',        state:'done',    d:'DONE — Railway; staging serving portal + cockpit.' },
+    { g:'L4 · Independent certification',    state:'done',    d:'DONE — Codex swept all nine merges + per-lane loops since.' },
+    { g:'L5 · Production environment',       state:'done',    d:'DONE — invite-gated, client-free, seeded, verified.' },
+    { g:'L6 · E2E proof + hardening',        state:'open',    d:'Overnight program running — E2E suite across member + operator journeys, defect fixes, prod readiness gap list. ~4–6 hrs machine.' },
+    { g:'L7 · Credential rotation',          state:'blocker', d:'FOUNDER · ~10 min · both Supabase projects. Runbook ready in the morning. Hard gate before any real user.' },
+    { g:'L8 · Prod AI credentials',          state:'open',    d:'FOUNDER · ~5 min · Ava is stubbed on prod today.' },
+    { g:'L9 · Founder acceptance walkthrough', state:'blocker', d:'FOUNDER · ~20 min on the PROD url · produces the final punch list (~2–6 hrs machine to clear).' },
+    { g:'L10 · GO-LIVE: first invites',      state:'open',    d:'FOUNDER · minutes · send prod URL + invite code to friends & family. Upgrade matrix-prod to Pro the same day. THIS IS STAGE-0 LAUNCH.' },
+    { g:'L11 · Stage-1 track (post-beta)',   state:'open',    d:'Beta feedback cycles (2–4 wks) · Swift app Phase A + TestFlight (2–4 wks) · counsel review + Tommy IP assignment (1–2 wks calendar) · pricing final · App Store submission (~1 wk). Legacy client migration + Replit retirement ride this window.' }
   ],
 
-  migrationNote:'legacy migration executes at the Stage 1→2 boundary — not on the launch path above',
+  migrationNote:'legacy clients stay on the Replit product until the Stage 1→2 cutover — NOT a go-live blocker',
   migration:[
-    { tier:'mig',  t:'Legacy import (25 clients, ~2k rows) · ~3–4 hrs when called',
-      d:'Tooling merged + shelved (S2): inventory, mapping, idempotent dry-run scripts, reconciliation/rollback. Executes at Stage 1→2 with identity re-bind.' },
-    { tier:'mig',  t:'Airtable + System 3 one-time loads · ~2–3 hrs when called',
-      d:'Airtable export per V2-001; Tommy\'s Supabase frozen (real PHI — security follow-ups logged), harvested then wound down.' },
-    { tier:'seed', t:'Re-seeds · DONE on dev, ~15 min on prod',
-      d:'Catalogs, 12-category education, compound library — all seed on server boot.' },
-    { tier:'arc',  t:'Replit retirement · ~1 hr, after validated cutover only',
-      d:'Live legacy site stays untouched until the migration window; then DNS move (watched, founder-released) and binding teardown per the S4 runbook.' }
+    { tier:'mig', t:'Legacy client import (25 clients, ~2k rows) · ~3–4 hrs when called',
+      d:'Tooling merged + shelved. Requires identity re-bind (every client re-activates their login) — a coordinated, communicated event, deliberately after the beta proves the product.' },
+    { tier:'mig', t:'Airtable V2 base · bootstrap + sync when called',
+      d:'A1 interface merged: new EMPTY base bootstraps from config, projection sync fills it from Postgres, 7-field governed write-back. The current Airtable keeps running the current website untouched.' },
+    { tier:'seed', t:'Catalog/education seeds · DONE on both environments', d:'Compounds, supplements, education, protocol stacks, injection sites — all seeded and boot-self-healing.' },
+    { tier:'arc', t:'Replit retirement · after validated cutover only', d:'Legacy product stays live and untouched until clients are migrated and DNS moves as a watched, founder-released step.' }
   ],
 
-  sessionsNote:'live state · verified 2026-07-19 afternoon',
+  sessionsNote:'live state · verified 2026-07-21',
   sessions:[
-    { id:'#26–#41', lane:'Foundation-through-Protocols era (all founder-released)', branch:'—', pr:'#26–#41', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pulls?q=is%3Apr', status:'merged', detail:'rulebook, dashboard, tracker domain, adapters, integrations, migration tooling, mockups, calculator UI' },
-    { id:'W8',  lane:'Parity app — B3 light theme',            branch:'feat/v2-mobile-parity-reset',   pr:'#42', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/42', status:'merged', detail:'@ f311650' },
-    { id:'W9',  lane:'Backend engine + INV-4 fix',             branch:'feature/v2-backend-gaps',       pr:'#43', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/43', status:'merged', detail:'@ 56a7c00 · four rulings logged on PR' },
-    { id:'W10', lane:'Public site B3 restyle',                 branch:'feature/v2-site-b3-theme',      pr:'#44', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/44', status:'merged', detail:'@ 574046a · copy flags → W11' },
-    { id:'E1',  lane:'Supabase dev enablement + key support',  branch:'feature/e1-supabase-dev-enablement', pr:'#45', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pull/45', status:'merged', detail:'@ 28d6d65 · lane retired' },
-    { id:'H1',  lane:'Railway staging deploy — THE URL',       branch:'worktree',                      pr:'—',   prUrl:'', status:'running', detail:'~1–2 hrs · trial tier, card only if asked' },
-    { id:'W11', lane:'/ava rebuild + copy rulings',            branch:'feature/v2-site-copy-ava',      pr:'—',   prUrl:'', status:'running', detail:'~2–4 hrs · Ava 2.0 originals imported' },
-    { id:'S10', lane:'iOS harvest audit (matrix-ios)',         branch:'audit/harvest-api-swap-plan',   pr:'ios #1', prUrl:'https://github.com/Jburke39/matrix-ios/pull/1', status:'PR up', detail:'informs Stage-1 Swift Phase A' },
-    { id:'—',   lane:'Replit DB password rotation (support ticket)', branch:'—', pr:'—', prUrl:'', status:'running', detail:'sent Jul 18 · Fable nags at 1 wk' },
-    { id:'—',   lane:'matrix-dev password rotation',           branch:'—', pr:'—', prUrl:'', status:'running', detail:'founder-deferred · hard gate before real data (L7)' }
+    { id:'#52–#58', lane:'Certification, Phase A, education, W14, CC2, E2 (all founder-released)', branch:'—', pr:'#52–#58', prUrl:'https://github.com/Jburke39/matrix-longevity-platform/pulls?q=is%3Apr', status:'merged', detail:'main @ 30e0604' },
+    { id:'ON-3', lane:'Overnight program: hardening + E2E suite + fixes', branch:'multiple', pr:'—', prUrl:'', status:'running', detail:'Codex loop to APPROVE; PRs land by morning' },
+    { id:'NC-1', lane:'Nutrition/supplements/partner commerce (Codex, founder-run)', branch:'external', pr:'—', prUrl:'', status:'running', detail:'INV-7 amendment + rebase required before merge' },
+    { id:'—', lane:'matrix-dev + matrix-prod credential rotation', branch:'—', pr:'—', prUrl:'', status:'running', detail:'runbook tonight; founder executes ~10 min · HARD GATE' },
+    { id:'—', lane:'Replit legacy DB password rotation (support ticket)', branch:'—', pr:'—', prUrl:'', status:'running', detail:'sent Jul 18 — chase if unanswered' }
   ],
 
   settledNote:'do not reopen without Jack',
   settled:[
-    { b:'Product', d:'Peptide, GLP-1, medication, fitness, nutrition & progress tracking + education. Calculates user-entered values, never selects them. No sales, suppliers, or recommendations.' },
-    { b:'Theme', d:'B3 light everywhere.' },
-    { b:'Stack', d:'Supabase org (dev verified live; prod at Pro from first real user) behind the Matrix API; Drizzle; Railway hosting.' },
-    { b:'Mobile', d:'Swift harvest (matrix-mobile, D-13 rev.2); Tommy IP assignment = Stage-1 counsel item; RN/Expo revisit = Android.' },
-    { b:'Stages', d:'0 private beta → 1 consumer launch → 2 clinical gate; clinical modules dark; migration at 1→2; Replit untouched until cutover.' },
-    { b:'Disclaimers', d:'One acknowledgment + the calculator provenance line; attorney pre-launch (packet in #42/#44).' },
-    { b:'Pricing (planning)', d:'$6.99/mo · $49.99/yr · 7-day trial · free tier.' },
-    { b:'Release channel', d:'Merges via Fable only, on founder words — embedded in every lane prompt from W11 on.' }
+    { b:'Product', d:'Peptide, GLP-1, medication, fitness, nutrition & progress tracking + education. Calculates user-entered values, never selects them.' },
+    { b:'Theme', d:'B3 light everywhere — site, portal, cockpit, tracker.' },
+    { b:'Stack', d:'Supabase (dev + prod, free → Pro at first real user) · Railway (staging + prod services) · Drizzle · Matrix API boundary.' },
+    { b:'Command center', d:'Standalone cockpit at /command-v2; legacy operator OS untouched until cutover; legacy Airtable builder retires then; Price Book preserved; Rythm dropped as a queue, kept as a Stage-2 lab-vendor option.' },
+    { b:'Mobile', d:'Swift harvest in matrix-mobile (D-13 rev.2); Tommy IP assignment = Stage-1 counsel item.' },
+    { b:'Disclaimers', d:'One consolidated acknowledgment + the calculator provenance line; attorney reviews pre-launch (removed-strings packet in #42/#44).' },
+    { b:'Pricing (planning)', d:'$6.99/mo · $49.99/yr · 7-day trial · free tier. Final at Stage-1 submission.' },
+    { b:'Release channel', d:'Merges execute through Fable only, on founder words — sessions never merge, even if instructed in-chat.' }
   ],
 
-  evidence:'Evidence — main @ 28d6d65 verified · E1 live-verification report Jul 19 · #43 pre-merge sequence noted on PR record · completion % = Fable estimate from the L1–L10 checklist (code-complete gates done; remaining = deploy/review/cert/enable). Fable\'s regeneration is the source of truth for this tab.'
+  evidence:'Evidence — main @ 30e0604 and zero open PRs verified by Fable Jul 21 · prod + staging URLs live-verified by their build sessions · completion % = Fable estimate across L1–L10 (five gates done; remainder = overnight hardening + ~35 founder-minutes + a punch list). Fable\'s regeneration is the source of truth for this tab.'
 };
