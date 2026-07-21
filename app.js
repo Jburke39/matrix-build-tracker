@@ -103,7 +103,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ window.c
 
 /* ============================ tabs ============================ */
 var currentTab = 'build';
-var tabIds = ['build','infra','org','ava','sales','marketing','v2'];
+var tabIds = ['build','infra','org','ava','sales','marketing','v2','experience'];
 function activateTab(name){
   currentTab = name;
   document.querySelectorAll('.tab').forEach(function(t){
@@ -530,6 +530,66 @@ function renderV2(){
   m.innerHTML=h;
 }
 
+/* ============================ CLIENT EXPERIENCE tab (additive, 8th) ============================
+   Summary surface for the experience blueprint; the full multi-tab document is the
+   standalone experience.html. Static — no persistence, no status cycling.
+   status vocab: have→confirmed(green) part→jack(amber) none→dnp(red) dark→provisional(blue) idea→internal(violet) */
+var EXPCHIP = { have:'confirmed', part:'jack', none:'dnp', dark:'provisional', idea:'internal' };
+var EXPLBL  = { have:'HANDLED', part:'PARTIAL', none:'ABSENT', dark:'BUILT · DARK', idea:'NEW' };
+function expPill(p){ return p ? '<span class="chip '+(EXPCHIP[p.s]||'')+'">'+esc(p.label)+'</span>' : ''; }
+function expCards(items){
+  return '<div class="grid g2">'+(items||[]).map(function(c){
+    return '<div class="card"><h3><span>'+esc(c.t)+'</span>'+expPill(c.pill)+'</h3><div style="color:var(--dim);font-size:12.5px">'+esc(c.d)+'</div></div>';
+  }).join('')+'</div>';
+}
+function renderExperience(){
+  var X=MX.experience||{}; var m=el('expmount'); if(!m) return;
+  var meta=el('expmeta'); if(meta) meta.innerHTML='<b>'+esc(X.headline||'')+'</b> · '+esc(X.meta||'');
+  var h='';
+  if(X.thesis){ h+='<div class="v2arch"><h3>'+esc(X.thesis.title)+'</h3><p>'+esc(X.thesis.body)+'</p></div>'; }
+
+  if(X.scorecard){
+    h+='<div class="section"><h2>Where it stands — honest read</h2><div class="grid g2">'+
+      X.scorecard.map(function(s){
+        return '<div class="card"><h3><span>'+esc(s.t)+'</span> <span class="chip '+(EXPCHIP[s.s]||'')+'">'+esc(s.label)+'</span></h3>'+
+          '<div style="color:var(--dim);font-size:12.5px">'+esc(s.d)+'</div></div>';
+      }).join('')+'</div></div>';
+  }
+
+  if(X.underused){ h+='<div class="section"><h2>Already built — and underused<span class="cap">activation before construction</span></h2>'+expCards(X.underused)+'</div>'; }
+
+  if(X.lifecycle){
+    h+='<div class="section"><h2>Lifecycle — invite → loyal member<span class="cap">'+esc(X.tally||'')+'</span></h2>'+
+      '<div class="tablewrap"><table class="pipe"><thead><tr><th>Moment</th><th>State</th><th>Note</th></tr></thead><tbody>'+
+      X.lifecycle.map(function(l){
+        return '<tr><td><b>'+esc(l.m)+'</b></td>'+
+          '<td><span class="chip '+(EXPCHIP[l.s]||'')+'">'+esc(EXPLBL[l.s]||l.s)+'</span></td>'+
+          '<td style="white-space:normal;color:var(--dim)">'+esc(l.d)+'</td></tr>';
+      }).join('')+'</tbody></table></div></div>';
+  }
+
+  h+='<div class="needs"><h2>Needs Jack — decisions this blueprint waits on</h2><ul>'+(X.needsJack||[]).map(function(n,i){
+    return '<li><span class="tag">'+(i+1)+'</span><span><b>'+esc(n.t)+'</b> <span style="color:var(--dim)">'+esc(n.d)+'</span></span></li>';
+  }).join('')+'</ul></div>';
+
+  if(X.phases){ h+='<div class="section"><h2>Build path</h2>'+expCards(X.phases)+'</div>'; }
+
+  if(X.top){
+    h+='<div class="section"><h2>Top 20 gaps<span class="cap">impact × ease · higher score = sooner</span></h2>'+
+      '<div class="tablewrap"><table class="pipe"><thead><tr><th>#</th><th>Gap</th><th>Imp</th><th>Eff</th><th>Score</th><th>Type</th><th>Needs</th></tr></thead><tbody>'+
+      X.top.map(function(g){
+        var tychip = g.ty==='activation' ? '<span class="chip provisional">activation</span>' : '<span class="chip internal">build</span>';
+        return '<tr><td>'+esc(g.r)+'</td><td style="white-space:normal"><b>'+esc(g.t)+'</b></td>'+
+          '<td>'+esc(g.imp)+'</td><td>'+esc(g.eff)+'</td><td><b>'+esc(g.sc)+'</b></td><td>'+tychip+'</td>'+
+          '<td style="white-space:normal;color:var(--faint)">'+esc(g.need)+'</td></tr>';
+      }).join('')+'</tbody></table></div>'+
+      '<div class="stub" style="margin-top:8px">Ranked list; strategic weight of the guided tour (#1) exceeds its raw score. Full narrative, the guided-tour design, and channel copy live in the standalone <a class="v2link" href="experience.html">Client Experience Blueprint</a>.</div></div>';
+  }
+
+  if(X.evidence){ h+='<div class="stub" style="border-top:1px solid var(--line);padding-top:12px;margin-top:8px">'+esc(X.evidence)+'</div>'; }
+  m.innerHTML=h;
+}
+
 /* ============================ DATA TOOLS — export / import ============================ */
 function renderDataTools(){
   el('datatools').innerHTML =
@@ -686,7 +746,7 @@ window.saveProfile=function(){
 };
 
 /* ============================ boot ============================ */
-function renderAll(){ renderBuild(); renderInfra(); renderOrg(); renderAva(); renderSales(); renderMarketing(); renderV2(); }
+function renderAll(){ renderBuild(); renderInfra(); renderOrg(); renderAva(); renderSales(); renderMarketing(); renderV2(); renderExperience(); }
 function boot(){
   initTabs();
   renderDataTools();

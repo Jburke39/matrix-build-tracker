@@ -22,6 +22,7 @@
     <button class="tab"        role="tab" id="tab-sales"     aria-controls="view-sales"     aria-selected="false" data-tab="sales">Sales</button>
     <button class="tab"        role="tab" id="tab-marketing" aria-controls="view-marketing" aria-selected="false" data-tab="marketing">Marketing</button>
     <button class="tab"        role="tab" id="tab-v2"        aria-controls="view-v2"        aria-selected="false" data-tab="v2">V2 Migration</button>
+    <button class="tab"        role="tab" id="tab-experience" aria-controls="view-experience" aria-selected="false" data-tab="experience">Client Experience</button>
   </nav>
 
   <div class="legend" id="maplegend" style="display:none" aria-hidden="true">
@@ -93,6 +94,12 @@
     <div id="v2mount"></div>
   </section>
 
+  <section class="view" id="view-experience" role="tabpanel" aria-labelledby="tab-experience" tabindex="-1">
+    <div class="intro">Client Experience blueprint — the honest current-state read and the designed target for how a Matrix member is oriented, guided and kept. <b>This is the design half; its forensic twin (CX-1) certifies real state with file:line evidence.</b> The full multi-tab document is the standalone <a class="v2link" href="experience.html">Client Experience Blueprint page</a>.</div>
+    <div class="meta" id="expmeta"></div>
+    <div id="expmount"></div>
+  </section>
+
   </main>
 </div>
 
@@ -130,6 +137,7 @@
 <script src="data/ava.js"></script>
 <script src="data/archive-command-center.js"></script>
 <script src="data/v2.js"></script>
+<script src="data/experience.js"></script>
 <!-- Application (code-owned rendering/persistence) loads last -->
 <script src="app.js"></script>
 </body>

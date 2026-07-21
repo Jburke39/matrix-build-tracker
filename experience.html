@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrix — Client Experience Blueprint</title>
+<style>
+:root{--bg:#060a12;--panel:#0b1220;--panel2:#0e1729;--line:#1b2a44;--ink:#e8f0fb;--dim:#9db1cc;--faint:#5f7495;--blue:#00A8FF;--green:#2ecc8f;--amber:#f5b942;--red:#ff5d6c;--purple:#b48cff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.5;padding:28px 18px 90px}
+.wrap{max-width:1080px;margin:0 auto}
+.logo{font-weight:800;letter-spacing:.14em;font-size:15px}
+.logo span{color:var(--blue)}
+.sub{color:var(--faint);font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-top:2px}
+.back{font-size:12px;margin-top:6px}
+.back a{color:var(--blue);text-decoration:none}
+h1{font-size:27px;margin:18px 0 4px;font-weight:750;letter-spacing:-.01em}
+.meta{color:var(--dim);font-size:13px;margin-bottom:16px}
+.meta b{color:var(--ink)}
+.thesis{background:linear-gradient(180deg,rgba(180,140,255,.10),rgba(180,140,255,.02));border:1px solid rgba(180,140,255,.42);border-radius:14px;padding:16px 18px;margin:8px 0 6px}
+.thesis h3{font-size:12px;color:var(--purple);letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px}
+.thesis p{font-size:14.5px;color:var(--ink)}
+.thesis p b{color:#fff}
+.thesis .src{font-size:12px;color:var(--dim);margin-top:8px}
+.caveat{background:rgba(245,185,66,.07);border:1px solid rgba(245,185,66,.32);border-radius:12px;padding:11px 14px;margin:14px 0 4px;font-size:12.5px;color:var(--dim)}
+.caveat b{color:var(--amber)}
+
+/* sub-tabs */
+.subtabs{display:flex;flex-wrap:wrap;gap:6px;margin:22px 0 18px;border-bottom:1px solid var(--line);padding-bottom:0}
+.subtab{background:none;border:none;border-bottom:2px solid transparent;color:var(--faint);font:inherit;font-size:13px;font-weight:600;letter-spacing:.02em;padding:9px 13px;cursor:pointer;margin-bottom:-1px}
+.subtab:hover{color:var(--dim)}
+.subtab.on{color:var(--ink);border-bottom-color:var(--blue)}
+.subtab .c{font-size:10.5px;color:var(--faint);margin-left:5px}
+.panel{display:none}
+.panel.on{display:block;animation:fade .18s ease}
+@keyframes fade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+
+h2{font-size:15px;letter-spacing:.11em;text-transform:uppercase;color:var(--blue);margin:30px 0 12px;font-weight:700}
+h2:first-child{margin-top:6px}
+h2 .n{color:var(--faint);font-weight:500;letter-spacing:0;text-transform:none;font-size:12px;margin-left:8px}
+.lead{font-size:14px;color:var(--dim);margin-bottom:16px;max-width:76ch}
+.lead b{color:var(--ink)}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.card h3{font-size:14px;font-weight:700;margin-bottom:5px}
+.card p{font-size:13px;color:var(--dim)}
+.card p b{color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+
+.chip{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:99px;vertical-align:1px;white-space:nowrap}
+.c-have{color:var(--green);border:1px solid rgba(46,204,143,.4);background:rgba(46,204,143,.08)}
+.c-part{color:var(--amber);border:1px solid rgba(245,185,66,.4);background:rgba(245,185,66,.08)}
+.c-none{color:var(--red);border:1px solid rgba(255,93,108,.4);background:rgba(255,93,108,.08)}
+.c-dark{color:var(--blue);border:1px solid rgba(0,168,255,.4);background:rgba(0,168,255,.08)}
+.c-idea{color:var(--purple);border:1px solid rgba(180,140,255,.4);background:rgba(180,140,255,.08)}
+
+/* scorecard */
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:6px}
+.sc{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 14px}
+.sc .g{font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
+.sc .v{font-size:22px;font-weight:750;margin:3px 0 2px}
+.sc .v small{font-size:12px;color:var(--faint);font-weight:600}
+.sc .d{font-size:11.5px;color:var(--dim)}
+.bar{height:6px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;border-radius:99px}
+
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin-bottom:10px}
+table.t{width:100%;border-collapse:collapse;min-width:640px}
+table.t th,table.t td{font-size:12.5px;padding:9px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+table.t th{color:var(--faint);text-transform:uppercase;letter-spacing:.07em;font-size:10px;background:var(--panel2);position:sticky;top:0}
+table.t tr:last-child td{border-bottom:none}
+table.t td b{color:var(--ink)}
+table.t td{color:var(--dim)}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;color:var(--faint)}
+
+/* lifecycle rail */
+.rail{position:relative;margin:6px 0 6px 0}
+.moment{display:grid;grid-template-columns:26px 1fr;gap:12px;padding:0 0 14px}
+.moment .rc{display:flex;flex-direction:column;align-items:center}
+.moment .dot{width:13px;height:13px;border-radius:99px;margin-top:4px;border:2px solid var(--bg);flex:none}
+.moment .ln{flex:1;width:2px;background:var(--line);margin:3px 0 -14px}
+.moment:last-child .ln{display:none}
+.dot.have{background:var(--green)} .dot.part{background:var(--amber)} .dot.none{background:var(--red)}
+.moment .body{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px 14px}
+.moment .body h4{font-size:13.5px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.moment .body p{font-size:12.5px;color:var(--dim);margin-top:4px}
+.moment .body p b{color:var(--ink)}
+.moment .have-txt{color:var(--green)} .moment .none-txt{color:var(--red)}
+
+/* tour steps */
+.step{display:grid;grid-template-columns:34px 1fr;gap:13px;margin-bottom:10px}
+.step .num{width:34px;height:34px;border-radius:99px;background:rgba(0,168,255,.1);border:1px solid rgba(0,168,255,.4);color:var(--blue);font-weight:750;display:flex;align-items:center;justify-content:center;font-size:14px}
+.step .sb{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px 14px;flex:1}
+.step .sb h4{font-size:14px;font-weight:700;margin-bottom:3px}
+.step .sb p{font-size:12.5px;color:var(--dim)}
+.step .sb .uses{font-size:11.5px;color:var(--faint);margin-top:6px}
+.step .sb .uses b{color:var(--green)}
+.quote{border-left:3px solid var(--blue);padding:4px 0 4px 12px;margin:7px 0;font-style:italic;color:var(--ink);font-size:13px}
+
+.needs{background:linear-gradient(180deg,rgba(0,168,255,.08),rgba(0,168,255,.02));border:1px solid rgba(0,168,255,.45);border-radius:14px;padding:16px 18px;margin:8px 0 16px}
+.needs h2{margin:0 0 10px;color:var(--blue)}
+.needs li{font-size:13.5px;margin:8px 0 8px 18px;color:var(--ink)}
+.needs li span{color:var(--dim)}
+
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin:2px 0 18px;font-size:11.5px;color:var(--dim)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+
+.foot{margin-top:44px;color:var(--faint);font-size:11.5px;border-top:1px solid var(--line);padding-top:14px}
+.foot b{color:var(--dim)}
+a.x{color:var(--blue);text-decoration:none}
+.pri-h{color:var(--red)} .pri-m{color:var(--amber)} .pri-l{color:var(--faint)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="logo">MATRIX <span>LONGEVITY</span></div>
+<div class="sub">Client Experience Blueprint</div>
+<div class="back"><a href="index.html">&larr; Full build tracker</a> · standalone experience page (mirrored into the shell as the Client Experience tab)</div>
+<h1>We have the body of work. We're missing the choreography.</h1>
+<div class="meta">Experience blueprint compiled by Fable · <b>July 21, 2026 · pre-dawn</b> · Design + honest current-state read from program memory. This is the <b>vision-and-scorecard</b> half. Its forensic twin — <b>CX-1</b>, a touchpoint-by-touchpoint audit with file:line evidence — is running in parallel in a separate session. Where the two disagree, <b>CX-1's evidence wins</b> and this page is corrected.</div>
+
+<div class="thesis">
+<h3>The one thing that matters</h3>
+<p>The reason a Superpower report <b>feels</b> the way it does isn't the data — it's that someone walked the member through their own body and made the findings feel <b>authored</b>. Matrix already has the raw material: the labs, the education library, the protocols, the goals, the intake answers, the bio-age, and Ava. <b>What's missing is the choreography</b> — the sequenced, narrated moments that turn a dashboard into a story about you.</p>
+<div class="src">Founder framing, restated. Everything in this blueprint serves it: turn assets we already shipped into a guided, felt journey.</div>
+</div>
+
+<div class="caveat"><b>Read this honestly.</b> Current-state marks below (Have / Partial / Absent / Built-but-dark) are Fable's read from program memory and the build tracker, not from re-reading every route tonight. Anything asserting a specific implementation state carries a "verify vs CX-1" expectation. This page is a <i>blueprint to act from</i>, not a certified inventory — CX-1 is the certified inventory.</div>
+
+<div class="subtabs" id="subtabs" role="tablist">
+  <button class="subtab on" data-p="today"     role="tab">Today <span class="c">honest read</span></button>
+  <button class="subtab"    data-p="underused" role="tab">Built &amp; Underused</button>
+  <button class="subtab"    data-p="lifecycle" role="tab">Lifecycle Map</button>
+  <button class="subtab"    data-p="tour"      role="tab">The Guided Tour</button>
+  <button class="subtab"    data-p="channels"  role="tab">Channels</button>
+  <button class="subtab"    data-p="path"      role="tab">Build Path</button>
+  <button class="subtab"    data-p="top20"     role="tab">Top 20 Gaps</button>
+</div>
+
+<!-- ============================ TODAY ============================ -->
+<section class="panel on" id="p-today">
+  <h2>Where the experience stands</h2>
+  <p class="lead">Scored 1–10 by <b>how the moment feels to the member</b>, not by whether the code exists. A functional screen with no narration scores low here on purpose — that's the whole point.</p>
+  <div class="score">
+    <div class="sc"><div class="g">Get in the door</div><div class="v">7<small>/10</small></div><div class="d">Invite → signup is real and gated. Clean, if transactional.</div><div class="bar"><i style="width:70%;background:var(--green)"></i></div></div>
+    <div class="sc"><div class="g">First 5 minutes</div><div class="v">3<small>/10</small></div><div class="d">Lands on a dashboard. No orientation, no "here's what you're looking at."</div><div class="bar"><i style="width:30%;background:var(--red)"></i></div></div>
+    <div class="sc"><div class="g">Understanding my results</div><div class="v">4<small>/10</small></div><div class="d">Labs + bio-age display cleanly. Nobody explains what they mean for <i>me</i>.</div><div class="bar"><i style="width:40%;background:var(--amber)"></i></div></div>
+    <div class="sc"><div class="g">Knowing what to do</div><div class="v">6<small>/10</small></div><div class="d">Protocol + dose tools are strong. First-dose has no hand-hold.</div><div class="bar"><i style="width:60%;background:var(--amber)"></i></div></div>
+    <div class="sc"><div class="g">Staying engaged</div><div class="v">2<small>/10</small></div><div class="d">Almost nothing reaches out. No proactive Ava, reminders dark.</div><div class="bar"><i style="width:20%;background:var(--red)"></i></div></div>
+    <div class="sc"><div class="g">Feeling seen</div><div class="v">3<small>/10</small></div><div class="d">Care shows in the operator tools, not yet in the member's inbox.</div><div class="bar"><i style="width:30%;background:var(--red)"></i></div></div>
+  </div>
+  <div class="legend">
+    <span><span class="chip c-have">Have</span> works &amp; feels intentional</span>
+    <span><span class="chip c-part">Partial</span> exists, thin</span>
+    <span><span class="chip c-none">Absent</span> not built</span>
+    <span><span class="chip c-dark">Built-but-dark</span> shipped, not wired/exposed</span>
+  </div>
+
+  <h2>The honest summary</h2>
+  <div class="card"><p>Matrix today is <b>a well-built set of rooms with no tour guide.</b> A new member can walk into every room — dashboard, protocol, fitness, labs, Ava, education — and each room is competently furnished. But nothing greets them at the door, nothing explains why they're standing where they are, and once they leave, nothing calls them back. The product is <b>strong at capability and weak at continuity.</b> The gap the founder named — orientation — is the sharpest instance of a broader pattern: <b>we render state; we don't narrate a journey.</b></p></div>
+  <div class="grid">
+    <div class="card"><h3>What's genuinely good <span class="chip c-have">Have</span></h3><p>Invite-gated entry, a real protocol/dose engine, a zero-judgment labs area, an operator-approved bio-age, and a live education library of monographs. The <b>substance</b> is here and it's not thin.</p></div>
+    <div class="card"><h3>What's quietly broken <span class="chip c-none">Absent</span></h3><p>The connective tissue. First-run orientation, proactive reach-out, lifecycle reminders, the "your results, explained" moment. The member is left to self-assemble meaning.</p></div>
+    <div class="card"><h3>What's shipped but invisible <span class="chip c-dark">Built-but-dark</span></h3><p>An <b>Ava context/aggregation surface with no consumer</b>, a <b>direct email adapter whose senders aren't rewired</b>, and appointment/ICS scaffolding. We've paid for capability we're not spending. (Verify vs CX-1.)</p></div>
+  </div>
+</section>
+
+<!-- ============================ UNDERUSED ============================ -->
+<section class="panel" id="p-underused">
+  <h2>Already built — and underused</h2>
+  <p class="lead">Before designing anything new, spend what we already own. Each of these shipped and is either dark, un-consumed, or rendering data without narrating it. <b>The cheapest experience wins live here.</b></p>
+  <div class="tw"><table class="t">
+    <thead><tr><th>Asset</th><th>State today</th><th>The waste</th><th>Cheapest activation</th></tr></thead>
+    <tbody>
+      <tr><td><b>Ava context / aggregation surface</b><div class="mono">W9 — building-block, no consumer</div></td><td><span class="chip c-dark">Built, no consumer</span></td><td>An engine that assembles a member's full picture exists — and <b>nothing calls it</b>. The proactive brain is built and idle.</td><td>Point one consumer at it: a post-approval "your picture" summary. This is the tour's fuel.</td></tr>
+      <tr><td><b>Direct Resend email adapter</b><div class="mono">S4 — EMAIL_PROVIDER=resend_direct</div></td><td><span class="chip c-dark">Adapter live, senders dark</span></td><td>We can send branded email today, but transactional senders aren't rewired to it. Lifecycle email has a pipe and no water.</td><td>Wire 3 senders first: welcome, results-ready, first-week check-in.</td></tr>
+      <tr><td><b>Education library (18 monographs)</b><div class="mono">W13 / H1 — live, published gate</div></td><td><span class="chip c-part">Live, un-sequenced</span></td><td>A real content library sits in a tab nobody is routed to at the right moment. It's a reference, not a companion.</td><td>Attach the right monograph to the right protocol/lab moment automatically.</td></tr>
+      <tr><td><b>Bio-age approval flow</b><div class="mono">W14 — operator-approved, approved-only display</div></td><td><span class="chip c-part">Displays a number</span></td><td>The single most emotionally loaded number in the product appears with <b>no ceremony and no explanation</b>. Approval is the perfect trigger and we waste it.</td><td>Fire the guided tour <i>on</i> approval. Same event, ten times the meaning.</td></tr>
+      <tr><td><b>Blood results / labs area</b><div class="mono">W14 — migration 0048, zero-judgment</div></td><td><span class="chip c-part">Renders, no narration</span></td><td>Beautiful, non-judgmental lab display — with no "here's what this means for you and here's the plan." Data without a voice.</td><td>Ava-authored one-paragraph read per panel, care-team-tone.</td></tr>
+      <tr><td><b>Appointments + ICS + instructions</b><div class="mono">W8 — migrations 0032–0034</div></td><td><span class="chip c-dark">Backend, thin surface</span></td><td>Calendar artifacts and appointment instructions exist server-side; the member-facing moment around them is thin. (Verify vs CX-1.)</td><td>Confirmation + prep + reminder trio around each appointment.</td></tr>
+      <tr><td><b>Protocol / dose engine + Today</b><div class="mono">W6/W7 — dose core, Today vNext</div></td><td><span class="chip c-have">Strong</span></td><td>Genuinely good — but the <b>first dose</b> passes with no acknowledgement. The hardest, scariest action gets no companion.</td><td>A first-dose walkthrough + a single "you did it" moment.</td></tr>
+      <tr><td><b>Fitness overlays + weight logging</b><div class="mono">W9 / W14 — Fitness primary tab</div></td><td><span class="chip c-part">Functional</span></td><td>Tracking exists; streaks, nudges, and "you're on a roll" continuity don't.</td><td>One weekly progress recap that reflects effort back.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="card"><p><b>The pattern:</b> we consistently built the <i>capability</i> and skipped the <i>moment</i>. Almost every high-impact experience win in this blueprint is <b>an activation, not a construction.</b></p></div>
+</section>
+
+<!-- ============================ LIFECYCLE ============================ -->
+<section class="panel" id="p-lifecycle">
+  <h2>Invite → loyal member <span class="n">every moment the product should own</span></h2>
+  <p class="lead">The full arc. Each moment marked <span class="have-txt">HANDLED</span>, <span style="color:var(--amber)">PARTIAL</span>, or <span class="none-txt">ABSENT</span> by <b>member-facing experience</b> (operator-side handling doesn't count here). This is the map CX-1 will pin to file:line.</p>
+  <div class="rail">
+    <div class="moment"><div class="rc"><div class="dot have"></div><div class="ln"></div></div><div class="body"><h4>Invite issued <span class="chip c-have">Handled</span></h4><p>Invite-gated access is real and verified on prod. <b>Good.</b> Opportunity: the invite itself could carry a first-person promise instead of a bare code.</p></div></div>
+    <div class="moment"><div class="rc"><div class="dot have"></div><div class="ln"></div></div><div class="body"><h4>Signup / account creation <span class="chip c-have">Handled</span></h4><p>Onboarding V2 flow exists; signup completes and binds identity. Functional and clean.</p></div></div>
+    <div class="moment"><div class="rc"><div class="dot part"></div><div class="ln"></div></div><div class="body"><h4>Intake / questionnaire <span class="chip c-part">Partial</span></h4><p>Intake is captured (operator has Intake Review). But the member's answers are <b>never reflected back to them</b> as "here's what you told us and here's what we heard." Intake is a form, not a mirror.</p></div></div>
+    <div class="moment"><div class="rc"><div class="dot none"></div><div class="ln"></div></div><div class="body"><h4>First screen after signup <span class="chip c-none">Absent</span></h4><p><b>The named gap.</b> Member lands on a dashboard with no orientation, no tour, no "start here." Every room is open and none is introduced. First impression = competent confusion.</p></div></div>
+    <div class="moment"><div class="rc"><div class="dot none"></div><div class="ln"></div></div><div class="body"><h4>Results ready / bio-age approved <span class="chip c-none">Absent</span></h4><p>The emotional peak of the whole product. Today it surfaces a number and a lab table. <b>No walkthrough, no meaning-making, no plan hand-off.</b> This is where the guided tour must live.</p></div></div>
+    <div class="moment"><div class="rc"><div class="dot part"></div><div class="ln"></div></div><div class="body"><h4>First protocol assigned <span class="chip c-part">Partial</span></h4><p>Protocol appears in a strong UI. But the "<i>why this protocol, why these compounds, what it's for</i>" narration isn't attached. The education to explain it exists — it's just not wired to the moment.</p></div></div>
+    <div class="moment"><div class="rc"><div class="dot none"></div><div class="ln"></div></div><div class="body"><h4>First dose <span class="chip c-none">Absent</span></h4><p>The scariest action a member takes — often a first self-injection — happens with <b>zero companionship</b>. No walkthrough, no reassurance, no acknowledgement afterward.</p></div></div>
+    <div class="moment"><div class="rc"><div class="dot none"></div><div class="ln"></div></div><div class="body"><h4>First week <span class="chip c-none">Absent</span></h4><p>The make-or-break window. No check-in, no "how's it going," no what-to-expect. The member is alone precisely when doubt peaks.</p></div></div>
+    <div class="moment"><div class="rc"><div class="dot part"></div><div class="ln"></div></div><div class="body"><h4>First lab upload <span class="chip c-part">Partial</span></h4><p>Upload area exists and is well-designed. The <b>"got it — here's what we see"</b> acknowledgement and interpretation don't fire.</p></div></div>
+    <div class="moment"><div class="rc"><div class="dot none"></div><div class="ln"></div></div><div class="body"><h4>Adherence lapse <span class="chip c-none">Absent</span></h4><p>Adherence is tracked. Nothing acts on a missed streak. A lapsing member is invisible to the product until they're gone.</p></div></div>
+    <div class="moment"><div class="rc"><div class="dot part"></div><div class="ln"></div></div><div class="body"><h4>Re-order / refill <span class="chip c-part">Partial (operator-side)</span></h4><p>Fulfillment + refill stages exist in the operator/Airtable workflow. The <b>member-facing</b> "time to refill" nudge and one-tap reorder are not surfaced.</p></div></div>
+    <div class="moment"><div class="rc"><div class="dot none"></div><div class="ln"></div></div><div class="body"><h4>Ongoing check-in / milestone <span class="chip c-none">Absent</span></h4><p>No cadence of "you're 30 days in, here's your progress." No milestone recognition. Momentum is never reflected back.</p></div></div>
+    <div class="moment"><div class="rc"><div class="dot none"></div><div class="ln"></div></div><div class="body"><h4>Churn risk / dormancy <span class="chip c-none">Absent</span></h4><p>No signal model for "this member is drifting," no re-engagement play. Churn is discovered, not prevented.</p></div></div>
+    <div class="moment"><div class="rc"><div class="dot none"></div></div><div class="body"><h4>Return / win-back <span class="chip c-none">Absent</span></h4><p>A dormant member who comes back is greeted identically to an active one. No "welcome back, here's what changed." Re-entry is a cold start.</p></div></div>
+  </div>
+  <div class="card"><p><b>Tally (member-facing):</b> 2 Handled · 4 Partial · 8 Absent across 14 moments. The front door is solid; <b>the middle and the return are wide open.</b> Note how many Absents are <i>lifecycle</i> (reach-out) rather than <i>screen</i> (build) problems — which is why channels and choreography, not new pages, are the leverage.</p></div>
+</section>
+
+<!-- ============================ TOUR ============================ -->
+<section class="panel" id="p-tour">
+  <h2>The guided tour <span class="n">post-approval, Superpower-style — the founder's ask, designed</span></h2>
+  <p class="lead">Triggered the instant <b>bio-age / results are operator-approved</b> — the emotional peak we currently waste on a bare number. A page-by-page, narrated walkthrough of the member's own body and plan. <b>Every step is fed by data we already have.</b> Nothing here needs new capture — it needs sequencing and a voice.</p>
+
+  <div class="step"><div class="num">1</div><div class="sb"><h4>"Here's you, today."</h4><p>Open on the bio-age and the one-line headline. Warm, plain, human. Set the frame: this is a starting line, not a verdict.</p><div class="quote">"Your biological age came back at 38. You're 44. That four-year head start is real — and it's yours to grow."</div><div class="uses">Uses: <b>bio-age (approved)</b>, <b>member DOB/profile</b>.</div></div></div>
+  <div class="step"><div class="num">2</div><div class="sb"><h4>"What we measured, and what it means for <i>you</i>."</h4><p>Walk the lab panels one at a time — not a table, a story. Each panel gets a plain-language read and a "why it matters to your goals" line. This is the Superpower feeling, exactly.</p><div class="uses">Uses: <b>labs (0048 area)</b>, <b>education monographs</b>, <b>Ava context surface</b>, <b>intake goals</b>.</div></div></div>
+  <div class="step"><div class="num">3</div><div class="sb"><h4>"You told us what you wanted. Here's how this maps to it."</h4><p>Reflect the member's own intake goals back, then draw the line from each goal to a specific marker and protocol choice. Intake stops being a form and becomes the thread.</p><div class="uses">Uses: <b>intake answers</b>, <b>goals</b>, <b>protocol assignment</b>.</div></div></div>
+  <div class="step"><div class="num">4</div><div class="sb"><h4>"Your protocol — and why each piece is here."</h4><p>Introduce the protocol compound by compound: what it is, why it was chosen for you, what to expect. The education library supplies the substance; the tour supplies the sequencing.</p><div class="uses">Uses: <b>protocol/dose engine</b>, <b>compound detail</b>, <b>education monographs</b>.</div></div></div>
+  <div class="step"><div class="num">5</div><div class="sb"><h4>"Your first dose — let's do it together."</h4><p>A gentle first-dose walkthrough for the scariest step. Reconstitution/measurement handoff where relevant, reassurance, and a real acknowledgement after: <i>you did the hard part.</i></p><div class="uses">Uses: <b>dose calculator</b>, <b>protocol instructions</b>, <b>education</b>.</div></div></div>
+  <div class="step"><div class="num">6</div><div class="sb"><h4>"Here's the plan, and here's me checking in."</h4><p>Close on the 30/60/90 shape and set the expectation of a relationship: what happens next week, what to watch, when the next lab is. Hand off to Ava as the ongoing companion — the tour's last act is introducing the guide who stays.</p><div class="uses">Uses: <b>Ava context surface</b>, <b>appointment/ICS scaffolding</b>, <b>email adapter</b> for the follow-up cadence.</div></div></div>
+
+  <h2>What the tour needs</h2>
+  <div class="grid">
+    <div class="card"><h3>Already have <span class="chip c-have">Have</span></h3><p>Bio-age, labs, protocols, compound detail, dose calculator, intake/goals, 18 education monographs, and the <b>idle Ava context surface</b> to assemble it all. The pantry is stocked.</p></div>
+    <div class="card"><h3>Need to build <span class="chip c-idea">New</span></h3><p>The <b>tour runner</b> (a sequenced, narrated step UI), the <b>narration layer</b> (Ava-authored per-panel/per-compound reads), and the <b>approval → tour trigger</b>. Modest, high-leverage builds.</p></div>
+    <div class="card"><h3>The unlock</h3><p>Fire it on the <b>bio-age approval event that already exists</b>. Same trigger, transformed payload. This is the single highest impact-to-effort move in the product.</p></div>
+  </div>
+  <div class="caveat"><b>Guardrail.</b> Every narrated read must respect the constitution: founder/operator-approved framing only, no represented licensure, zero-judgment tone preserved (INV / §3.4). The tour <i>presents</i> approved conclusions warmly — it never <i>generates</i> clinical claims on the fly.</div>
+</section>
+
+<!-- ============================ CHANNELS ============================ -->
+<section class="panel" id="p-channels">
+  <h2>Every channel — what it should say, and when</h2>
+  <p class="lead">The delivery layer for the choreography. <b>Infrastructure state is Fable's read; CX-1 certifies it.</b> The point stands regardless: we have more sending capability than we use, and the near-term wins need email + in-app only — not push, not SMS.</p>
+  <div class="tw"><table class="t">
+    <thead><tr><th>Channel</th><th>Infra today</th><th>Uses it now?</th><th>What it should carry</th></tr></thead>
+    <tbody>
+      <tr><td><b>Transactional email</b></td><td><span class="chip c-dark">Adapter live (Resend direct), senders not rewired</span></td><td>Barely — legacy paths only (verify vs CX-1)</td><td>Welcome, results-ready, first-dose done, first-week check-in, refill-due, milestone, we-miss-you. The lifecycle backbone.</td></tr>
+      <tr><td><b>In-app tour / overlay</b></td><td><span class="chip c-none">Not built</span></td><td>No</td><td>The guided post-approval walkthrough. The single most important surface to build.</td></tr>
+      <tr><td><b>Proactive Ava message</b></td><td><span class="chip c-dark">Context surface built, no consumer; Ava is reactive</span></td><td>No</td><td>"Your labs are in." "How did the first dose go?" "You're 30 days in." Ava should <b>initiate</b>, not only answer.</td></tr>
+      <tr><td><b>In-app toast / banner</b></td><td><span class="chip c-part">Ad-hoc (verify vs CX-1)</span></td><td>Partial</td><td>Small acknowledgements: dose logged, lab received, streak continued. Cheap dopamine done tastefully.</td></tr>
+      <tr><td><b>Calendar / ICS</b></td><td><span class="chip c-dark">Backend exists (W8 0032–0034)</span></td><td>Thin</td><td>Appointment invites, lab-draw reminders, protocol milestones as real calendar events.</td></tr>
+      <tr><td><b>Push notification</b></td><td><span class="chip c-none">No evidence in memory</span></td><td>No</td><td>Later. Needs a mobile/native surface (matrix-ios lane). Not a near-term dependency — don't block on it.</td></tr>
+      <tr><td><b>SMS</b></td><td><span class="chip c-none">No evidence in memory</span></td><td>No</td><td>Later, and consent-heavy. Reserve for high-value, time-critical nudges (refill, appointment day-of).</td></tr>
+    </tbody>
+  </table></div>
+  <div class="card"><p><b>Message discipline.</b> Every automated message needs a named trigger, an approval class, and a suppression rule (respect the existing email-suppression table). One voice — Ava's — across email, in-app, and tour, so the member experiences a single companion, not a system emitting notifications.</p></div>
+
+  <h2>The starter set <span class="n">7 messages that would change the felt experience most</span></h2>
+  <div class="tw"><table class="t">
+    <thead><tr><th>#</th><th>Message</th><th>Trigger</th><th>One line it carries</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><b>Welcome</b></td><td>Signup complete</td><td>"You're in. Here's exactly what happens next — I'll walk you through all of it."</td></tr>
+      <tr><td>2</td><td><b>Results are ready</b></td><td>Bio-age / results approved</td><td>"Your results are back and I've laid them out for you. Take the tour whenever you're ready."</td></tr>
+      <tr><td>3</td><td><b>First dose, done</b></td><td>First dose logged</td><td>"That's the hardest part behind you. Here's what the next few days may feel like."</td></tr>
+      <tr><td>4</td><td><b>First-week check-in</b></td><td>Day 7</td><td>"One week in. How are you feeling? Anything you want to ask me?"</td></tr>
+      <tr><td>5</td><td><b>Lab received</b></td><td>Lab upload</td><td>"Got your labs — thank you. I'll have your read ready shortly."</td></tr>
+      <tr><td>6</td><td><b>Refill due</b></td><td>Supply threshold</td><td>"You're about a week out. Want me to line up your refill?"</td></tr>
+      <tr><td>7</td><td><b>30-day milestone</b></td><td>Day 30 adherence</td><td>"A month in. Here's what's moved, and what we're watching next."</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============================ PATH ============================ -->
+<section class="panel" id="p-path">
+  <h2>The build path <span class="n">activation before construction</span></h2>
+  <p class="lead">Sequenced so the member feels a difference at the end of <b>every</b> phase, and so each phase spends assets we already own before building new ones.</p>
+
+  <div class="card"><h3>Phase 0 — Certify the ground <span class="chip c-part">days</span></h3><p>Reconcile this blueprint with <b>CX-1's forensic audit</b>. Confirm real state of: email senders, Ava context consumer, notification tables, ICS surface, push/SMS. <b>Turn every "verify vs CX-1" into a fact.</b> No member-facing change — this de-risks everything after.</p></div>
+
+  <div class="card"><h3>Phase 1 — The Tour <span class="chip c-idea">highest leverage</span></h3><p>Build the post-approval guided walkthrough (6 steps), fed by existing bio-age + labs + protocol + intake + education, narrated through the <b>idle Ava context surface</b>. Fire on the approval event that already exists. <b>This is the founder's ask and the single biggest felt win.</b> Ships the moment that currently wastes the emotional peak.</p></div>
+
+  <div class="card"><h3>Phase 2 — Wake the channel <span class="chip c-dark">activation</span></h3><p>Rewire the <b>direct email adapter</b> and ship the 7 starter messages with triggers + suppression. Now the product reaches out. Welcome, results-ready, first-week, refill, milestone. <b>The lifecycle stops being silent.</b></p></div>
+
+  <div class="card"><h3>Phase 3 — Proactive Ava <span class="chip c-idea">the companion</span></h3><p>Give the Ava context surface a proactive consumer: Ava <b>initiates</b> at the key moments (labs in, day 7, day 30, drifting). One voice across tour, email, and chat. The system becomes a relationship.</p></div>
+
+  <div class="card"><h3>Phase 4 — Close the loop <span class="chip c-idea">retention</span></h3><p>Adherence-lapse nudge, member-facing refill/reorder, milestone cadence, and a dormancy → win-back play. <b>Own the middle and the return</b> — the eight Absent moments on the lifecycle map.</p></div>
+
+  <div class="needs">
+    <h2>Needs Jack — decisions this blueprint waits on</h2>
+    <ul>
+      <li><b>1 · Approve the thesis</b> <span>Choreography over new capability. If yes, Phase 1 (the tour) is the next build lane.</span></li>
+      <li><b>2 · Tour trigger = bio-age approval?</b> <span>Confirm the approval event is the right fire point, or name a different one.</span></li>
+      <li><b>3 · Give Ava a voice for narration</b> <span>The tour's per-panel reads need an approved authoring boundary — what Ava may say vs. only present.</span></li>
+      <li><b>4 · Green-light waking the email channel</b> <span>Rewiring senders is member-facing; it needs your go (and a from-address / domain confirm).</span></li>
+      <li><b>5 · Reconcile with CX-1 first</b> <span>Read CX-1's audit before Phase 1 build so the tour is wired to real surfaces, not assumed ones.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ TOP 20 ============================ -->
+<section class="panel" id="p-top20">
+  <h2>Top 20 experience gaps <span class="n">ranked by member impact × ease</span></h2>
+  <p class="lead">Score = impact (H=3/M=2/L=1) × ease (S=3/M=2/L=1). Higher = do sooner. <b>The top of this list is almost entirely activation of things we already built</b> — which is exactly why it ranks so high.</p>
+  <div class="legend">
+    <span><b class="pri-h">H</b>/<b class="pri-m">M</b>/<b class="pri-l">L</b> impact</span>
+    <span>S / M / L effort (S = small)</span>
+    <span><span class="chip c-dark">activation</span> vs <span class="chip c-idea">new build</span></span>
+  </div>
+  <div class="tw"><table class="t">
+    <thead><tr><th>#</th><th>Gap</th><th>Impact</th><th>Effort</th><th>Score</th><th>Type</th><th>Needs</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><b>Post-approval guided tour</b> — the orientation gap</td><td class="pri-h">H</td><td>M</td><td><b>6</b></td><td><span class="chip c-idea">build</span></td><td>bio-age, labs, protocol, intake, education, Ava surface</td></tr>
+      <tr><td>2</td><td><b>Wire the email adapter</b> to real senders</td><td class="pri-h">H</td><td>S</td><td><b>9</b></td><td><span class="chip c-dark">activation</span></td><td>Resend direct adapter, from-domain, suppression table</td></tr>
+      <tr><td>3</td><td><b>Welcome message</b> with "here's what's next"</td><td class="pri-h">H</td><td>S</td><td><b>9</b></td><td><span class="chip c-dark">activation</span></td><td>signup event, email channel</td></tr>
+      <tr><td>4</td><td><b>Results-ready notification</b></td><td class="pri-h">H</td><td>S</td><td><b>9</b></td><td><span class="chip c-dark">activation</span></td><td>bio-age approval event, email/in-app</td></tr>
+      <tr><td>5</td><td><b>Ava-authored lab read</b> (one paragraph per panel)</td><td class="pri-h">H</td><td>M</td><td><b>6</b></td><td><span class="chip c-idea">build</span></td><td>labs, education, Ava surface, approval boundary</td></tr>
+      <tr><td>6</td><td><b>First-week check-in</b> (day 7)</td><td class="pri-h">H</td><td>S</td><td><b>9</b></td><td><span class="chip c-dark">activation</span></td><td>scheduler tick, email, adherence data</td></tr>
+      <tr><td>7</td><td><b>First-dose walkthrough + acknowledgement</b></td><td class="pri-h">H</td><td>M</td><td><b>6</b></td><td><span class="chip c-idea">build</span></td><td>dose calc, instructions, dose-log event</td></tr>
+      <tr><td>8</td><td><b>Protocol "why this, for you"</b> narration</td><td class="pri-h">H</td><td>M</td><td><b>6</b></td><td><span class="chip c-idea">build</span></td><td>protocol assignment, compound detail, education</td></tr>
+      <tr><td>9</td><td><b>Intake reflected back</b> to the member</td><td>M</td><td>S</td><td><b>6</b></td><td><span class="chip c-dark">activation</span></td><td>intake answers, goals</td></tr>
+      <tr><td>10</td><td><b>First-run "start here"</b> on the dashboard</td><td class="pri-h">H</td><td>S</td><td><b>9</b></td><td><span class="chip c-idea">build</span></td><td>empty-state detection, a single guided card</td></tr>
+      <tr><td>11</td><td><b>Refill-due nudge</b> + one-tap reorder (member-facing)</td><td class="pri-h">H</td><td>M</td><td><b>6</b></td><td><span class="chip c-idea">build</span></td><td>supply/refill stage, email/in-app, reorder action</td></tr>
+      <tr><td>12</td><td><b>Lab-received acknowledgement</b></td><td>M</td><td>S</td><td><b>6</b></td><td><span class="chip c-dark">activation</span></td><td>upload event, email/toast</td></tr>
+      <tr><td>13</td><td><b>30-day milestone recap</b></td><td class="pri-h">H</td><td>M</td><td><b>6</b></td><td><span class="chip c-idea">build</span></td><td>adherence, progress data, Ava surface</td></tr>
+      <tr><td>14</td><td><b>Proactive Ava</b> — Ava initiates at key moments</td><td class="pri-h">H</td><td>L</td><td><b>3</b></td><td><span class="chip c-idea">build</span></td><td>Ava context consumer, trigger engine</td></tr>
+      <tr><td>15</td><td><b>Adherence-lapse re-engagement</b></td><td class="pri-h">H</td><td>M</td><td><b>6</b></td><td><span class="chip c-idea">build</span></td><td>adherence signal, threshold rule, channel</td></tr>
+      <tr><td>16</td><td><b>Dose-logged micro-acknowledgement</b> (toast/streak)</td><td>M</td><td>S</td><td><b>6</b></td><td><span class="chip c-idea">build</span></td><td>dose-log event, in-app toast</td></tr>
+      <tr><td>17</td><td><b>Appointment confirm + prep + reminder</b> trio</td><td>M</td><td>M</td><td><b>4</b></td><td><span class="chip c-dark">activation</span></td><td>W8 appointments/ICS, email/calendar</td></tr>
+      <tr><td>18</td><td><b>Weekly fitness recap</b> ("you're on a roll")</td><td>M</td><td>M</td><td><b>4</b></td><td><span class="chip c-idea">build</span></td><td>fitness overlays, weight logs, channel</td></tr>
+      <tr><td>19</td><td><b>Dormancy → win-back</b> play</td><td class="pri-h">H</td><td>L</td><td><b>3</b></td><td><span class="chip c-idea">build</span></td><td>dormancy signal model, win-back content</td></tr>
+      <tr><td>20</td><td><b>Invite carries a promise</b>, not just a code</td><td>L</td><td>S</td><td><b>3</b></td><td><span class="chip c-idea">build</span></td><td>invite template, copy</td></tr>
+    </tbody>
+  </table></div>
+  <div class="card"><p><b>How to read the ranking.</b> The 9-scored rows (2, 3, 4, 6, 10) are the fastest felt wins — mostly <b>activation of the dormant email channel</b> plus one small first-run card. The tour (#1) scores a 6 only because it's a real build, but it's <b>the highest-impact item in the product</b> and the founder's explicit ask — its score understates its strategic weight. Suggested order: knock out the 9s to make the product speak, ship the tour to make it sing, then close the loop with proactive Ava and retention plays.</p></div>
+</section>
+
+<div class="foot">
+<span class="tag" style="color:var(--faint);text-transform:uppercase;letter-spacing:.06em">Evidence basis</span> — Compiled by Fable from program memory + the build tracker, pre-dawn July 21, 2026. Current-state marks are a founder-facing design read, <b>not a certified route-by-route inventory</b>; every implementation-state claim carries a "verify vs CX-1" expectation and is superseded by CX-1's file:line findings where they differ. No client data is stored in this page; all quoted copy is illustrative. Fable's regeneration is the source of truth for this page.
+</div>
+</div>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.subtab');
+  var panels = document.querySelectorAll('.panel');
+  function show(p){
+    tabs.forEach(function(t){ t.classList.toggle('on', t.dataset.p===p); t.setAttribute('aria-selected', t.dataset.p===p ? 'true':'false'); });
+    panels.forEach(function(s){ s.classList.toggle('on', s.id==='p-'+p); });
+    if(history.replaceState){ history.replaceState(null,'','#'+p); }
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ show(t.dataset.p); }); });
+  var start = (location.hash||'').replace('#','');
+  if(start && document.getElementById('p-'+start)){ show(start); }
+})();
+</script>
+</body>
+</html>

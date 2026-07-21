@@ -28,7 +28,7 @@ global.document = {
 };
 
 /* load Fable content namespaces, then the code layer */
-['build','shared','sales','marketing','readiness','infra','org','ava','archive-command-center','v2']
+['build','shared','sales','marketing','readiness','infra','org','ava','archive-command-center','v2','experience']
   .forEach(function(f){ require(path.join(ROOT,'data',f+'.js')); });
 var app = require(path.join(ROOT,'app.js'));
 var MX = global.window.MX;
@@ -127,7 +127,7 @@ eq('all 10 Command Center views preserved', (MX.archive.views||[]).length, 10);
   ok('archived view "'+v.t+'" keeps purpose + surfaces', !!v.purpose && Array.isArray(v.surf) && v.surf.length>0);
 });
 ok('Command Center removed from primary nav', htmlSrc.indexOf('data-tab="cc"')===-1);
-ok('exactly seven primary tabs in nav (6 shell + additive V2)', (htmlSrc.match(/role="tab"/g)||[]).length===7);
+ok('exactly eight primary tabs in nav (6 shell + additive V2 + additive Client Experience)', (htmlSrc.match(/role="tab"/g)||[]).length===8);
 
 /* ============================ 7. V2 MIGRATION TAB (additive per e540f85 shell rule) ============================ */
 group('V2 Migration tab: additive wiring, shell intact, fallback preserved');
@@ -148,7 +148,26 @@ ok('V2 migration tiers present', (MX.v2.migration||[]).length===4);
   ok('app.js free of V2 content token "'+tok+'"', appSrc.indexOf(tok)===-1);
 });
 
-/* ============================ summary ============================ */
+/* ============================ 8. CLIENT EXPERIENCE TAB (additive per e540f85 shell rule) ============================ */
+group('Client Experience tab: additive wiring, shell + V2 intact, standalone doc preserved');
+['build','infra','org','ava','sales','marketing','v2'].forEach(function(t){
+  ok('prior tab "'+t+'" still in nav', htmlSrc.indexOf('data-tab="'+t+'"')!==-1);
+});
+ok('Experience tab added to nav', htmlSrc.indexOf('data-tab="experience"')!==-1);
+ok('Experience view section mounted', htmlSrc.indexOf('id="view-experience"')!==-1);
+ok('Experience content loads from data/experience.js', /src="data\/experience\.js"/.test(htmlSrc));
+ok('standalone experience.html document in repo', fs.existsSync(path.join(ROOT,'experience.html')));
+ok("'experience' registered in tabIds", /tabIds\s*=\s*\[[^\]]*'experience'/.test(appSrc));
+ok('renderExperience wired into renderAll', /renderAll\s*\(\)\s*\{[^}]*renderExperience\(\)/.test(appSrc));
+ok('MX.experience namespace exists', !!MX.experience);
+eq('Experience lifecycle covers 14 moments', (MX.experience.lifecycle||[]).length, 14);
+eq('Experience Needs-Jack queue present', (MX.experience.needsJack||[]).length, 5);
+eq('Experience build path has 5 phases', (MX.experience.phases||[]).length, 5);
+eq('Experience top-gap list ranks 20', (MX.experience.top||[]).length, 20);
+ok('Experience scorecard present', (MX.experience.scorecard||[]).length===6);
+ok('every lifecycle moment carries a state', (MX.experience.lifecycle||[]).every(function(l){ return ['have','part','none'].indexOf(l.s)!==-1; }));
+
+/* summary ================================================================ */
 console.log('\n──────────────────────────────');
 console.log('PASS '+pass+'  FAIL '+fail);
 if(fail){ console.log('Failures:\n - '+failures.join('\n - ')); process.exit(1); }
